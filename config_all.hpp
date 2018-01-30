@@ -45,10 +45,6 @@ minPlayerDistance = 50;         //Minimal Distance between corpse or wreck and n
 // Parameter werden geladen
 #include "params\params.hpp"
 
-//ACE Settings werden geladen
-#include "ace_config\ace_settings.hpp"
-
-
 /*
 //Sounds
 #include "ga_system\sys_config\sound.hpp"
@@ -62,7 +58,6 @@ class CfgFunctions
 		#include "functions\difficult\cfgFunctions.hpp"
 		#include "functions\setting\cfgFunctions.hpp"
 		#include "functions\debug\cfgFunctions.hpp"
-		#include "functions\settfar\cfgFunctions.hpp"
 		#include "functions\varsenal\cfgFunctions.hpp"
 		#include "functions\tasks\cfgFunctions.hpp"
 		#include "functions\usage\cfgFunctions.hpp"
@@ -90,4 +85,3 @@ class CfgRemoteExec
               jip = 1;
       };
 };
-
