@@ -43,7 +43,7 @@ if(!hasInterface) exitwith {};
 
             //[20,(getPos Truck),"BOMB",false] spawn MSOT_fnc_startCount;
 
-            hint str (uiNamespace getVariable ["IGUI_displays", []]);
+            
           };
    case 3:{
              If(captive player)then

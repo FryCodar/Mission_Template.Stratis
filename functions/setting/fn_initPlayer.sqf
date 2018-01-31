@@ -2,6 +2,7 @@ If(!hasInterface) exitWith {};
 #include "msot_components.hpp"
 private ["_player","_type_player","_config_text","_searched_word","_searched_in_type","_searched_in_config","_uniform","_googles"];
 diag_log "INITPLAYER: Starte INIT PLAYER";
+
 _player = player;
 
 _player setUnitTrait ["UAVHacker",true];
@@ -51,23 +52,7 @@ If(count (missionNamespace getVariable [STRVAR_DO(action_storgae),[]]) > 0)then
 {
   {_x call MFUNC(system,setClientAction);}forEach (missionNamespace getVariable [STRVAR_DO(action_storage),[]]);
 };
-/*
-player setUnitTrait ["UAVHacker",true];
 
-If((missionNamespace getVariable [STRVAR_DO(equip_cleaner),true]) && (["start_with_nothing",0] call BFUNC(getParamValue)) == 1)then{
-If(count NEW_SETTING > 0)then{
-  [_player] execVM NEW_SETTING;
-}else{
-_uniform = uniform _player;
-removeAllWeapons _player;
-removeHeadgear _player;
-removeGoggles _player;
-removeAllContainers _player;
-If(!((hmd _player) isEqualTo ""))then{_googles = (hmd _player);_player unassignItem _googles;_player removeItem _googles;};
-_player addUniform _uniform;
-};
-};
-*/
 init_player = true;
 
 true
