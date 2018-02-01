@@ -15,7 +15,7 @@ enableSentences false;
 
 If(isServer)then
 {
-	//[[WING1,WING2,STOMP1,STOMP2,HELI1,HELI2,HELI3,HELI4],230] call MFUNC(usage,addRespawnVecs);
+	//[[car1],30] call MFUNC(usage,addRespawnVecs);
 };
 If(hasInterface)then
 {
