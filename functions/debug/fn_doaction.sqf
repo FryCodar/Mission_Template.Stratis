@@ -23,7 +23,8 @@ if(!hasInterface) exitwith {};
   		  //hint format ["[%1,%2]",(getPos _caller),(getDir _caller)];
   		  //diag_log format ["[%1,%2]", (getPos _caller),(getDir _caller)];
 
-  		 
+  		  //hint format ["%1",(getDir _caller)];
+
 
           };
    case 2:{
