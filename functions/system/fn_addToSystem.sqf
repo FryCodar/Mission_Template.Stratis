@@ -4,18 +4,18 @@ If(isMultiplayer)then{if(hasInterface) exitWith{};};
 /* --------------------------------------------------------------------------------------------------------------
 Function: MSOT_system_fnc_addToSystem
 
-Description: Stores Units/Vehicles etc in System.
+Description: Stores GROUPS/Vehicles etc in System.
 
 Parameters: [StoreName,Position,Array with Names,(Optional: Number)]
 
             StoreName     -    "GROUPS","VEHICLES","MORTARS","ARTILLERY"
             Position      -     position Array
-            Array with Names  - Array with Names of Units/Vehicles
+            Array with Names  - Array with Names of GROUPS/Vehicles
 
 Returns: Bool
 
 Examples:
-            _isStored = ["GROUPS",(getMarkerPos "TargetTown"),[S1,....,S10]] call MSOT_system_fnc_addToSystem;
+            _isStored = ["GROUPS",(getMarkerPos "TargetTown"),[GRP1...GRP2]] call MSOT_system_fnc_addToSystem;
 
 Author: Fry
 

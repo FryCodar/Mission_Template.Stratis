@@ -15,10 +15,8 @@ Examples:
 Author: Fry
 
 -------------------------------------------------------------------------------------------------- */
-private ["_output"];
 
-_output = false;
 
-If(sunOrMoon <= 0.4)then{_output = true;};
+private _output = If(sunOrMoon <= 0.4)then{true}else{false};
+
 _output
-//�NDERN FALSCHE ANGABEN

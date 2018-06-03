@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=641;
+	toggles=642;
 	class ItemIDProvider
 	{
-		nextID=512;
+		nextID=514;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2059.2878,73.010422,5566.3379};
-		dir[]={0.12230814,-0.80672473,0.5781852};
-		up[]={0.16696154,0.59090912,0.7892682};
-		aside[]={0.97838265,6.1878018e-007,-0.20696738};
+		pos[]={1173.0991,77.350388,5994.3125};
+		dir[]={-0.94531763,-0.30751538,0.10950209};
+		up[]={-0.30554602,0.95150459,0.035394754};
+		aside[]={0.11508241,-2.7769784e-006,0.99345118};
 	};
 };
 binarizationWanted=0;
@@ -29,13 +29,14 @@ addons[]=
 	"A3_Characters_F",
 	"A3_Characters_F_Mark",
 	"A3_Structures_F_Mil_Shelters",
-	"A3_Structures_F_EPA_Mil_Scrapyard"
+	"A3_Structures_F_EPA_Mil_Scrapyard",
+	"A3_Boat_F_Jets_Carrier_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=5;
+		items=6;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -68,6 +69,13 @@ class AddonsMetaData
 		{
 			className="A3_Structures_F_EPA";
 			name="Arma 3 Survive Episode - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item5
+		{
+			className="A3_Boat_F_Jets";
+			name="Arma 3 Jets - Boats and Submersibles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -184,7 +192,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=9;
+		items=10;
 		class Item0
 		{
 			dataType="Marker";
@@ -221,11 +229,11 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2069.2639,6.7314386,5611.5527};
-						angles[]={0,0.27654743,0};
+						position[]={1720.0267,6.7289414,5736.8843};
+						angles[]={0,4.9011993,0};
 					};
 					side="West";
-					flags=7;
+					flags=3;
 					class Attributes
 					{
 						isPlayer=1;
@@ -233,6 +241,7 @@ class Mission
 					};
 					id=25;
 					type="B_officer_F";
+					atlOffset=1.2275023;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -464,6 +473,7 @@ class Mission
 			{
 			};
 			id=24;
+			atlOffset=1.2275023;
 		};
 		class Item4
 		{
@@ -532,6 +542,22 @@ class Mission
 			type="hd_dot";
 			id=509;
 			atlOffset=-10.525589;
+		};
+		class Item9
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={943.45398,-3.4332275e-005,5971.4761};
+			};
+			side="Empty";
+			class Attributes
+			{
+				name="SHIP";
+			};
+			id=513;
+			type="Land_Carrier_01_base_F";
+			atlOffset=47.981003;
 		};
 	};
 };

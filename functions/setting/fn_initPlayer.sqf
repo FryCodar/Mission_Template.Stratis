@@ -1,4 +1,4 @@
-If(!hasInterface) exitWith {};
+﻿If(!hasInterface) exitWith {};
 #include "msot_components.hpp"
 private ["_player","_type_player","_config_text","_searched_word","_searched_in_type","_searched_in_config","_uniform","_googles"];
 diag_log "INITPLAYER: Starte INIT PLAYER";
@@ -36,22 +36,35 @@ switch(["who_is_medic", 0] call BFUNC(getParamValue))do
            };
          };
    case 1:{
-            if((player getVariable ["Ace_medical_medicClass",0]) < 1)then{player setVariable ["Ace_medical_medicClass",1,true];};
+            if((player getVariable ["Ace_medical_medicClass",0]) < 1)then{player setVariable ["Ace_medical_medicClass",1,true];_player setUnitTrait ["Medic",true];};
           };
 };
-//**************************************************************************************************************************************
-//
-// WICHTIG!!! ES FEHLT NOCH DIE UPDATEABFRAGE BEIM CONNECTEN ÜBER TASKS UND BRIEFING
-//
-//**************************************************************************************************************************************
+
+// Setzt Briefing
+[] call MFUNC(briefing,addBriefing);
+
+//Checkt Respawn Positionen ab
 If(count (missionNamespace getVariable [STRVAR_DO(resp_poses),[]]) > 0)then
 {
   [1,(missionNamespace getVariable [STRVAR_DO(resp_poses),[]])] call MFUNC(system,doClientRespawn);
 };
-If(count (missionNamespace getVariable [STRVAR_DO(action_storgae),[]]) > 0)then
+//Checkt AddAction Einträge
+If(count (missionNamespace getVariable [STRVAR_DO(action_storage),[]]) > 0)then
 {
   {_x call MFUNC(system,setClientAction);}forEach (missionNamespace getVariable [STRVAR_DO(action_storage),[]]);
 };
+//Setzt Task
+[] spawn {
+waitUntil{!isNil "camera_run"};
+sleep 2;
+if(count (missionNamespace getVariable [STRVAR_DO(missions_stored_tasks),[]]) > 0)then
+{
+  {_x call MFUNC(tasks,setTask); sleep 6;}forEach (missionNamespace getVariable [STRVAR_DO(missions_stored_tasks),[]]);
+};
+};
+
+
+
 
 init_player = true;
 

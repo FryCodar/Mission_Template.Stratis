@@ -26,10 +26,6 @@ class TAGADD
 									 				   description = "Returns a list of nearest terrain objects.";
 
 									 			   };
-			class dataType {
-                       description = "Returns the data type of an expression.";
-
-										 };
 			class getMapLocations {
 				                      description = "Returns the Locations of a Map.";
 			                      };
@@ -39,8 +35,10 @@ class TAGADD
 							 			 };
 			class getStreetDir {
 														description = "Check the Direction of given Streetblock.";
-
 												 };
+			class getStreetInDistance {
+																		description = "Find a Position of an Streetblock in a defined Radius";
+																};
 			class getStreetLine {
 				                    description = "Return lined Streetblocks to spezific Direction.";
 			                    };

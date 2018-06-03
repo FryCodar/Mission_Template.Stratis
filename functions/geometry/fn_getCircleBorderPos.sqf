@@ -17,8 +17,8 @@ Author: Fry
 
 ------------------------------------------------------------------------------------------------------------- */
 private ["_output","_number","_found_pos","_co","_angle","_mran","_point","_dir","_onmap","_statics","_slope"];
-params ["_position","_radius","_big_radius"];
-If(isNil "_big_radius")then{_big_radius = 5;};
+params ["_position","_radius",["_big_radius",5]];
+
 _output = [];
 _found_pos = [];
 _co = 0;
@@ -33,7 +33,7 @@ while{count _found_pos == 0 && _co < 100}do
    _angle = floor (random 360);
    sleep 0.04;
  };
- _point = [_position,_radius,_angle] call BFUNC(relPos);
+ _point = _position getPos [_radius,_angle];
  If(count _point > 0)then
  {
    _onmap = [_point] call MFUNC(spawnhelp,isOnMap);

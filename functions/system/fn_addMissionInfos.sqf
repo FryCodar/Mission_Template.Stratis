@@ -22,7 +22,6 @@ Author: Fry
 
 private ["_output","_holder","_add_arr","_search_it","_found_arr","_found_inside"];
 params ["_index","_value","_add_at_choice"];
-
 _output = false;
 If(missionNamespace getVariable [STRVAR_DO(delete_from_missinfo),false])then
 {waitUntil{!(missionNamespace getVariable [STRVAR_DO(delete_from_missinfo),false])};};
@@ -32,7 +31,7 @@ missionNamespace setVariable [STRVAR_DO(write_to_missinfo),true,true];
 switch(toUpper _index)do
 {
   case "MAINMARKER":{
-                      If((typeName _value) isEqualTo "ARRAY" && {(typeName _add_at_choice) isEqualTo "STRING"})then
+                      If((typeName _value) isEqualTo "ARRAY" && {(typeName _add_at_choice) isEqualTo "ARRAY"})then
                       {
                         _holder = missionNamespace getVariable [STRVAR_DO(mission_main_marker),[]];
                         If(count _holder > 0)then
@@ -103,6 +102,7 @@ switch(toUpper _index)do
                       }else{LOG_ERR("MAINACTIONS : WRONG DATATYPE IN FUNCTION PARAMETERS DETECTED!");};
                      };
   case "ACTIONSTORAGE":{
+
                           If((typeName _value) isEqualTo "ARRAY")then
                           {
                             _holder = missionNamespace getVariable [STRVAR_DO(action_storage),[]];
@@ -112,9 +112,13 @@ switch(toUpper _index)do
                               If(count _search_it == 0)then
                               {
                                 ARR_ADDVAR(_holder,_value); missionNamespace setVariable [STRVAR_DO(action_storage),_holder,true];_output = true;
+                                REMOTE_TRIEXESM(_value,system,setClientAction,0);
                               }else{LOG_ERR("ACTIONSTORAGE : SAME VALUE IN INFO STORAGE DETECTED");};
                               ARR_ADDVAR(_holder,_value); missionNamespace setVariable [STRVAR_DO(action_storage),_holder,true];_output = true;
-                            }else{_holder = [_value]; missionNamespace setVariable [STRVAR_DO(action_storage),_holder,true];_output = true;};
+                            }else{_holder = [_value]; missionNamespace setVariable [STRVAR_DO(action_storage),_holder,true];
+                                  REMOTE_TRIEXESM(_value,system,setClientAction,0);
+                                  _output = true;
+                                 };
                           }else{LOG_ERR("ACTIONSTORAGE : WRONG DATATYPE IN FUNCTION PARAMETERS DETECTED!");};
                        };
   case "RESPAWNPOSES":{
@@ -126,11 +130,17 @@ switch(toUpper _index)do
                             _search_it = [2,_holder,_value] call MFUNC(system,getInfoArray);
                             If(count _search_it == 0)then
                             {
-                              _add_arr = [_value,[_add_at_choice]];
+                              _add_arr = [_value,_add_at_choice];
                               ARR_ADDVAR(_holder,_add_arr); missionNamespace setVariable [STRVAR_DO(resp_poses),_holder,true];_output = true;
-                              REMOTE_TRIEXESM([0,_add_arr],system,doClientRespawn,([0,-2] select isDedicated));
+                              _found_arr = [0,_add_arr];
+                              REMOTE_TRIEXESM(_found_arr,system,doClientRespawn,0);
                             }else{LOG_ERR("RESPAWNPOSES : SAME VALUE IN INFO STORAGE DETECTED");};
-                          }else{_holder = [[_value,_add_at_choice]]; missionNamespace setVariable [STRVAR_DO(resp_poses),_holder,true];};
+                          }else{
+                                _add_arr = [_value,_add_at_choice];
+                                _holder = [_add_arr]; missionNamespace setVariable [STRVAR_DO(resp_poses),_holder,true];
+                                _found_arr = [0,_add_arr];
+                                REMOTE_TRIEXESM(_found_arr,system,doClientRespawn,0);
+                               };
                         }else{LOG_ERR("RESPAWNPOSES : WRONG DATATYPE IN FUNCTION PARAMETERS DETECTED!");};
                       };
    case "MAINTRIGGER":{

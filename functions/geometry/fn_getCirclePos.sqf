@@ -2,7 +2,7 @@
 /* ---------------------------------------------------------------------------------------------------------
 Function: MSOT_geometry_fnc_getCirclePos
 
-Description: Find a random Position in Circle with Water,House,Walls,Vehicle and Area check
+Description: Find a random Position in Circle without Water,House,Walls,Vehicle and Area check
 
 
 Parameters: [Position,Radius,(Optional:Radius for big Objects)]
@@ -16,15 +16,13 @@ Examples:
 Author: Fry
 
 ------------------------------------------------------------------------------------------------------------- */
-private ["_output","_co","_angle","_point","_onmap","_statics","_slope"];
-params ["_position","_radius","_big_radius"];
-If(isNil "_big_radius")then{_big_radius = 5;};
+private ["_output","_co","_point","_onmap","_statics","_slope"];
+params ["_position","_radius",["_big_radius",5]];
 _output = [];
 _co = 0;
 while{count _output == 0 && _co < 100}do
 {
- _angle = floor (random 360);
- _point = [_position,(round (random _radius)),_angle] call BFUNC(relPos);
+ _point = _position getPos [_radius * sqrt random 1, random 360];
  If(count _point > 0)then
  {
    _onmap = [_point] call MFUNC(spawnhelp,isOnMap);

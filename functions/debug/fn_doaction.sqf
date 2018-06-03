@@ -1,7 +1,7 @@
 if(!hasInterface) exitwith {};
 #include "msot_components.hpp"
 
-  private ["_obj","_caller","_idx","_xtra","_txt"];
+  private ["_obj","_caller","_idx","_xtra","_txt","_bunkers"];
   _obj = _this select 0;
   _caller = _this select 1;
   _idx = _this select 2;
@@ -10,19 +10,16 @@ if(!hasInterface) exitwith {};
 
   switch(_xtra)do
   {
-   case 0:{ hint "Press Mouse-Button to Teleport you on Mouseposition";
+   case 0:{
 
-            sleep 1;
-
-            openMap true;
-            onMapSingleClick "Player setPos _pos;openMap false;hintSilent """";onMapSingleClick """"; true;";
+            _this call MFUNC(usage,fastTravel);
 
 
-
-   	};
+   	      };
    case 1:{
-            hint format ["DATEN ABFRAGE:\n POSASL: %1 \n DIRECTIONS: %2 \n POSITION: %3",(getPosASL _caller),(getDir _caller),(getPos _caller)];
-  		   diag_log format ["DATEN ABFRAGE:\n POSASL: %1 \n DIRECTIONS: %2 \n POSITION: %3", (getPosASL _caller),(getDir _caller),(getPos _caller)];
+            hint format ["DATEN ABFRAGE:\n POSASL: %1 \n DIRECTIONS: %2 \n POSITION: %3",(getPosATL _caller),(getDir _caller),(getPos _caller)];
+  		      diag_log format ["DATEN ABFRAGE:\n POSASL: %1 \n DIRECTIONS: %2 \n POSITION: %3", (getPosATL _caller),(getDir _caller),(getPos _caller)];
+            copyToClipboard str (position player);
   		  //hint format ["[%1,%2]",(getPos _caller),(getDir _caller)];
   		  //diag_log format ["[%1,%2]", (getPos _caller),(getDir _caller)];
 
@@ -32,17 +29,14 @@ if(!hasInterface) exitwith {};
           };
    case 2:{
             hint "Script begins";
-            /*
-            ["MAINTARGETS",(getMarkerPos "test1"),[T1]] spawn MSOT_system_fnc_addMissionInfos;
-            hint str (missionNamespace getVariable [STRVAR_DO(mission_main_targets),[]]);
-
-            C1 addEventHandler ["killed", {[(_this select 0),"FAILED"] call MSOT_system_fnc_testHandler;}];
-
-            hint "Adding abeschlossen";
-            */
-
-            //[20,(getPos Truck),"BOMB",false] spawn MSOT_fnc_startCount;
-
+            //[2] execVM "Missions\mission1.sqf";
+            //player playMoveNow "AinvPknlMstpSlayWpstDnon_medicOther";
+            //[[9148.21,21611.9,0],2000,["CAR","TRUCK"],"DELETE"] call MFUNC(creating,setConvoy);
+            //deleteVehicle ((missionNamespace getVariable ["BAGP",[]]) select 0);
+            //EventTrack01_F_EPA
+            //[1] execVM "Missions\mission1.sqf";
+            //copyToClipboard str (position Tr21);
+            //missionNamespace setVariable ["msot_sweepermis2",true,true];
             
           };
    case 3:{
@@ -57,8 +51,20 @@ if(!hasInterface) exitwith {};
           };
 
    case 4:{
+            /*
   			     hint "Open Map and Click on it to disable the Cursor Function";
             onMapSingleClick "hint 'All MouseCurser functions on Map are disabled!';onMapSingleClick '';true;";
+            */
+            //[[4856.38,11104.6,0]] call MFUNC(system,delFromSystem);
+
+            //{_x setDamage 1; sleep 5;}forEach [Ziel01,Ziel02];
+            //sleep 2;
+            //hint str (missionNamespace getVariable[STRVAR_DO(vehicle_store),[]]);
+
+
+            ["RESPAWNPOSES",[9148.21,21611.9,0]] spawn MFUNC(system,doMissionCheck);
+
+
 
   		    };
 
@@ -68,18 +74,14 @@ if(!hasInterface) exitwith {};
 
 
 
-
-
-
-
-
-
-
-
-
-
+//
 
 /*
+IDSEH = player addEventHandler ["InventoryOpened",{[[0],"Missions\mission_1.sqf"] remoteExec ["execVM", 0]; player removeEventHandler ["InventoryOpened",IDSEH];}];
+
+
+
+
 
 PFEIL Blau = "Sign_Arrow_Blue_F"
               Sign_Arrow_F

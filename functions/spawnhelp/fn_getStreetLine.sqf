@@ -20,14 +20,14 @@ params ["_center","_pos_dir","_num"];
 
 _output = [];
 _direction_pos = [];
-_is_pos = If((typeName _pos_dir) == "ARRAY")then{true}else{false};
+_is_pos = If((typeName _pos_dir) isEqualTo "ARRAY")then{true}else{false};
 
 
 _street_block = [_center,100] call MFUNC(spawnhelp,nearestStreet);
-If(typeName _street_block != "STRING")then
-{
-  If(_is_pos)then{_direction_pos = _pos_dir;}else{_direction_pos = [(position _street_block),100,_pos_dir] call BFUNC(relPos);};
 
+If(!((typeName _street_block) isEqualTo "STRING"))then
+{
+  If(_is_pos)then{_direction_pos = _pos_dir;}else{_direction_pos = (position _street_block) getPos [100,_pos_dir];};
   _holder_arr = [];
   _ctrl = 0;
   _dir = 0;
@@ -45,14 +45,14 @@ If(typeName _street_block != "STRING")then
        If(_chk)then
        {
         _dir = GET_DIRPOS(_x,_last_streetblock);
-        _is_in_sector = [(position _x),_dir,180,_direction_pos] call BFUNC(inAngleSector);
+        _is_in_sector = [(position _x),_dir,180,_direction_pos] call MFUNC(geometry,inAngleSector);
         If(_is_in_sector)then{_chk_arr = [(position _x),_dir]; _chk = false;_last_streetblock = _x;};
        };
      }forEach _connected_streets;
      If(count _chk_arr > 0)then{ARR_ADDVAR(_holder_arr,_chk_arr);}else{_is_allowed = false;};
     };
     _ctrl = _ctrl + 1;
-  sleep 0.02;
+  sleep 0.04;
   };
   If(_is_allowed)then{_output = _holder_arr;};
 };

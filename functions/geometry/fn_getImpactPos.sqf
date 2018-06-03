@@ -27,13 +27,13 @@ If(_safety_zone)then
     _angle = floor (random 360);
     _new_radius = (round(random _radius));
     If(_new_radius <= _num)then{_new_radius = (_num + 2);};
-    _ari_point = [_center,_new_radius,_angle] call BFUNC(relPos);
+    _ari_point = _center getPos [_new_radius * sqrt random 1, _angle];
     while{count _ari_point == 0 && _co < 20}do
     {
       _angle = floor (random 360);
       _new_radius = (round(random _radius));
       If(_new_radius <= _num)then{_new_radius = (_num + 2);};
-      _ari_point = [_center,_new_radius,_angle] call BFUNC(relPos);
+      _ari_point = _center getPos [_new_radius * sqrt random 1, _angle];
       _co = _co + 1;
       sleep 0.04;
     };
@@ -43,12 +43,10 @@ If(_safety_zone)then
       F_LOOP(_i,1,_num)
       {
         _co = 0;
-        _angle = floor (random 360);
-        _ari_point = [_center,(round(random _radius)),_angle] call BFUNC(relPos);
+        _ari_point = _center getPos [(random _radius) * sqrt random 1, (random 360)];
         while{count _ari_point == 0 && _co < 20}do
         {
-          _angle = floor (random 360);
-          _ari_point = [_center,(round(random _radius)),_angle] call BFUNC(relPos);
+          _ari_point = _center getPos [(random _radius) * sqrt random 1, (random 360)];
           _co = _co + 1;
           sleep 0.04;
         };

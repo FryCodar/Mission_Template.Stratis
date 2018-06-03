@@ -25,5 +25,8 @@ class TAGADD
 				                 description = "Find a Safe Possition in Circle or Circle Border.";
 
 			                 };
+			class inAngleSector {
+															description = "Check a Position is in an Sector";
+													};
 		};
 	};

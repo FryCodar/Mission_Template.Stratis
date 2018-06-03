@@ -44,22 +44,17 @@ Examples:
 Author: Fry
 
 ----------------------------------------------------------------------------------------------------------------- */
-private ["_output","_do_your_job","_get_number_enemies","_main_pos","_spawn_pos","_work_arr","_allowed_to_create","_calculate_units","_house_arr",
+private ["_output","_do_your_job","_main_pos","_spawn_pos","_work_arr","_allowed_to_create","_calculate_units","_house_arr",
          "_x","_setting_grp_num","_setting_unit_num","_grp_crea","_group_classes","_unit_crea","_grp_arr","_grp","_house_ctrl_arr","_set_in_house","_house_ctrl",
          "_ctrl_num","_house_lvl","_unit","_spawn_pos_holder","_unit_counter","_housew_arr","_everyhouse","_gethouse","_house_spawn","_border_pos","_searched_house"];
 
-params ["_position","_radius","_grp_num","_units_in_grp_num","_group_choice","_location_idx","_behaviour_idx","_combat_idx"];
-
-If(isNil "_behaviour_idx")then{_behaviour_idx = "CARELESS";};
-If(isNil "combat_idx")then{_combat_idx = "YELLOW";};
+params ["_position","_radius","_grp_num","_units_in_grp_num","_group_choice","_location_idx",["_behaviour_idx","CARELESS"],["_combat_idx","YELLOW"]];
 
 IF(count MSOT_MEN == 0 && count MSOT_SFMEN == 0) exitWith {LOG_ERR("Control MSOT_MEN ARRAY");};
 
 _output = [];
 _do_your_job = If(_group_choice != "CIV_MEN")then{true}else{false};
 
-
-_get_number_enemies = If(_location_idx == "MIXED")then{[_grp_num,_units_in_grp_num] call MFUNC(system,getForcesCalc);}else{[]};
 
 If(_do_your_job)then
 {
@@ -75,11 +70,11 @@ If(_do_your_job)then
     case "AREA":{ARR_ADDVAR(_work_arr,"AREA");};
     case "BORDER":{ARR_ADDVAR(_work_arr,"BORDER");};
     case "HOUSE":{
-                   _house_arr = [_position,_radius,true,true] call MFUNC(spawnhelp,checkHouses);
+                   _house_arr = [_spawn_pos,_radius,true,true] call MFUNC(spawnhelp,checkHouses);
                    If(count _house_arr > 0)then{ARR_ADDVAR(_work_arr,"HOUSE");};
                  };
     case "HOUSE_TOP":{
-                       _housew_arr = [_position,_radius,true,true] call MFUNC(spawnhelp,checkHouses);
+                       _housew_arr = [_spawn_pos,_radius,true,true] call MFUNC(spawnhelp,checkHouses);
                        If(count _housew_arr > 0)then
                        {{
                           If(count ([_x,"LEVELS"] call MFUNC(spawnhelp,checkHousePos)) >= 2)then
@@ -95,7 +90,7 @@ If(_do_your_job)then
                      };
     case "MIXED":{
                    _calculate_units = true;ARR_ADDVAR(_work_arr,"AREA");
-                   _house_arr = [_position,_radius,true,true] call MFUNC(spawnhelp,checkHouses);
+                   _house_arr = [_spawn_pos,_radius,true,true] call MFUNC(spawnhelp,checkHouses);
                    If(count _house_arr > 0)then{ARR_ADDVAR(_work_arr,"HOUSE");};
                  };
     default {_allowed_to_create = false;LOG_ERR("Check Function Call! fn_setUnits");};
@@ -113,7 +108,7 @@ If(_do_your_job)then
       case "AREA":{_setting_grp_num = _grp_num;_setting_unit_num = _units_in_grp_num;};
       case "BORDER":{_setting_grp_num = _grp_num;_setting_unit_num = _units_in_grp_num;};
       case "HOUSE":{
-                     If(_calculate_units)then{_setting_grp_num = (_get_number_enemies select 0);_setting_unit_num = (_get_number_enemies select 1);
+                     If(_calculate_units)then{_setting_grp_num = (ceil(_grp_num * 0.5));_setting_unit_num = 1;
                     }else{_setting_grp_num = _grp_num;_setting_unit_num = _units_in_grp_num;};
                    };
       case "HOUSE_TOP":{_setting_grp_num = _grp_num;_setting_unit_num = _units_in_grp_num;};
@@ -184,7 +179,7 @@ If(_do_your_job)then
           {
             _grp enableAttack true;
 		        _grp enableGunLights "AUTO";
-            If(_x == "BORDER")then{
+            If(_x isEqualTo "BORDER")then{
              [_grp,_spawn_pos] call BFUNC(taskAttack);
              _behaviour_idx = "AWARE";
            }else{[_grp,_spawn_pos,(round(_radius * 0.5))] call BFUNC(taskPatrol);};
@@ -199,6 +194,6 @@ If(_do_your_job)then
 
    }forEach _work_arr;
   };
-  If(count _grp_arr > 0)then{["GROUPS",_position,_grp_arr] spawn MFUNC(system,addToSystem);};
+  If(count _grp_arr > 0)then{["GROUPS",_main_pos,_grp_arr] spawn MFUNC(system,addToSystem);};
 };
 _output

@@ -1,5 +1,7 @@
 ﻿//Parameter
 
+respawnTemplates[] = {"MenuPosition"};
+
 enableItemsDropping = 0;
 showGPS = 1;
 showCompass = 1;
@@ -45,11 +47,6 @@ minPlayerDistance = 50;         //Minimal Distance between corpse or wreck and n
 // Parameter werden geladen
 #include "params\params.hpp"
 
-/*
-//Sounds
-#include "ga_system\sys_config\sound.hpp"
-
-*/
 //Functions
 class CfgFunctions
 {
@@ -65,6 +62,7 @@ class CfgFunctions
 		#include "functions\spawnhelp\cfgFunctions.hpp"
 		#include "functions\geometry\cfgFunctions.hpp"
 		#include "functions\creating\cfgFunctions.hpp"
+		#include "functions\briefing\cfgFunctions.hpp"
 };
 
 class CfgRemoteExec

@@ -11,7 +11,16 @@ class TAGADD
 				 								   description = "Set Smoke/Fire to Objects";
 			 									 };
 			 class setArtillery {
-				 										description = "Set Artillery";
+				 										description = "Creates Artillery Fire";
 			 										};
+			 class setBase {
+				 								description = "Create a defined Base";
+			 							 };
+			 class setConvoy {
+				 								 description = "Create a Convoy";
+			 								 };
+			class setCargoUnits {
+														 description = "Fills the Cargo Slots of an Vehicle with Soldiers";
+													 };
 		 };
 	};

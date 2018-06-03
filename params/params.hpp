@@ -22,7 +22,7 @@
     title = "Gegen welche Fraktion willst du spielen:";
     texts[] = {"CSAT","CSAT Pazifik","FIA Red","AAF","FIA Green","Syndicat"};
     values[] = {1,2,3,4,5,6};
-    default = 1;
+    default = 3;
   };
   class mission_difficulty
   {
@@ -36,7 +36,15 @@
     title = "Spiele Intro ab:";
     texts[] = {"Nein","Ja"};
     values[] = {0,1};
-    default = 1;
+    default = 0;
+    isGlobal = 1;
+  };
+  class play_intro_music
+  {
+    title = "Spiele Intro Music ab:";
+    texts[] = {"Nein","Ja"};
+    values[] = {0,1};
+    default = 0;
     isGlobal = 1;
   };
   class start_with_nothing
@@ -44,7 +52,7 @@
     title = "Starte ohne Ausrüstung:";
     texts[] = {"Nein","Ja"};
     values[] = {0,1};
-    default = 1;
+    default = 0;
     isGlobal = 1;
   };
   class debug_modus
@@ -52,7 +60,7 @@
     title = "DEBUG MODUS:";
     texts[] = {"Nein","Ja"};
     values[] = {0,1};
-    default = 0;
+    default = 1;
     isGlobal = 1;
   };
   class who_is_medic

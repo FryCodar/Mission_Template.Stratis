@@ -13,6 +13,9 @@ class TAGADD
 			  class doService {
 					                description = "Servicing and Reload Vehicles.";
 												};
+				class fastTravel {
+														description = "TravelService!";
+												 };
 				class addRespawnVecs {
 																description = "Add Vehicles to Respawnsystem.";
 														 };

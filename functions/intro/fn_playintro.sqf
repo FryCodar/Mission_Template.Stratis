@@ -5,6 +5,7 @@ If(isMultiplayer)then{waitUntil{getClientStateNumber > 9};};
 
 private ["_segmented_time","_hour","_minute","_missionName","_stringed_minute","_intro_datas"];
 If(missionNamespace getVariable [STRVAR_DO(play_intro),true])then{
+If((["play_intro_music",1] call BIS_fnc_getParamValue) isEqualTo 1)then{playMusic "EventTrack01_F_EPA";};
 _intro_datas = missionNamespace getVariable [STRVAR_DO(intro_datas),[]];
 _stringed_minute = "";
 _hour = floor daytime;
@@ -19,7 +20,7 @@ If(count _intro_datas == 3)then
     _intro_datas spawn MFUNC(intro,runcamera);
     cutText ["","BLACK IN",2];
     sleep _segmented_time;
-  };
+  }else{camera_run = true;};
 }else{camera_run = true;};
  sleep 2;
 _missionName = getMissionConfigValue ["onLoadName", "NAME NOT FOUND"];
