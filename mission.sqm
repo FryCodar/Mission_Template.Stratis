@@ -8,7 +8,7 @@ class EditorData
 	toggles=642;
 	class ItemIDProvider
 	{
-		nextID=514;
+		nextID=538;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1173.0991,77.350388,5994.3125};
-		dir[]={-0.94531763,-0.30751538,0.10950209};
-		up[]={-0.30554602,0.95150459,0.035394754};
-		aside[]={0.11508241,-2.7769784e-006,0.99345118};
+		pos[]={1776.3035,15.904478,5635.6152};
+		dir[]={0.93381298,-0.33762094,-0.11934154};
+		up[]={0.33499235,0.94122171,-0.042815313};
+		aside[]={-0.12679155,-3.6217934e-006,-0.99204803};
 	};
 };
 binarizationWanted=0;
@@ -30,13 +30,27 @@ addons[]=
 	"A3_Characters_F_Mark",
 	"A3_Structures_F_Mil_Shelters",
 	"A3_Structures_F_EPA_Mil_Scrapyard",
-	"A3_Boat_F_Jets_Carrier_01"
+	"A3_Supplies_F_Heli_Slingload",
+	"ace_refuel",
+	"ace_repair",
+	"ace_cargo",
+	"ace_rearm",
+	"A3_Structures_F_Bootcamp_VR_Helpers",
+	"A3_Structures_F_Heli_Items_Airport",
+	"A3_Armor_F_Beta_APC_Tracked_01",
+	"ace_realisticnames",
+	"A3_Armor_F_EPC_MBT_01",
+	"A3_Armor_F_Tank_AFV_Wheeled_01",
+	"A3_Armor_F_Beta_APC_Wheeled_01",
+	"A3_Characters_F_Common",
+	"A3_Drones_F_Soft_F_Gamma_UGV_01",
+	"A3_Air_F_Beta_Heli_Attack_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=6;
+		items=17;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -74,8 +88,85 @@ class AddonsMetaData
 		};
 		class Item5
 		{
-			className="A3_Boat_F_Jets";
-			name="Arma 3 Jets - Boats and Submersibles";
+			className="A3_Supplies_F_Heli";
+			name="Arma 3 Helicopters - Ammoboxes and Supplies";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item6
+		{
+			className="ace_refuel";
+			name="ACE3 - Refuel";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item7
+		{
+			className="ace_repair";
+			name="ACE3 - Repair";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item8
+		{
+			className="ace_cargo";
+			name="ACE3 - Cargo";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item9
+		{
+			className="ace_rearm";
+			name="ACE3 - Rearm";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item10
+		{
+			className="A3_Structures_F_Bootcamp";
+			name="Arma 3 Bootcamp Update - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item11
+		{
+			className="A3_Structures_F_Heli";
+			name="Arma 3 Helicopters - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item12
+		{
+			className="A3_Armor_F_Beta";
+			name="Arma 3 Beta - Armored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item13
+		{
+			className="A3_Armor_F_EPC";
+			name="Arma 3 Win Episode - Armored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item14
+		{
+			className="A3_Armor_F_Tank";
+			name="Arma 3 Tank - Armored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item15
+		{
+			className="A3_Drones_F";
+			name="Arma 3 Beta - Drones";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item16
+		{
+			className="A3_Air_F_Beta";
+			name="Arma 3 Beta - Aircraft";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -192,7 +283,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=10;
+		items=25;
 		class Item0
 		{
 			dataType="Marker";
@@ -229,11 +320,11 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={1720.0267,6.7289414,5736.8843};
+						position[]={1843.7795,5.5014391,5644.2236};
 						angles[]={0,4.9011993,0};
 					};
 					side="West";
-					flags=3;
+					flags=7;
 					class Attributes
 					{
 						isPlayer=1;
@@ -241,7 +332,6 @@ class Mission
 					};
 					id=25;
 					type="B_officer_F";
-					atlOffset=1.2275023;
 					class CustomAttributes
 					{
 						class Attribute0
@@ -473,7 +563,6 @@ class Mission
 			{
 			};
 			id=24;
-			atlOffset=1.2275023;
 		};
 		class Item4
 		{
@@ -548,16 +637,529 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={943.45398,-3.4332275e-005,5971.4761};
+				position[]={1809.4611,6.9144502,5683.6499};
+				angles[]={0,1.8248464,0};
 			};
 			side="Empty";
+			flags=4;
 			class Attributes
 			{
-				name="SHIP";
 			};
-			id=513;
-			type="Land_Carrier_01_base_F";
-			atlOffset=47.981003;
+			id=514;
+			type="B_Slingload_01_Fuel_F";
+			atlOffset=0.052000046;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],true]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item10
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1810.7949,6.9124603,5688.21};
+				angles[]={0,1.8346157,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=515;
+			type="B_Slingload_01_Repair_F";
+			atlOffset=0.051943779;
+		};
+		class Item11
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1811.802,6.9210372,5692.5122};
+				angles[]={0,1.8237294,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=516;
+			type="B_Slingload_01_Ammo_F";
+			atlOffset=0.059000015;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[],[]],[[],[]],[[],[]],[[],[]]],true]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item12
+		{
+			dataType="Trigger";
+			position[]={1824.859,5.5,5684.7622};
+			angle=3.3895514;
+			class Attributes
+			{
+				condition="call{this && (count thisList) > 0 && (count thisList) < 2}";
+				onActivation="call{nul = [thisList select 0] spawn MSOT_usage_fnc_doService;}";
+				sizeA=7;
+				sizeB=9;
+				sizeC=5;
+				repeatable=1;
+				activationBy="WEST";
+				isRectangle=1;
+			};
+			id=517;
+			type="EmptyDetector";
+		};
+		class Item13
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1824.9218,5.572876,5684.4077};
+				angles[]={0,3.3895473,0};
+			};
+			side="Empty";
+			flags=1;
+			class Attributes
+			{
+			};
+			id=518;
+			type="VR_Area_01_circle_4_yellow_F";
+			atlOffset=0.072375774;
+		};
+		class Item14
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1815.9551,5.6718216,5677.8301};
+				angles[]={0,0.21242785,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				dynamicSimulation=1;
+			};
+			id=519;
+			type="PortableHelipadLight_01_white_F";
+			atlOffset=0.061141491;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item15
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1820.3484,5.6718216,5695.104};
+				angles[]={0,0.23518014,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				dynamicSimulation=1;
+			};
+			id=520;
+			type="PortableHelipadLight_01_white_F";
+			atlOffset=0.061141491;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item16
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1833.7559,5.6718216,5691.6992};
+				angles[]={0,0.19813848,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				dynamicSimulation=1;
+			};
+			id=521;
+			type="PortableHelipadLight_01_white_F";
+			atlOffset=0.061141491;
+		};
+		class Item17
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1829.382,5.6718216,5674.4385};
+				angles[]={0,0.22774673,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				dynamicSimulation=1;
+			};
+			id=522;
+			type="PortableHelipadLight_01_white_F";
+			atlOffset=0.061141491;
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="allowDamage";
+					expression="_this allowdamage _value;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"BOOL"
+								};
+							};
+							value=0;
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item18
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1798.1874,8.4853611,5634.8481};
+				angles[]={0,0.3122656,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				reportRemoteTargets=1;
+				receiveRemoteTargets=1;
+			};
+			id=523;
+			type="B_APC_Tracked_01_AA_F";
+		};
+		class Item19
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1833.7316,8.2264757,5642.7568};
+				angles[]={0,0.22612487,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="Tank";
+			};
+			id=525;
+			type="B_MBT_01_TUSK_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""arifle_MXC_F"",""FirstAidKit""],[2,10]],[[""SmokeShell"",""SmokeShellBlue"",""30Rnd_65x39_caseless_mag""],[2,2,4]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item20
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1827.7346,7.7639475,5624.7847};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				reportRemoteTargets=1;
+				receiveRemoteTargets=1;
+				reportOwnPosition=1;
+			};
+			id=526;
+			type="B_AFV_Wheeled_01_up_cannon_F";
+		};
+		class Item21
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1838.526,8.0393772,5623.2729};
+				angles[]={0,0.18289679,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+			};
+			id=527;
+			type="B_APC_Wheeled_01_cannon_F";
+			atlOffset=-4.7683716e-007;
+		};
+		class Item22
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=2;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1807.877,5.5014386,5627.6509};
+						angles[]={0,0.1738697,0};
+					};
+					side="West";
+					flags=4;
+					class Attributes
+					{
+						name="STOMP2D";
+					};
+					id=530;
+					type="B_UAV_AI";
+				};
+				class Item1
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1807.877,5.5014386,5627.6509};
+						angles[]={0,0.1738697,0};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						name="STOMP2G";
+					};
+					id=531;
+					type="B_UAV_AI";
+				};
+			};
+			class Attributes
+			{
+			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=2;
+				};
+				class Links
+				{
+					items=2;
+					class Item0
+					{
+						linkID=0;
+						item0=530;
+						item1=529;
+						class CustomData
+						{
+							role=1;
+						};
+					};
+					class Item1
+					{
+						linkID=1;
+						item0=531;
+						item1=529;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={0};
+						};
+					};
+				};
+			};
+			id=528;
+		};
+		class Item23
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1807.877,7.5893393,5627.5547};
+				angles[]={0,0.1738697,0};
+			};
+			side="West";
+			flags=6;
+			class Attributes
+			{
+				init="call{[] spawn {waitUntil{isEngineOn STOMP2};(driver STOMP2) action [""engineOff"", STOMP2];};}";
+				name="STOMP2";
+				reportOwnPosition=1;
+			};
+			id=529;
+			type="B_UGV_01_rcws_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""FirstAidKit""],[4]],[[],[]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
+		};
+		class Item24
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1781.583,7.4219365,5641.8916};
+				angles[]={0,0.62079614,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="H12";
+				pylons="PylonRack_12Rnd_PG_missiles[0];PylonMissile_1Rnd_LG_scalpel[0];PylonRack_12Rnd_PG_missiles[0];PylonRack_12Rnd_PG_missiles[0];PylonMissile_1Rnd_LG_scalpel[0];PylonRack_12Rnd_PG_missiles[0];";
+			};
+			id=536;
+			type="B_Heli_Attack_01_dynamicLoadout_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""arifle_MXC_F"",""FirstAidKit""],[2,2]],[[""SmokeShell"",""SmokeShellBlue"",""30Rnd_65x39_caseless_mag""],[2,2,4]],[[""ToolKit"",""ItemGPS""],[1,1]],[[""B_Parachute""],[2]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 };

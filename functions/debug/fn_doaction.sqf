@@ -37,6 +37,7 @@ if(!hasInterface) exitwith {};
             //[1] execVM "Missions\mission1.sqf";
             //copyToClipboard str (position Tr21);
             //missionNamespace setVariable ["msot_sweepermis2",true,true];
+            [H12] spawn MFUNC(usage,doService);
 
           };
    case 3:{
