@@ -23,8 +23,7 @@ if(!hasInterface) exitwith {};
   		  //hint format ["[%1,%2]",(getPos _caller),(getDir _caller)];
   		  //diag_log format ["[%1,%2]", (getPos _caller),(getDir _caller)];
 
-  		  //hint format ["%1",(getDir _caller)];
-
+  		 
 
           };
    case 2:{
@@ -37,7 +36,7 @@ if(!hasInterface) exitwith {};
             //[1] execVM "Missions\mission1.sqf";
             //copyToClipboard str (position Tr21);
             //missionNamespace setVariable ["msot_sweepermis2",true,true];
-            
+
           };
    case 3:{
              If(captive player)then
