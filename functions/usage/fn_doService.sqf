@@ -113,7 +113,7 @@ If(_set_fuel)then
 _vehicle setfuel 1;
 };
 };
-}else{If(hasInterface && player == _vehicle)then{cutText ["<t color='#ff0000' size='3'>THIS SERVICEPOINT IS FOR<br/>!!! VEHICLES ONLY !!!</t>","PLAIN",0,true,true];
-      sleep 4;cutText ["","PLAIN",0,true,true];
+}else{If(hasInterface && player == _vehicle)then{cutText ["<t color='#ff0000' size='3'>THIS SERVICEPOINT IS FOR<br/>!!! VEHICLES ONLY !!!</t>","PLAIN",-1,true,true];
+      sleep 4;cutText ["","PLAIN",-1,true,true];
       };};
 true
