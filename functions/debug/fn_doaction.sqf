@@ -22,7 +22,7 @@ params ["_obj","_caller","_idx","_xtra"];
             // ERSTER TESTBEREICH
             hint "Script 1 begins";
             //_____________________________________________________________________________________________________________________________
-
+            [] spawn MFUNC(intout,playintro);
 
 
 
