@@ -690,7 +690,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={1849.1545,5.5000005,5575.3276};
-			angle=-1.3123986;
+			angle=-1.3123983;
 			class Attributes
 			{
 				condition="call{this && (count thisList) > 0 && (count thisList) < 2}";
@@ -821,7 +821,7 @@ class Mission
 			};
 			id=521;
 			type="PortableHelipadLight_01_white_F";
-			atlOffset=0.057039261;
+			atlOffset=0.05703783;
 		};
 		class Item17
 		{
