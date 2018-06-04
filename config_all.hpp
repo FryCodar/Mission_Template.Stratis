@@ -51,7 +51,7 @@ minPlayerDistance = 50;         //Minimal Distance between corpse or wreck and n
 class CfgFunctions
 {
 
-    #include "functions\intout\cfgFunctions.hpp"
+    #include "functions\intro\cfgFunctions.hpp"
 		#include "functions\difficult\cfgFunctions.hpp"
 		#include "functions\setting\cfgFunctions.hpp"
 		#include "functions\debug\cfgFunctions.hpp"
