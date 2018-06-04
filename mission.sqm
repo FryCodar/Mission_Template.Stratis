@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1776.3035,15.904478,5635.6152};
-		dir[]={0.93381298,-0.33762094,-0.11934154};
-		up[]={0.33499235,0.94122171,-0.042815313};
-		aside[]={-0.12679155,-3.6217934e-006,-0.99204803};
+		pos[]={1812.2452,31.210739,5622.5249};
+		dir[]={0.67796326,-0.32545429,0.6593017};
+		up[]={0.23339552,0.94549197,0.22696751};
+		aside[]={0.69725233,-3.721987e-006,-0.71699351};
 	};
 };
 binarizationWanted=0;
@@ -36,21 +36,13 @@ addons[]=
 	"ace_cargo",
 	"ace_rearm",
 	"A3_Structures_F_Bootcamp_VR_Helpers",
-	"A3_Structures_F_Heli_Items_Airport",
-	"A3_Armor_F_Beta_APC_Tracked_01",
-	"ace_realisticnames",
-	"A3_Armor_F_EPC_MBT_01",
-	"A3_Armor_F_Tank_AFV_Wheeled_01",
-	"A3_Armor_F_Beta_APC_Wheeled_01",
-	"A3_Characters_F_Common",
-	"A3_Drones_F_Soft_F_Gamma_UGV_01",
-	"A3_Air_F_Beta_Heli_Attack_01"
+	"A3_Structures_F_Heli_Items_Airport"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=17;
+		items=12;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -132,41 +124,6 @@ class AddonsMetaData
 		{
 			className="A3_Structures_F_Heli";
 			name="Arma 3 Helicopters - Buildings and Structures";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item12
-		{
-			className="A3_Armor_F_Beta";
-			name="Arma 3 Beta - Armored Land Vehicles";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item13
-		{
-			className="A3_Armor_F_EPC";
-			name="Arma 3 Win Episode - Armored Land Vehicles";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item14
-		{
-			className="A3_Armor_F_Tank";
-			name="Arma 3 Tank - Armored Land Vehicles";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item15
-		{
-			className="A3_Drones_F";
-			name="Arma 3 Beta - Drones";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item16
-		{
-			className="A3_Air_F_Beta";
-			name="Arma 3 Beta - Aircraft";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -283,7 +240,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=25;
+		items=18;
 		class Item0
 		{
 			dataType="Marker";
@@ -637,8 +594,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1809.4611,6.9144502,5683.6499};
-				angles[]={0,1.8248464,0};
+				position[]={1848.2031,6.9144506,5590.7363};
+				angles[]={0,3.4060817,0};
 			};
 			side="Empty";
 			flags=4;
@@ -647,7 +604,7 @@ class Mission
 			};
 			id=514;
 			type="B_Slingload_01_Fuel_F";
-			atlOffset=0.052000046;
+			atlOffset=0.052000523;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -677,8 +634,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1810.7949,6.9124603,5688.21};
-				angles[]={0,1.8346157,0};
+				position[]={1852.749,6.9124608,5589.3545};
+				angles[]={0,3.4158509,0};
 			};
 			side="Empty";
 			flags=4;
@@ -687,15 +644,15 @@ class Mission
 			};
 			id=515;
 			type="B_Slingload_01_Repair_F";
-			atlOffset=0.051943779;
+			atlOffset=0.051944256;
 		};
 		class Item11
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1811.802,6.9210372,5692.5122};
-				angles[]={0,1.8237294,0};
+				position[]={1857.0404,6.9210377,5588.3032};
+				angles[]={0,3.4049647,0};
 			};
 			side="Empty";
 			flags=4;
@@ -704,7 +661,7 @@ class Mission
 			};
 			id=516;
 			type="B_Slingload_01_Ammo_F";
-			atlOffset=0.059000015;
+			atlOffset=0.059000492;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -732,8 +689,8 @@ class Mission
 		class Item12
 		{
 			dataType="Trigger";
-			position[]={1824.859,5.5,5684.7622};
-			angle=3.3895514;
+			position[]={1849.1545,5.5000005,5575.3276};
+			angle=-1.3123986;
 			class Attributes
 			{
 				condition="call{this && (count thisList) > 0 && (count thisList) < 2}";
@@ -747,14 +704,15 @@ class Mission
 			};
 			id=517;
 			type="EmptyDetector";
+			atlOffset=4.7683716e-007;
 		};
 		class Item13
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1824.9218,5.572876,5684.4077};
-				angles[]={0,3.3895473,0};
+				position[]={1848.7994,5.5728765,5575.2686};
+				angles[]={0,4.9707823,0};
 			};
 			side="Empty";
 			flags=1;
@@ -763,15 +721,15 @@ class Mission
 			};
 			id=518;
 			type="VR_Area_01_circle_4_yellow_F";
-			atlOffset=0.072375774;
+			atlOffset=0.072376251;
 		};
 		class Item14
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1815.9551,5.6718216,5677.8301};
-				angles[]={0,0.21242785,0};
+				position[]={1842.3158,5.6718221,5584.3032};
+				angles[]={0,1.7936635,0};
 			};
 			side="Empty";
 			flags=4;
@@ -781,7 +739,7 @@ class Mission
 			};
 			id=519;
 			type="PortableHelipadLight_01_white_F";
-			atlOffset=0.061141491;
+			atlOffset=0.061141968;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -811,8 +769,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1820.3484,5.6718216,5695.104};
-				angles[]={0,0.23518014,0};
+				position[]={1859.5428,5.6718221,5579.73};
+				angles[]={0,1.8164153,0};
 			};
 			side="Empty";
 			flags=4;
@@ -822,7 +780,7 @@ class Mission
 			};
 			id=520;
 			type="PortableHelipadLight_01_white_F";
-			atlOffset=0.061141491;
+			atlOffset=0.061141968;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -852,8 +810,8 @@ class Mission
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1833.7559,5.6718216,5691.6992};
-				angles[]={0,0.19813848,0};
+				position[]={1855.9983,5.6718221,5566.3589};
+				angles[]={0,1.7793736,0};
 			};
 			side="Empty";
 			flags=4;
@@ -863,15 +821,15 @@ class Mission
 			};
 			id=521;
 			type="PortableHelipadLight_01_white_F";
-			atlOffset=0.061141491;
+			atlOffset=0.057039261;
 		};
 		class Item17
 		{
 			dataType="Object";
 			class PositionInfo
 			{
-				position[]={1829.382,5.6718216,5674.4385};
-				angles[]={0,0.22774673,0};
+				position[]={1838.7842,5.6718221,5570.9126};
+				angles[]={0,1.8089824,0};
 			};
 			side="Empty";
 			flags=4;
@@ -881,7 +839,7 @@ class Mission
 			};
 			id=522;
 			type="PortableHelipadLight_01_white_F";
-			atlOffset=0.061141491;
+			atlOffset=0.061141968;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -900,261 +858,6 @@ class Mission
 								};
 							};
 							value=0;
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item18
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1798.1874,8.4853611,5634.8481};
-				angles[]={0,0.3122656,0};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-				reportRemoteTargets=1;
-				receiveRemoteTargets=1;
-			};
-			id=523;
-			type="B_APC_Tracked_01_AA_F";
-		};
-		class Item19
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1833.7316,8.2264757,5642.7568};
-				angles[]={0,0.22612487,0};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-				name="Tank";
-			};
-			id=525;
-			type="B_MBT_01_TUSK_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="[[[[""arifle_MXC_F"",""FirstAidKit""],[2,10]],[[""SmokeShell"",""SmokeShellBlue"",""30Rnd_65x39_caseless_mag""],[2,2,4]],[[],[]],[[],[]]],false]";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item20
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1827.7346,7.7639475,5624.7847};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-				reportRemoteTargets=1;
-				receiveRemoteTargets=1;
-				reportOwnPosition=1;
-			};
-			id=526;
-			type="B_AFV_Wheeled_01_up_cannon_F";
-		};
-		class Item21
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1838.526,8.0393772,5623.2729};
-				angles[]={0,0.18289679,0};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-			};
-			id=527;
-			type="B_APC_Wheeled_01_cannon_F";
-			atlOffset=-4.7683716e-007;
-		};
-		class Item22
-		{
-			dataType="Group";
-			side="West";
-			class Entities
-			{
-				items=2;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={1807.877,5.5014386,5627.6509};
-						angles[]={0,0.1738697,0};
-					};
-					side="West";
-					flags=4;
-					class Attributes
-					{
-						name="STOMP2D";
-					};
-					id=530;
-					type="B_UAV_AI";
-				};
-				class Item1
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={1807.877,5.5014386,5627.6509};
-						angles[]={0,0.1738697,0};
-					};
-					side="West";
-					flags=6;
-					class Attributes
-					{
-						name="STOMP2G";
-					};
-					id=531;
-					type="B_UAV_AI";
-				};
-			};
-			class Attributes
-			{
-			};
-			class CrewLinks
-			{
-				class LinkIDProvider
-				{
-					nextID=2;
-				};
-				class Links
-				{
-					items=2;
-					class Item0
-					{
-						linkID=0;
-						item0=530;
-						item1=529;
-						class CustomData
-						{
-							role=1;
-						};
-					};
-					class Item1
-					{
-						linkID=1;
-						item0=531;
-						item1=529;
-						class CustomData
-						{
-							role=2;
-							turretPath[]={0};
-						};
-					};
-				};
-			};
-			id=528;
-		};
-		class Item23
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1807.877,7.5893393,5627.5547};
-				angles[]={0,0.1738697,0};
-			};
-			side="West";
-			flags=6;
-			class Attributes
-			{
-				init="call{[] spawn {waitUntil{isEngineOn STOMP2};(driver STOMP2) action [""engineOff"", STOMP2];};}";
-				name="STOMP2";
-				reportOwnPosition=1;
-			};
-			id=529;
-			type="B_UGV_01_rcws_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="[[[[""FirstAidKit""],[4]],[[],[]],[[],[]],[[],[]]],false]";
-						};
-					};
-				};
-				nAttributes=1;
-			};
-		};
-		class Item24
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1781.583,7.4219365,5641.8916};
-				angles[]={0,0.62079614,0};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-				name="H12";
-				pylons="PylonRack_12Rnd_PG_missiles[0];PylonMissile_1Rnd_LG_scalpel[0];PylonRack_12Rnd_PG_missiles[0];PylonRack_12Rnd_PG_missiles[0];PylonMissile_1Rnd_LG_scalpel[0];PylonRack_12Rnd_PG_missiles[0];";
-			};
-			id=536;
-			type="B_Heli_Attack_01_dynamicLoadout_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="[[[[""arifle_MXC_F"",""FirstAidKit""],[2,2]],[[""SmokeShell"",""SmokeShellBlue"",""30Rnd_65x39_caseless_mag""],[2,2,4]],[[""ToolKit"",""ItemGPS""],[1,1]],[[""B_Parachute""],[2]]],false]";
 						};
 					};
 				};
