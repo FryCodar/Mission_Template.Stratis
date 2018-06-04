@@ -2,7 +2,7 @@
 
 class TAGADD
 {
-	class intro
+	class intout
 	{
 		class playintro {
 					            description = "Play the Intro of MSOT";
