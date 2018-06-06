@@ -89,17 +89,17 @@ switch(toUpper _index)do
   case "MAINACTIONS":{
                       If((typeName _value) isEqualTo "ARRAY")then
                       {
-                        _holder = missionNamespace getVariable [STRVAR_DO(mission_actions),[]];
-                        If(count _holder > 0)then
+                        _holder = (_value select 0) getVariable [STRVAR_DO(mission_actions),[]];
+                        If(count _holder == 0)then
                         {
-                          _search_it = [2,_holder,(_value select 0)] call MFUNC(system,getInfoArray);
-                          If(count _search_it == 0)then
-                          {
-                            ARR_ADDVAR(_holder,_value); missionNamespace setVariable [STRVAR_DO(mission_actions),_holder,true];_output = true;
-                          }else{LOG_ERR("MAINACTIONS : SAME VALUE IN INFO STORAGE DETECTED");};
-                          ARR_ADDVAR(_holder,_value); missionNamespace setVariable [STRVAR_DO(mission_actions),_holder,true];_output = true;
-                        }else{_holder = [_value]; missionNamespace setVariable [STRVAR_DO(mission_actions),_holder,true];_output = true;};
+                          _holder = [(_value select 1),(_value select 2),(_value select 3),(_value select 4)];
+                          (_value select 0) setVariable [STRVAR_DO(mission_actions),_holder,true];
+                          _output = true;
+                        }else{
+                               LOG_ERR("MAINACTIONS : SYSTEM VALUES ON OBJECT DETECTED");
+                             };
                       }else{LOG_ERR("MAINACTIONS : WRONG DATATYPE IN FUNCTION PARAMETERS DETECTED!");};
+
                      };
   case "ACTIONSTORAGE":{
 

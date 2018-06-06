@@ -45,5 +45,5 @@ switch(toUpper _type)do
 {
   case "AMMO":{_obj addAction [_text_part,{[] spawn MFUNC(arsenal,initArsenal)},nil,1.5,false,true,"","true",6];};
   case "ACTION":{_obj addAction [_text_part,{_this spawn MFUNC(system,getClientAction)},nil,1.5,false,true,"","true",6];};
-  default {LOG_ERR("SET_CLIENT_ACTION : NO MATCH FOUND FOR CREATE A ADDACTION");}
+  default {LOG_ERR("SET_CLIENT_ACTION : NO MATCH FOUND FOR CREATE A ADDACTION");};
 };

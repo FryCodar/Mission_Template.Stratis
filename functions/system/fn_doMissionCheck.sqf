@@ -69,16 +69,11 @@ switch(toUpper _idx)do
                             missionNamespace setVariable [STRVAR_DO(mission_main_targets),_holder,false];
                           };
                           //Check & Clear MAINACTIONS
-                          _holder_action = missionNamespace getVariable [STRVAR_DO(mission_actions),[]];
+
+                          _holder_action = _value getVariable [STRVAR_DO(mission_actions),[]];
                           If(count _holder_action > 0)then
                           {
-                            _search_idx = [2,_holder_action,_value] call MFUNC(system,getInfoArray);
-                            If(count _search_idx > 0)then
-                            {
-                              ARR_MINIDX(_holder_action,(_search_idx select 0));
-                              missionNamespace setVariable [STRVAR_DO(mission_actions),_holder_action,true];
-                              If(!isNull _value)then{REMOTE_NOREXESM(_value,removeAllActions,([0,-2] select isDedicated));};
-                            };
+                            _value setVariable [STRVAR_DO(mission_actions),nil,true];
                           };
                           //Check & Clear ACTIONSTORAGE
                           _holder_action = missionNamespace getVariable [STRVAR_DO(action_storage),[]];
@@ -88,7 +83,7 @@ switch(toUpper _idx)do
                             If(count _search_idx > 0)then
                             {
                               ARR_MINIDX(_holder_action,(_search_idx select 0));
-                              If(!isNil "_value2" && (typeName _value2) isEqualTo "BOOL")then{If(_value2)then{deleteVehicle _value;};};
+                              //If(!isNil "_value2" && (typeName _value2) isEqualTo "BOOL")then{If(_value2)then{deleteVehicle _value;};};
                               missionNamespace setVariable [STRVAR_DO(action_storage),_holder_action,true];
                             };
                           };
