@@ -63,6 +63,8 @@ class CfgFunctions
 		#include "functions\geometry\cfgFunctions.hpp"
 		#include "functions\creating\cfgFunctions.hpp"
 		#include "functions\briefing\cfgFunctions.hpp"
+		#include "functions\dialog\cfgFunctions.hpp"
+		#include "functions\dialog\dialog.hpp"
 };
 
 class CfgRemoteExec

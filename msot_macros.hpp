@@ -8,6 +8,7 @@
 #define TAGADD DOUBLES(TAG,COMPONENT)
 #define DIACOMB(var) DOUBLES(TAG,var)
 #define DIARSC(var1,var2) DOUBLES(DIACOMB(var1),var2)
+
 #define MFUNC(var1,var2) TRIPLES(DOUBLES(TAG,var1),fnc,var2)  //Mission Functions (Module Cross)
 #define BFUNC(var1) TRIPLES(BIS,fnc,var1)   //BIS Function
 #define CFUNC(var1) TRIPLES(CBA,fnc,var1)   //CBA Function
