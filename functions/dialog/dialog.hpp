@@ -16,8 +16,8 @@ onUnload = "uiNamespace setVariable ['msot_dlg',false];";
     {
 	     idc = 10013;//9800
 	     text = "functions\dialog\TacticTab.paa";
-	     x = 0.190756 * safezoneW + safezoneX;
-	     y = 0.0708962 * safezoneH + safezoneY;
+	     x = 0; //0.190756 * safezoneW + safezoneX;
+	     y = 0; //0.0708962 * safezoneH + safezoneY;
 	     w = 0.613334 * safezoneW;
 	     h = 0.880213 * safezoneH;
     };
