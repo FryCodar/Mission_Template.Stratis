@@ -1,7 +1,7 @@
 #include "define.hpp"
 
 
-class DIACOMB(Tactic_Table)
+class MSOT_Tactic_Table
 {
 
 idd = -1;
@@ -26,7 +26,7 @@ onUnload = "uiNamespace setVariable ['msot_dlg',false];";
     {
 	     idc = 10014;//1800
 	      colorBackground[] = {};
-	      text = "COA Tactic Tablet"; //--- ToDo: Localize;
+	      text = "MSOT TACTIC TAB"; //--- ToDo: Localize;
 	      x = 0.247451 * safezoneW + safezoneX;
 	      y = 0.257941 * safezoneH + safezoneY;
 	      w = 0.499945 * safezoneW;

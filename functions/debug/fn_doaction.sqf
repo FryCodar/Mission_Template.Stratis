@@ -23,7 +23,7 @@ params ["_obj","_caller","_idx","_xtra"];
             hint "Script 1 begins";
             //_____________________________________________________________________________________________________________________________
 
-            createDialog "MSOT_Tactic_Table";
+            hint str [safezoneW,safezoneX,(safezoneW + safezoneX)];
           };
    case 3:{
             //ZWEITER TESTBEREICH

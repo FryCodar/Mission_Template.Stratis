@@ -1,4 +1,4 @@
-#include "msot_components.hpp"
+#include "dlg_define.hpp"
 
 class DIARSC(normal,RscShortcutButton)
 {

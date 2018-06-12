@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1842.55,7.2062864,5643.3267};
-		dir[]={-0.38642427,-0.68250471,0.62056315};
-		up[]={-0.36077493,0.73082697,0.57937741};
-		aside[]={0.8489818,-1.6365957e-006,0.52865392};
+		pos[]={1863.2949,38.759117,5612.3286};
+		dir[]={-0.3323721,-0.70334464,0.6285457};
+		up[]={-0.32879016,0.71079755,0.62177736};
+		aside[]={0.88412213,-2.1769956e-006,0.46751553};
 	};
 };
 binarizationWanted=0;
@@ -36,14 +36,13 @@ addons[]=
 	"ace_cargo",
 	"ace_rearm",
 	"A3_Structures_F_Bootcamp_VR_Helpers",
-	"A3_Structures_F_Heli_Items_Airport",
-	"A3_Structures_F_EPC_Items_Documents"
+	"A3_Structures_F_Heli_Items_Airport"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=13;
+		items=12;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -125,13 +124,6 @@ class AddonsMetaData
 		{
 			className="A3_Structures_F_Heli";
 			name="Arma 3 Helicopters - Buildings and Structures";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item12
-		{
-			className="A3_Structures_F_EPC";
-			name="Arma 3 Win Episode - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -248,7 +240,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=19;
+		items=18;
 		class Item0
 		{
 			dataType="Marker";
@@ -698,7 +690,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={1849.1545,5.5000005,5575.3276};
-			angle=-1.3123982;
+			angle=-1.3123981;
 			class Attributes
 			{
 				condition="call{this && (count thisList) > 0 && (count thisList) < 2}";
@@ -871,22 +863,6 @@ class Mission
 				};
 				nAttributes=1;
 			};
-		};
-		class Item18
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1841.46,5.5073819,5645.2778};
-			};
-			side="Empty";
-			flags=4;
-			class Attributes
-			{
-				name="DOCS";
-			};
-			id=538;
-			type="Land_File_research_F";
 		};
 	};
 };
