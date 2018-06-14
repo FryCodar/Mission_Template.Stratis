@@ -8,7 +8,7 @@ _intro_pos_time = [(getMarkerPos "campos1"),(getMarkerPos "campos2"), 30];
 
 //*********** Intro abschalten >>  setze es auf false >> kann zum bauen verwendet werden ***********************************************************
 
-_play_intro = true;
+_play_intro = false;
 
 //*********** Ohne/Ändere Ausrüstung Einstellung (true - Ausrüstung wird entfernt oder geändert / false - Ausrüstung bleibt vorhanden)**************
 

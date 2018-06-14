@@ -129,6 +129,23 @@ class DIARSC(normal,RscPicture)
 	shadow = 1;
 };
 
+class DIARSC(alpha,RscPicture)
+{
+
+	access = 0;
+	type = 0;
+	idc = -1;
+	style = 48;
+	colorBackground[] = {};
+	colorText[] = {1, 1, 1, 0.2};
+	font = "TahomaB";
+	sizeEx = 0;
+	lineSpacing = 0;
+	text = "";
+	fixedWidth = 0;
+	shadow = 1;
+};
+
 class DIARSC(normal,Black_Backround)
 {
     type = 0;

@@ -4,8 +4,18 @@
 #define DIACOMB(var) DOUBLES(TAG,var)
 #define DIARSC(var1,var2) DOUBLES(DIACOMB(var1),var2)
 
+#define X_ANCHOR safeZoneX
+#define X_SCREEN_SIZE safeZoneX + safeZoneW
+#define Y_ANCHOR safeZoneY
+#define Y_SCREEN_SIZE safeZoneY + safeZoneH
 
+#define X_CENTERED(dar) (X_SCREEN_SIZE * 0.5) - (dar * 0.5) * 0.75//(dar) (X_SCREEN_SIZE * 0.5) - ((dar * 0.75) * 0.5)
+#define Y_CENTERED(dar) (Y_SCREEN_SIZE * 0.5) - (dar * 0.5)
 
+#define W_SIZE(dar) (dar * 0.75)
+#define H_SIZE(dar) dar
+
+/*
 // ******************************************************************************************
 // * This project is licensed under the GNU Affero GPL v3. Copyright © 2014 A3Wasteland.com *
 // ******************************************************************************************
@@ -82,3 +92,4 @@
 
 // Function to find child offset relative to parent pos for centering inside
 #define CENTER(PARENT_SIZE, CHILD_SIZE) ((PARENT_SIZE / 2) - (CHILD_SIZE / 2))
+*/

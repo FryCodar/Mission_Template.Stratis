@@ -16,31 +16,20 @@ onUnload = "uiNamespace setVariable ['msot_dlg',false];";
     {
 	     idc = 10013;//9800
 	     text = "functions\dialog\TacticTab.paa";
-	     x = 0; //0.190756 * safezoneW + safezoneX;
-	     y = 0; //0.0708962 * safezoneH + safezoneY;
-	     w = 0.613334 * safezoneW;
-	     h = 0.880213 * safezoneH;
+	     x = X_CENTERED(2.0);
+	     y = Y_CENTERED(1.4);
+	     w = W_SIZE(2.0);
+	     h = H_SIZE(1.4);
     };
 
-    class DIARSC(Frame_Rand,All): DIARSC(normal,RscFrame)
+    class DIARSC(Pic_Use,show): DIARSC(alpha,RscPicture)
     {
-	     idc = 10014;//1800
-	      colorBackground[] = {};
-	      text = "MSOT TACTIC TAB"; //--- ToDo: Localize;
-	      x = 0.247451 * safezoneW + safezoneX;
-	      y = 0.257941 * safezoneH + safezoneY;
-	      w = 0.499945 * safezoneW;
-	      h = 0.484117 * safezoneH;
-    };
-
-    class DIARSC(Pic_Use,show): DIARSC(normal,RscPicture)
-    {
-	     idc = 10015;//1200
+	     idc = 10014;//1200
 	     text = "pics\MSOT.paa";
-	     x = 0.438151 * safezoneW + safezoneX;
-	     y = 0.33496 * safezoneH + safezoneY;
-	     w = 0.108235 * safezoneW;
-	     h = 0.154037 * safezoneH;
+	     x = X_CENTERED(0.9);//0.438151 * safezoneW + safezoneX;
+	     y = Y_CENTERED(0.9);//0.33496 * safezoneH + safezoneY;
+	     w = W_SIZE(0.9);
+	     h = H_SIZE(0.9);
     };
   };
 };

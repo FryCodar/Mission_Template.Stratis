@@ -23,16 +23,19 @@ params ["_obj","_caller","_idx","_xtra"];
             hint "Script 1 begins";
             //_____________________________________________________________________________________________________________________________
 
-            hint str [safezoneW,safezoneX,(safezoneW + safezoneX)];
+            //hint str [safezoneW,safezoneX,(safezoneW + safezoneX)];
+            createDialog "MSOT_Tactic_Table";
+
           };
    case 3:{
             //ZWEITER TESTBEREICH
             hint "Script 2 begins";
             //______________________________________________________________________________________________________________________________
 
-
-
-
+            //[-0.712121,1.71212]
+            //((X_SCREEN_SIZE - dar * 0.75) * 0.5)
+            copyToClipboard str [(0.190756 * safeZoneX + safeZoneW),(((safeZoneX + safeZoneW) * 0.5) - (1.6 * 0.5) * 0.75)];
+            //[2.2884,0.256061]
           };
    case 4:{
             If(captive player)then
