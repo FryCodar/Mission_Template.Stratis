@@ -5,15 +5,21 @@
 #define DIARSC(var1,var2) DOUBLES(DIACOMB(var1),var2)
 
 #define X_ANCHOR safeZoneX
-#define X_SCREEN_SIZE safeZoneX + safeZoneW
+#define X_SCREEN_SIZE safeZoneW
 #define Y_ANCHOR safeZoneY
-#define Y_SCREEN_SIZE safeZoneY + safeZoneH
+#define Y_SCREEN_SIZE safeZoneH
 
-#define X_CENTERED(dar) (X_SCREEN_SIZE * 0.5) - (dar * 0.5) * 0.75//(dar) (X_SCREEN_SIZE * 0.5) - ((dar * 0.75) * 0.5)
-#define Y_CENTERED(dar) (Y_SCREEN_SIZE * 0.5) - (dar * 0.5)
+#define X_CENTERED(dar) (X_SCREEN_SIZE * 0.5) * (1 - (dar * 0.75)) + X_ANCHOR
+#define Y_CENTERED(dar) ((Y_SCREEN_SIZE * 0.5) * (1 - dar)) + Y_ANCHOR
 
-#define W_SIZE(dar) (dar * 0.75)
-#define H_SIZE(dar) dar
+#define W_SIZE(dar) (dar * X_SCREEN_SIZE) * 0.75
+#define H_SIZE(dar) (dar * Y_SCREEN_SIZE)
+
+#define X_LEFT_SIDED(dar,dar1) (X_SCREEN_SIZE * 0.5) - (dar + dar1) * 0.75
+#define Y_UP_SIDED(dar,dar1) (Y_SCREEN_SIZE * 0.5) - (dar + dar1)
+
+#define X_RIGHT_SIDED(dar,dar1) (X_SCREEN_SIZE * 0.5) + (dar,dar1) * 0.75
+#define Y_DOWN_SIDED(dar,dar1) (Y_SCREEN_SIZE * 0.5) + (dar + dar1)
 
 /*
 // ******************************************************************************************

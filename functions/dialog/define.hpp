@@ -70,7 +70,38 @@ class DIARSC(normal,RscShortcutButton)
 		align = "left";
 	};
 };
-
+class DIARSC(normal,RscPicButton)
+{
+	idc = -1;
+	type = 1;
+	style = 48;
+	default = false;
+	font = "RobotoCondensed";
+	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)"; //0.04
+	colorText[] = { 1, 1, 1, 1 };
+	colorFocused[] = { 1, 0, 0, 0.3 };   // border color for focused state
+	colorDisabled[] = { 0, 0, 1, 0.4 };   // text color for disabled state
+	colorBackground[] = { 0, 0, 0, 0};
+	colorBackgroundDisabled[] = { 1, 1, 1, 0.2 };   // background color for disabled state
+	colorBackgroundActive[] = {"(profilenamespace getvariable ['GUI_BCG_RGB_R',0.69])","(profilenamespace getvariable ['GUI_BCG_RGB_G',0.75])","(profilenamespace getvariable ['GUI_BCG_RGB_B',0.5])",1};   // background color for active state
+	offsetX = 0.003;
+	offsetY = 0.003;
+	offsetPressedX = 0.002;
+	offsetPressedY = 0.002;
+	colorShadow[] = { 0, 0, 0, 0.4 };
+	colorBorder[] = { 0, 0, 0, 0.6 };
+	borderSize = 0;
+	soundEnter[] = { "", 0, 1 };  // no sound
+	soundPush[] = { "", 0.1, 1 };
+	soundClick[] = { "", 0, 1 };  // no sound
+	soundEscape[] = { "", 0, 1 };  // no sound
+	x = 0.1;
+	y = 0.1;
+	w = 0.1;
+	h = 0;
+	text = "";
+	action = "";
+};
 class DIARSC(normal,RscText)
 {
 
@@ -79,7 +110,7 @@ class DIARSC(normal,RscText)
 	style = 0;
 	colorBackground[] = {0, 0, 0, 0.7};
 	colorText[] = {1, 1, 1, 1};
-	font = "PuristaMedium";
+	font = "RobotoCondensed";
 	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)";
 	h = 0.04;
 	linespacing = 1;
@@ -93,7 +124,7 @@ class DIARSC(normal_1,RscText)
 	style = 0;
 	colorBackground[] = {0, 0, 0, 0};
 	colorText[] = {1, 0, 0, 1};
-	font = "PuristaMedium";
+	font = "RobotoCondensed";
 	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 14) * 1)";
 	h = 0.04;
 	linespacing = 1;
@@ -107,7 +138,7 @@ class DIARSC(normal,RscFrame)
 	shadow = 2;
 	colorBackground[] = {0, 0, 0, 0};
 	colorText[] = {1, 1, 1, 1};
-	font = "PuristaMedium";
+	font = "RobotoCondensed";
 	sizeEx = 0.02;
 	text = "";
 };
@@ -121,7 +152,7 @@ class DIARSC(normal,RscPicture)
 	style = 48;
 	colorBackground[] = {};
 	colorText[] = {};
-	font = "TahomaB";
+	font = "RobotoCondensed";
 	sizeEx = 0;
 	lineSpacing = 0;
 	text = "";
@@ -137,8 +168,8 @@ class DIARSC(alpha,RscPicture)
 	idc = -1;
 	style = 48;
 	colorBackground[] = {};
-	colorText[] = {1, 1, 1, 0.2};
-	font = "TahomaB";
+	colorText[] = {0, 0, 0, 0.2};
+	font = "RobotoCondensed";
 	sizeEx = 0;
 	lineSpacing = 0;
 	text = "";
@@ -154,7 +185,7 @@ class DIARSC(normal,Black_Backround)
 	shadow = 1;
 	colorBackground[] = {0,0,0,1};
 	colorText[] = {1, 1, 1, 1};
-	font = "TahomaB";
+	font = "RobotoCondensed";
 	sizeEx = 0.04;
 	text = "";
 };
@@ -167,7 +198,7 @@ class DIARSC(normal,Backround)
 	shadow = 1;
 	colorBackground[] = {0,0,0,0.3};
 	colorText[] = {0, 0, 0, 0.3};
-	font = "TahomaB";
+	font = "RobotoCondensed";
 	sizeEx = 0.04;
 	text = "";
 };
