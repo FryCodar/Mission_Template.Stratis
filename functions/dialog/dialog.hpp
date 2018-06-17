@@ -4,10 +4,10 @@
 class MSOT_Tactic_Table
 {
 
-idd = 36642;
+idd = -1;
 movingEnable = 0;
 enableSimulation = true;
-onLoad = "uiNamespace setVariable ['msot_dlg',[36642,(_this select 0)]];";
+onLoad = "uiNamespace setVariable ['msot_dlg',[36642,(displayParent (_this select 0))]];";
 onUnload = "uiNamespace setVariable ['msot_dlg',[]];";
 
   class controls
@@ -49,7 +49,7 @@ onUnload = "uiNamespace setVariable ['msot_dlg',[]];";
 			h = H_SIZE(0.043);
 			text = "";
       toolTip = "Close Tablet";
-			action = "call MSOT_dialog_fnc_closeDisplays";
+			action = "closeDialog 0;";
 		};
 
     class DIARSC(Artillery_1st,Btn): DIARSC(normal,RscPicButton)
@@ -67,7 +67,7 @@ onUnload = "uiNamespace setVariable ['msot_dlg',[]];";
 			h = H_SIZE(0.2);
 			text = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\artillery_ca.paa";
       toolTip = "Call Artillery Strike";
-			action = "hint 'Artillery';";
+			action = "createDialog 'MSOT_ARTILLERY_TABLE';";
 		};
     class DIARSC(Airsupply_2nd,Btn): DIARSC(normal,RscPicButton)
 		{
@@ -126,15 +126,41 @@ onUnload = "uiNamespace setVariable ['msot_dlg',[]];";
 
 class MSOT_ARTILLERY_TABLE
 {
-  idd = 36643;
+  idd = -1;
   movingEnable = 0;
   enableSimulation = true;
-  onLoad = "uiNamespace setVariable ['msot_dlg',36643];";
-  onUnload = "uiNamespace setVariable ['msot_dlg',0];";
+  onLoad = "uiNamespace setVariable ['msot_dlg',[36643,(_this select 0)]];";
+  onUnload = "";
 
     class controls
     {
-
-
+      class DIARSC(Backround_Artillery,Picture): DIARSC(normal,RscPicture)
+      {
+  	     idc = 10013;//9800
+  	     text = "functions\dialog\TacticTab.paa";
+  	     x = X_CENTERED(0.85);
+  	     y = Y_CENTERED(0.73);
+  	     w = W_SIZE(0.85);
+  	     h = H_SIZE(0.73);
+      };
+       class DIARSC(Back_Artillery,Btn): DIARSC(normal,RscPicButton)
+   		{
+   			idc = 10015;
+         colorText[] = {0,0,0,0};
+       	colorFocused[] = {0,0,0,0};   // border color for focused state
+       	colorDisabled[] = {0,0,0,0};   // text color for disabled state
+       	colorBackground[] = {0,0,0,0};
+       	colorBackgroundDisabled[] = {0,0,0,0};   // background color for disabled state
+       	colorBackgroundActive[] = {0,0,0,0};
+         colorShadow[] = {0,0,0,0};
+       	colorBorder[] = {0,0,0,0};
+   			x = X_CENTERED(0.07);
+   			y = Y_CALC(0.797)//0.797 * safezoneH + safezoneY;
+   			w = W_SIZE(0.07);
+   			h = H_SIZE(0.043);
+   			text = "";
+        toolTip = "Go Back";
+   			action = "closeDialog 0;createDialog 'MSOT_Tactic_Table';";
+   		};
     };
 };
