@@ -4,11 +4,11 @@
 class MSOT_Tactic_Table
 {
 
-idd = -1;
+idd = 36642;
 movingEnable = 0;
 enableSimulation = true;
-onLoad = "uiNamespace setVariable ['msot_dlg',true];";
-onUnload = "uiNamespace setVariable ['msot_dlg',false];";
+onLoad = "uiNamespace setVariable ['msot_dlg',[36642,(_this select 0)]];";
+onUnload = "uiNamespace setVariable ['msot_dlg',[]];";
 
   class controls
   {
@@ -49,7 +49,7 @@ onUnload = "uiNamespace setVariable ['msot_dlg',false];";
 			h = H_SIZE(0.043);
 			text = "";
       toolTip = "Close Tablet";
-			action = "closeDialog 0";
+			action = "call MSOT_dialog_fnc_closeDisplays";
 		};
 
     class DIARSC(Artillery_1st,Btn): DIARSC(normal,RscPicButton)
@@ -122,4 +122,19 @@ onUnload = "uiNamespace setVariable ['msot_dlg',false];";
 
 		};
   };
+};
+
+class MSOT_ARTILLERY_TABLE
+{
+  idd = 36643;
+  movingEnable = 0;
+  enableSimulation = true;
+  onLoad = "uiNamespace setVariable ['msot_dlg',36643];";
+  onUnload = "uiNamespace setVariable ['msot_dlg',0];";
+
+    class controls
+    {
+
+
+    };
 };
