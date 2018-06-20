@@ -4,6 +4,6 @@ class TAGADD
 {
 	class dialog
 	{
-		
+		class wowArtillery {};
 	};
 };

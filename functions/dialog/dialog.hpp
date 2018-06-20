@@ -4,10 +4,10 @@
 class MSOT_Tactic_Table
 {
 
-idd = -1;
+idd = 36642;
 movingEnable = 0;
 enableSimulation = true;
-onLoad = "uiNamespace setVariable ['msot_dlg',[36642,(displayParent (_this select 0))]];";
+onLoad = "uiNamespace setVariable ['msot_dlg',[36642]];";
 onUnload = "uiNamespace setVariable ['msot_dlg',[]];";
 
   class controls
@@ -49,7 +49,7 @@ onUnload = "uiNamespace setVariable ['msot_dlg',[]];";
 			h = H_SIZE(0.043);
 			text = "";
       toolTip = "Close Tablet";
-			action = "closeDialog 0;";
+			action = "closeDialog ((uiNamespace getVariable ['msot_dlg',[0]]) select 0);";
 		};
 
     class DIARSC(Artillery_1st,Btn): DIARSC(normal,RscPicButton)
@@ -126,17 +126,17 @@ onUnload = "uiNamespace setVariable ['msot_dlg',[]];";
 
 class MSOT_ARTILLERY_TABLE
 {
-  idd = -1;
+  idd = 36643;
   movingEnable = 0;
   enableSimulation = true;
-  onLoad = "uiNamespace setVariable ['msot_dlg',[36643,(_this select 0)]];";
+  onLoad = "uiNamespace setVariable ['msot_dlg',[36643]];";
   onUnload = "";
 
     class controls
     {
       class DIARSC(Backround_Artillery,Picture): DIARSC(normal,RscPicture)
       {
-  	     idc = 10013;//9800
+  	     idc = 10020;//9800
   	     text = "functions\dialog\TacticTab.paa";
   	     x = X_CENTERED(0.85);
   	     y = Y_CENTERED(0.73);
@@ -145,14 +145,14 @@ class MSOT_ARTILLERY_TABLE
       };
        class DIARSC(Back_Artillery,Btn): DIARSC(normal,RscPicButton)
    		{
-   			idc = 10015;
-         colorText[] = {0,0,0,0};
+   			idc = 10021;
+        colorText[] = {0,0,0,0};
        	colorFocused[] = {0,0,0,0};   // border color for focused state
        	colorDisabled[] = {0,0,0,0};   // text color for disabled state
        	colorBackground[] = {0,0,0,0};
        	colorBackgroundDisabled[] = {0,0,0,0};   // background color for disabled state
        	colorBackgroundActive[] = {0,0,0,0};
-         colorShadow[] = {0,0,0,0};
+        colorShadow[] = {0,0,0,0};
        	colorBorder[] = {0,0,0,0};
    			x = X_CENTERED(0.07);
    			y = Y_CALC(0.797)//0.797 * safezoneH + safezoneY;
@@ -160,7 +160,77 @@ class MSOT_ARTILLERY_TABLE
    			h = H_SIZE(0.043);
    			text = "";
         toolTip = "Go Back";
-   			action = "closeDialog 0;createDialog 'MSOT_Tactic_Table';";
+   			action = "closeDialog ((uiNamespace getVariable ['msot_dlg',[0]]) select 0);";
    		};
+      class DIARSC(Map_Artillery,Screen): DIARSC(normal,Map)
+      {
+	       idc = 10022;
+	       x = X_CALC(0.28);
+	       y = Y_CENTERED(0.55);
+	       w = W_SIZE(0.45);
+	       h = H_SIZE(0.55);
+      };
+      class DIARSC(Frame1_Artillery,Infoframe): DIARSC(normal,RscFrame)
+      {
+			     idc = 10023;
+			     sizeEx = 0.04;
+			     text = "Available Artillery: "; //--- ToDo: Localize;
+           x = X_RIGHT_SIDED(0.071,0);
+           y = Y_CALC(0.215);
+           w = W_SIZE(0.32);
+           h = H_SIZE(0.12);
+      };
+      class DIARSC(List1_Artillery,ListBox): DIARSC(normal,ListBox)
+      {
+        idc = 10024;
+        colorBackground[] = {0,0,0,0.6};
+        x = X_RIGHT_SIDED(0.072,0);
+        y = Y_CALC(0.240);
+        w = W_SIZE(0.316);
+        h = H_SIZE(0.09);
+        onLBDblClick = "hint 'lol';";
+      };
+      class DIARSC(AddBtn_Artillery,ListBtn): DIARSC(normal,RscButton)
+      {
+        idc = 10025;
+        x = X_RIGHT_SIDED(0.228,0);
+  			y = Y_CALC(0.34);//0.797 * safezoneH + safezoneY;
+  			w = W_SIZE(0.14);
+  			h = H_SIZE(0.03);
+  			text = "Add";
+        toolTip = "Add Vehicle";
+  			action = "";
+      };
+      class DIARSC(RemBtn_Artillery,ListBtn): DIARSC(normal,RscButton)
+      {
+        idc = 10026;
+        x = X_RIGHT_SIDED(0.08,0);
+  			y = Y_CALC(0.34);//0.797 * safezoneH + safezoneY;
+  			w = W_SIZE(0.14);
+  			h = H_SIZE(0.03);
+  			text = "Remove";
+        toolTip = "Remove Vehicle";
+  			action = "";
+      };
+      class DIARSC(Frame2_Artillery,Infoframe): DIARSC(normal,RscFrame)
+      {
+			     idc = 10027;
+			     sizeEx = 0.04;
+			     text = "Selected Artillery: "; //--- ToDo: Localize;
+           x = X_RIGHT_SIDED(0.071,0);
+           y = Y_CALC(0.374);
+           w = W_SIZE(0.32);
+           h = H_SIZE(0.118);
+      };
+      class DIARSC(List2_Artillery,ListBox): DIARSC(normal,ListBox)
+      {
+        idc = 10028;
+        colorBackground[] = {0,0,0,0.6};
+        x = X_RIGHT_SIDED(0.072,0);
+        y = Y_CALC(0.397);
+        w = W_SIZE(0.316);
+        h = H_SIZE(0.09);
+        onLBDblClick = "hint 'lol';";
+      };
     };
 };
