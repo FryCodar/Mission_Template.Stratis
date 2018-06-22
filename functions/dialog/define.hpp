@@ -111,7 +111,7 @@ class DIARSC(normal,RscButton)
 	font = "RobotoCondensed";
 	sizeEx = "(((((safezoneW / safezoneH) min 1.2) / 1.2) / 25) * 1)"; //0.04
 	colorText[] = { 1, 1, 1, 1 };
-	colorFocused[] = { 0, 0, 0, 0.7 };   // border color for focused state
+	colorFocused[] = { 0, 0, 0, 0.1 };   // border color for focused state
 	colorDisabled[] = { 0, 0, 1, 0.4 };   // text color for disabled state
 	colorBackground[] = { 0, 0, 0, 0};
 	colorBackgroundDisabled[] = { 1, 1, 1, 0.2 };   // background color for disabled state

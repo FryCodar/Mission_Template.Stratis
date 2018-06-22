@@ -193,6 +193,10 @@ class MSOT_ARTILLERY_TABLE
       class DIARSC(AddBtn_Artillery,ListBtn): DIARSC(normal,RscButton)
       {
         idc = 10025;
+        colorShadow[] = {0,0,0,0};
+      	colorBorder[] = {0,0,0,0.5};
+        colorBackground[] = {0.1, 0.8, 0.3, 0.8};
+        period = 0;
         x = X_RIGHT_SIDED(0.228,0);
   			y = Y_CALC(0.34);//0.797 * safezoneH + safezoneY;
   			w = W_SIZE(0.14);
@@ -204,6 +208,10 @@ class MSOT_ARTILLERY_TABLE
       class DIARSC(RemBtn_Artillery,ListBtn): DIARSC(normal,RscButton)
       {
         idc = 10026;
+        colorShadow[] = {0,0,0,0};
+      	colorBorder[] = {0,0,0,0.5};
+        colorBackground[] = {1, 0,0, 0.8};
+        period = 0;
         x = X_RIGHT_SIDED(0.08,0);
   			y = Y_CALC(0.34);//0.797 * safezoneH + safezoneY;
   			w = W_SIZE(0.14);
@@ -231,6 +239,61 @@ class MSOT_ARTILLERY_TABLE
         w = W_SIZE(0.316);
         h = H_SIZE(0.09);
         onLBDblClick = "hint 'lol';";
+      };
+      class DIARSC(Text1_Artillery,InfoText): DIARSC(normal,RscText)
+      {
+  	     idc = 10029;//9800
+  	     text = "";
+         colorBackground[] = {0.5, 0.2, 0.1, 0.8};
+  	     x = X_RIGHT_SIDED(0.070,0);
+  	     y = Y_CALC(0.492);
+  	     w = W_SIZE(0.32);
+  	     h = H_SIZE(0.03);
+      };
+      class DIARSC(Frame3_Artillery,Infoframe): DIARSC(normal,RscFrame)
+      {
+			     idc = 10030;
+			     sizeEx = 0.04;
+			     text = "Artillery Ammo: "; //--- ToDo: Localize;
+           x = X_RIGHT_SIDED(0.071,0);
+           y = Y_CALC(0.52);
+           w = W_SIZE(0.16);
+           h = H_SIZE(0.1);
+      };
+      class DIARSC(List3_Artillery,ListBox): DIARSC(normal,ListBox)
+      {
+        idc = 10031;
+        colorBackground[] = {0,0,0,0.6};
+        x = X_RIGHT_SIDED(0.072,0);
+        y = Y_CALC(0.542);
+        w = W_SIZE(0.155);
+        h = H_SIZE(0.075);
+        onLBDblClick = "hint 'lol';";
+      };
+      class DIARSC(RelBtn_Artillery,ListBtn): DIARSC(normal,RscButton)
+      {
+        idc = 10032;
+        colorShadow[] = {0,0,0,0};
+      	colorBorder[] = {0,0,0,0.5};
+        colorBackground[] = {0.1,0.3,0.4, 0.8};
+        period = 0;
+        x = X_RIGHT_SIDED(0.236,0);
+  			y = Y_CALC(0.542);//0.797 * safezoneH + safezoneY;
+  			w = W_SIZE(0.15);
+  			h = H_SIZE(0.075);
+  			text = "Reload";
+        toolTip = "Reload Vehicle";
+  			action = "";
+      };
+      class DIARSC(Frame3_Artillery,Infoframe): DIARSC(normal,RscFrame)
+      {
+           idc = 10030;
+           sizeEx = 0.04;
+           text = "Artillery Ammo: "; //--- ToDo: Localize;
+           x = X_RIGHT_SIDED(0.071,0);
+           y = Y_CALC(0.52);
+           w = W_SIZE(0.16);
+           h = H_SIZE(0.1);
       };
     };
 };
