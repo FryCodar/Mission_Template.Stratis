@@ -2,7 +2,7 @@
 
 class TAGADD
 {
-	class dialog
+	class dlg
 	{
 		class addArtilleryUnits {};
 		class wowArtillery {};

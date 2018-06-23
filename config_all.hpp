@@ -48,7 +48,7 @@ minPlayerDistance = 50;         //Minimal Distance between corpse or wreck and n
 #include "params\params.hpp"
 
 //Dialoge werden geladen
-#include "functions\dialog\dialog.hpp"
+#include "functions\dlg\dialog.hpp"
 
 //Functions
 class CfgFunctions
@@ -66,7 +66,7 @@ class CfgFunctions
 		#include "functions\geometry\cfgFunctions.hpp"
 		#include "functions\creating\cfgFunctions.hpp"
 		#include "functions\briefing\cfgFunctions.hpp"
-		#include "functions\dialog\cfgFunctions.hpp"
+		#include "functions\dlg\cfgFunctions.hpp"
 };
 
 class CfgRemoteExec

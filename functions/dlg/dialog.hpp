@@ -129,7 +129,7 @@ class MSOT_ARTILLERY_TABLE
   idd = 36643;
   movingEnable = 0;
   enableSimulation = true;
-  onLoad = "uiNamespace setVariable ['msot_dlg',[36643]];[0] spawn MSOT_dialog_fnc_wowArtillery;";
+  onLoad = "uiNamespace setVariable ['msot_dlg',[36643]];[0] spawn MSOT_dlg_fnc_wowArtillery;";
   onUnload = "";
 
     class controls

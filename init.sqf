@@ -14,7 +14,8 @@ enableSentences false;
 //***************************************************************************************************************************************************
 If(isServer)then
 {
-  //[[H2,H3,H4,H5,H6],230] call MFUNC(usage,addRespawnVecs);
+  [[Ar1,Ar2,Ar3,Ar4,Ar5],230] call MFUNC(usage,addRespawnVecs);
+  [Ar1,Ar2,Ar3,Ar4,Ar5] call MFUNC(dlg,addArtilleryUnits);
    execVM "Engima\enigma_init.sqf";
 };
 If(hasInterface)then
