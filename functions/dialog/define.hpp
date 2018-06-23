@@ -296,7 +296,7 @@ class DIARSC(normal,Combo)
 
 class DIARSC(normal,ListBox)
 {
-		style = LB_MULTI + LB_TEXTURES;
+		style = 0;
 		idc = -1;
 		type = 5;
 		w = 0.275;
@@ -343,6 +343,50 @@ class DIARSC(normal,ListBox)
 			autoScrollDelay = 5;
 			autoScrollRewind = 0;
 		};
+};
+
+class DIARSC(normal,Edit)
+{
+	idc = -1;
+	type = 2;
+	style = "16 + 512"; // multi line + no border
+	x = 0;
+	y = 0;
+	h = 0;
+	w = 0;
+	font = "RobotoCondensed";
+	sizeEx = 0.04;
+	autocomplete = "";
+	canModify = true;
+	maxChars = 100;
+	forceDrawCaret = false;
+	colorSelection[] = {0,1,0,1};
+	colorText[] = {1, 1, 1, 1};
+	colorDisabled[] = {1,0,0,1};
+	colorBackground[] = {0, 0, 0, 0.7};
+	text = ""; // how to output multiline
+};
+
+class DIARSC(normal,Checkboxes)
+{
+	idc = -1;
+	type = 7; // CT_CHECKBOXES
+	style = 2;
+	x = 0;
+	y = 0;
+	w = 0;
+	h = 0;
+	colorSelectedBg[] = {0, 0, 0, 1}; // selected item bg color
+	colorText[] = {0, 1, 0, 1}; // checkbox unchecked color
+	colorTextSelect[] = {1, 0, 0, 1}; // checkbox checked color
+	colorBackground[] = {0, 0, 0, 0}; // control generic BG color 0, 0, 1, 0.3
+	font = "RobotoCondensed";
+	sizeEx = 0.04;
+	onCheckBoxesSelChanged = "";
+	columns = 1;
+	rows = 1;
+	strings[] = {"DISARMED"};
+	checked_strings[] = {">> ARMED <<"};
 };
 
 class DIARSC(normal,Map)

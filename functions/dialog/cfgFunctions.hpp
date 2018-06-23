@@ -4,6 +4,7 @@ class TAGADD
 {
 	class dialog
 	{
+		class addArtilleryUnits {};
 		class wowArtillery {};
 	};
 };
