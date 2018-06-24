@@ -15,7 +15,7 @@ onUnload = "uiNamespace setVariable ['msot_dlg',[]];";
     class DIARSC(Tactic_Tab,Picture): DIARSC(normal,RscPicture)
     {
 	     idc = 10013;//9800
-	     text = "functions\dialog\TacticTab.paa";
+	     text = "functions\dlg\TacticTab.paa";
 	     x = X_CENTERED(0.85);
 	     y = Y_CENTERED(0.73);
 	     w = W_SIZE(0.85);
@@ -137,7 +137,7 @@ class MSOT_ARTILLERY_TABLE
       class DIARSC(Backround_Artillery,Picture): DIARSC(normal,RscPicture)
       {
   	     idc = 10020;//9800
-  	     text = "functions\dialog\TacticTab.paa";
+  	     text = "functions\dlg\TacticTab.paa";
   	     x = X_CENTERED(0.85);
   	     y = Y_CENTERED(0.73);
   	     w = W_SIZE(0.85);
@@ -190,6 +190,7 @@ class MSOT_ARTILLERY_TABLE
         w = W_SIZE(0.316);
         h = H_SIZE(0.09);
         onLBDblClick = "hint 'lol';";
+        onLBSelChanged = "[1,(_this select 1)] spawn MSOT_dlg_fnc_wowArtillery;"
       };
       class DIARSC(AddBtn_Artillery,ListBtn): DIARSC(normal,RscButton)
       {
@@ -204,7 +205,7 @@ class MSOT_ARTILLERY_TABLE
   			h = H_SIZE(0.03);
   			text = "Add";
         toolTip = "Add Vehicle";
-  			action = "";
+  			action = "[2] spawn MSOT_dlg_fnc_wowArtillery;";
       };
       class DIARSC(RemBtn_Artillery,ListBtn): DIARSC(normal,RscButton)
       {
