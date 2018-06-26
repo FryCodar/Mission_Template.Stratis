@@ -189,7 +189,6 @@ class MSOT_ARTILLERY_TABLE
         y = Y_CALC(0.240);
         w = W_SIZE(0.316);
         h = H_SIZE(0.09);
-        onLBDblClick = "hint 'lol';";
         onLBSelChanged = "[1,(_this select 1)] spawn MSOT_dlg_fnc_wowArtillery;"
       };
       class DIARSC(AddBtn_Artillery,ListBtn): DIARSC(normal,RscButton)
@@ -241,7 +240,7 @@ class MSOT_ARTILLERY_TABLE
         y = Y_CALC(0.397);
         w = W_SIZE(0.316);
         h = H_SIZE(0.09);
-        onLBDblClick = "hint 'lol';";
+        onLBSelChanged = "[3,(_this select 1)] spawn MSOT_dlg_fnc_wowArtillery;"
       };
       class DIARSC(Text1_Artillery,InfoText): DIARSC(normal,RscText)
       {
