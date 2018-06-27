@@ -5,10 +5,10 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=514;
+	toggles=2;
 	class ItemIDProvider
 	{
-		nextID=570;
+		nextID=602;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1722.7162,39.635231,5508.0869};
-		dir[]={-0.61447126,-0.22644679,0.7559002};
-		up[]={-0.14291479,0.9739666,0.17581294};
-		aside[]={0.77605653,-3.3560354e-006,0.63085473};
+		pos[]={1709.5341,14.008445,5639.1855};
+		dir[]={-0.86989677,-0.432935,0.236827};
+		up[]={-0.41780984,0.90135241,0.11375049};
+		aside[]={0.26272041,-3.0462979e-006,0.96499765};
 	};
 };
 binarizationWanted=0;
@@ -38,13 +38,14 @@ addons[]=
 	"A3_Structures_F_Bootcamp_VR_Helpers",
 	"A3_Structures_F_Heli_Items_Airport",
 	"A3_Armor_F_Gamma_MBT_01",
-	"ace_realisticnames"
+	"ace_realisticnames",
+	"A3_Static_F_Mortar_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=13;
+		items=14;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -133,6 +134,13 @@ class AddonsMetaData
 		{
 			className="A3_Armor_F_Gamma";
 			name="Arma 3 - Armored Land Vehicles";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item13
+		{
+			className="A3_Static_F";
+			name="Arma 3 Alpha - Turrets";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -249,7 +257,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=30;
+		items=36;
 		class Item0
 		{
 			dataType="Marker";
@@ -1676,6 +1684,213 @@ class Mission
 				};
 				nAttributes=1;
 			};
+		};
+		class Item30
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1683.882,5.5014391,5638.4209};
+						angles[]={0,1.8615682,0};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						name="Ar7G";
+					};
+					id=595;
+					type="B_Soldier_F";
+				};
+			};
+			class Attributes
+			{
+			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=1;
+				};
+				class Links
+				{
+					items=1;
+					class Item0
+					{
+						linkID=0;
+						item0=595;
+						item1=594;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={0};
+						};
+					};
+				};
+			};
+			id=593;
+		};
+		class Item31
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1683.882,6.2216258,5638.3706};
+				angles[]={0,1.8615682,0};
+			};
+			side="West";
+			flags=6;
+			class Attributes
+			{
+				name="Ar7";
+			};
+			id=594;
+			type="B_Mortar_01_F";
+		};
+		class Item32
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1685.54,5.5014391,5644.5308};
+						angles[]={0,1.8615682,0};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						name="Ar8G";
+					};
+					id=597;
+					type="B_Soldier_F";
+				};
+			};
+			class Attributes
+			{
+			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=1;
+				};
+				class Links
+				{
+					items=1;
+					class Item0
+					{
+						linkID=0;
+						item0=597;
+						item1=598;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={0};
+						};
+					};
+				};
+			};
+			id=596;
+		};
+		class Item33
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1685.54,6.2216258,5644.4805};
+				angles[]={0,1.8615682,0};
+			};
+			side="West";
+			flags=6;
+			class Attributes
+			{
+				name="Ar8";
+			};
+			id=598;
+			type="B_Mortar_01_F";
+		};
+		class Item34
+		{
+			dataType="Group";
+			side="West";
+			class Entities
+			{
+				items=1;
+				class Item0
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={1686.833,5.5014391,5650.8208};
+						angles[]={0,1.8615682,0};
+					};
+					side="West";
+					flags=6;
+					class Attributes
+					{
+						name="Ar9G";
+					};
+					id=600;
+					type="B_Soldier_F";
+				};
+			};
+			class Attributes
+			{
+			};
+			class CrewLinks
+			{
+				class LinkIDProvider
+				{
+					nextID=1;
+				};
+				class Links
+				{
+					items=1;
+					class Item0
+					{
+						linkID=0;
+						item0=600;
+						item1=601;
+						class CustomData
+						{
+							role=2;
+							turretPath[]={0};
+						};
+					};
+				};
+			};
+			id=599;
+		};
+		class Item35
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1686.833,6.2216258,5650.7705};
+				angles[]={0,1.8615682,0};
+			};
+			side="West";
+			flags=6;
+			class Attributes
+			{
+				name="Ar9";
+			};
+			id=601;
+			type="B_Mortar_01_F";
 		};
 	};
 };

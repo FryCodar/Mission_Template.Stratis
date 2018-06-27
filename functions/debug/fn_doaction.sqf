@@ -32,6 +32,14 @@ params ["_obj","_caller","_idx","_xtra"];
             //ZWEITER TESTBEREICH
             hint "Script 2 begins";
             //______________________________________________________________________________________________________________________________
+            //_count = count (configFile >> "CfgVehicles" >> (typeOf AR4) >> "Turrets");
+            //_count = (typeOf AR4) call BFUNC(allTurrets);
+
+
+            _config = (configFile >> "CfgVehicles" >> (typeOf AR4) >> "Turrets" >> "MainTurret");
+            _is = _config call BIS_fnc_getCfgIsClass;
+            hint str _is;
+
 
           };
    case 4:{
