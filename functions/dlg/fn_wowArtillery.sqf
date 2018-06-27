@@ -1,6 +1,6 @@
 If(!hasInterface) exitWith {};
 #include "msot_components.hpp"
-private ["_holder","_add_txt","_control","_type"];
+private ["_holder","_add_txt","_control","_type","_config"];
 params ["_idx","_info"];
 disableSerialization;
 //private _control = ((findDisplay 36643) displayCtrl 10024);
@@ -79,8 +79,22 @@ switch(_idx)do
          };
   case 3:{ // CONTROL SELECTED ARTILLERY LIST
            _control = ((findDisplay 36643) displayCtrl 10028);
-           If(!(_control lbIsSelected _info))then{ctrlEnable [10026, false];}else{ctrlEnable [10026,true];};
+           If(!(_control lbIsSelected _info))then
+           {
+             ctrlEnable [10026, false];
+             If(lbSize 10031 > 0)then{lbClear 10031;};
+           }else{ctrlEnable [10026,true];};
+           _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
+           _type = [(lbText [10024, _info]),_holder] call MFUNC(dlg,getUnitTypeName);
+           If(count _type > 0 && {_control lbIsSelected _info})then
+           {
+             If(lbSize 10031 < 1)then
+             {
+               _config = (configFile >> "CfgVehicles" >> (typeOf AR4) >> "Turrets" >> "MainTurret");
+             }else{
 
+                  };
+           };
          };
 
 };
