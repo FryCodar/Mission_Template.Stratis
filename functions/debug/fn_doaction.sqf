@@ -23,8 +23,8 @@ params ["_obj","_caller","_idx","_xtra"];
             hint "Script 1 begins";
             //_____________________________________________________________________________________________________________________________
 
-          //  hint str [safezoneW,safezoneX,(safezoneW + safezoneX)];
-          //  copyToClipboard str [safezoneW,safezoneX,(safezoneW + safezoneX)];
+            //  hint str [safezoneW,safezoneX,(safezoneW + safezoneX)];
+            //  copyToClipboard str [safezoneW,safezoneX,(safezoneW + safezoneX)];
             createDialog "MSOT_ARTILLERY_TABLE";
 
           };
@@ -34,13 +34,9 @@ params ["_obj","_caller","_idx","_xtra"];
             //______________________________________________________________________________________________________________________________
             //_count = count (configFile >> "CfgVehicles" >> (typeOf AR4) >> "Turrets");
             //_count = (typeOf AR4) call BFUNC(allTurrets);
-
-
-            _config = (configFile >> "CfgVehicles" >> (typeOf AR4) >> "Turrets" >> "MainTurret");
-            _is = _config call BIS_fnc_getCfgIsClass;
-            hint str _is;
-
-
+            hint str (gunner Ar9);
+            //_ret = [Ar9,true] call MFUNC(dlg,getAmmoTypes);
+            //hint str _ret;
           };
    case 4:{
             If(captive player)then

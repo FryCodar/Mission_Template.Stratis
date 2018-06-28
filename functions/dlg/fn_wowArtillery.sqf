@@ -1,6 +1,6 @@
 If(!hasInterface) exitWith {};
 #include "msot_components.hpp"
-private ["_holder","_add_txt","_control","_type","_config"];
+private ["_holder","_add_txt","_control","_type","_config","_pic","_ammo"];
 params ["_idx","_info"];
 disableSerialization;
 //private _control = ((findDisplay 36643) displayCtrl 10024);
@@ -14,7 +14,7 @@ switch(_idx)do
               ctrlEnable [10022, true];
               _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
               {
-               If(alive _x && {({alive _x;}count (crew _x)) isEqualTo (count crew _x)})then
+               If(alive _x && {!(isNull (gunner _x))})then
                {
                 _add_txt = format[(getText(configfile >> "CfgVehicles" >> (typeOf _x) >> "displayName")) + " %1",(_forEachIndex + 1)];
                 lbAdd [10024,_add_txt];
@@ -81,24 +81,28 @@ switch(_idx)do
            _control = ((findDisplay 36643) displayCtrl 10028);
            If(!(_control lbIsSelected _info))then
            {
-             ctrlEnable [10026, false];
+             ctrlEnable [10031, false];
              If(lbSize 10031 > 0)then{lbClear 10031;};
-           }else{ctrlEnable [10026,true];};
+             MSOT_AVAILABLE_AMMOTYPES = [];
+           }else{ctrlEnable [10031,true];};
+
            _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
-           _type = [(lbText [10024, _info]),_holder] call MFUNC(dlg,getUnitTypeName);
+           _type = [(lbText [10028, _info]),_holder] call MFUNC(dlg,getUnitTypeName);
            If(count _type > 0 && {_control lbIsSelected _info})then
            {
              If(lbSize 10031 < 1)then
              {
-               _config = (configFile >> "CfgVehicles" >> (typeOf AR4) >> "Turrets" >> "MainTurret");
-               If(_config call BFUNC(getCfgIsClass))then
-               {
-
-               };
-             }else{
-
-                  };
+               _ammo = [(_type select 1),true] call MFUNC(dlg,getAmmoTypes);
+               MSOT_AVAILABLE_AMMOTYPES = (_ammo select 0);
+               {lbAdd [10031,_x];}forEach (_ammo select 1);
+             };
            };
          };
+   case 4:{ //CONTROL REMOVE BUTTON
+
+          };
+   case 5:{ //CONTROL AMMOLIST
+
+          };
 
 };
