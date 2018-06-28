@@ -5,6 +5,7 @@ class TAGADD
 	class dlg
 	{
 		class addArtilleryUnits {};
+		class getAmmoTypes {};
 		class getUnitTypeName {};
 		class wowArtillery {};
 	};

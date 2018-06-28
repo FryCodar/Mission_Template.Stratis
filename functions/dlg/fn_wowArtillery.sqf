@@ -91,6 +91,10 @@ switch(_idx)do
              If(lbSize 10031 < 1)then
              {
                _config = (configFile >> "CfgVehicles" >> (typeOf AR4) >> "Turrets" >> "MainTurret");
+               If(_config call BFUNC(getCfgIsClass))then
+               {
+
+               };
              }else{
 
                   };
