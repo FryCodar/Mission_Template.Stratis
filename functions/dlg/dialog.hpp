@@ -219,7 +219,7 @@ class MSOT_ARTILLERY_TABLE
   			h = H_SIZE(0.03);
   			text = "Remove";
         toolTip = "Remove Vehicle";
-  			action = "";
+  			action = "[4] spawn MSOT_dlg_fnc_wowArtillery;";
       };
       class DIARSC(Frame2_Artillery,Infoframe): DIARSC(normal,RscFrame)
       {

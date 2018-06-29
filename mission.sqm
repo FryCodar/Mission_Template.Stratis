@@ -8,7 +8,7 @@ class EditorData
 	toggles=2;
 	class ItemIDProvider
 	{
-		nextID=602;
+		nextID=603;
 	};
 	class MarkerIDProvider
 	{
@@ -16,7 +16,7 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1709.5341,14.008445,5639.1855};
+		pos[]={1704.2672,17.261387,5643.3682};
 		dir[]={-0.86989677,-0.432935,0.236827};
 		up[]={-0.41780984,0.90135241,0.11375049};
 		aside[]={0.26272041,-3.0462979e-006,0.96499765};
@@ -257,7 +257,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=36;
+		items=37;
 		class Item0
 		{
 			dataType="Marker";
@@ -1891,6 +1891,46 @@ class Mission
 			};
 			id=601;
 			type="B_Mortar_01_F";
+		};
+		class Item36
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1693.572,8.583312,5669.9761};
+				angles[]={0,1.9324634,0};
+			};
+			side="Empty";
+			flags=4;
+			class Attributes
+			{
+				name="Ar10";
+			};
+			id=602;
+			type="B_MBT_01_arty_F";
+			class CustomAttributes
+			{
+				class Attribute0
+				{
+					property="ammoBox";
+					expression="[_this,_value] call bis_fnc_initAmmoBox;";
+					class Value
+					{
+						class data
+						{
+							class type
+							{
+								type[]=
+								{
+									"STRING"
+								};
+							};
+							value="[[[[""arifle_MXC_F"",""FirstAidKit""],[2,10]],[[""SmokeShell"",""SmokeShellBlue"",""30Rnd_65x39_caseless_mag""],[2,2,4]],[[],[]],[[],[]]],false]";
+						};
+					};
+				};
+				nAttributes=1;
+			};
 		};
 	};
 };

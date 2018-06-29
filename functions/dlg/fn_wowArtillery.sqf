@@ -37,7 +37,7 @@ switch(_idx)do
                 If(!((_type select 0) isEqualTo MSOT_CHECKARTILLERY_TYPE))then
                 {
                   ctrlEnable [10025, false];_control lbSetSelected [_info,false];
-                  ctrlSetText [10029, "Select a identical Artillery Type please!"];
+                  ctrlSetText [10029, "Select identical Artillery Type please!"];
                 }else{If(!(ctrlEnabled 10025))then{ctrlEnable [10025, true];};
                       ctrlSetText [10029, ""];
                      };
@@ -81,10 +81,10 @@ switch(_idx)do
            _control = ((findDisplay 36643) displayCtrl 10028);
            If(!(_control lbIsSelected _info))then
            {
-             ctrlEnable [10031, false];
+             ctrlEnable [10031, false];ctrlEnable[10026,false];
              If(lbSize 10031 > 0)then{lbClear 10031;};
              MSOT_AVAILABLE_AMMOTYPES = [];
-           }else{ctrlEnable [10031,true];};
+           }else{ctrlEnable [10031,true];ctrlEnable[10026,true];};
 
            _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
            _type = [(lbText [10028, _info]),_holder] call MFUNC(dlg,getUnitTypeName);
@@ -99,7 +99,37 @@ switch(_idx)do
            };
          };
    case 4:{ //CONTROL REMOVE BUTTON
-
+            _control = ((findDisplay 36643) displayCtrl 10028);
+            _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
+            If((count (lbSelection _control)) isEqualTo (lbSize 10028))then
+            {
+              {
+                _add_txt = (lbText [10028,_x]);
+                _type = [_add_txt,_holder] call MFUNC(dlg,getUnitTypeName);
+                If(count _type > 0)then
+                {
+                  lbAdd [10024,_add_txt];
+                  _pic = getText(configfile >> "CfgVehicles" >> (_type select 0) >> "picture");
+                  If(count _pic > 0)then{lbSetPicture [10024,((lbSize 10024) - 1), _pic];lbSetPictureColor [10024,((lbSize 10024) - 1), [1, 0, 0, 1]];};
+                };
+              }forEach (lbSelection _control);
+              lbClear 10028;
+            }else{
+                   While{count (lbSelection _control) > 0}do
+                   {
+                     _add_txt = (lbText [10028,((lbSelection _control) select 0)]);
+                     _type = [_add_txt,_holder] call MFUNC(dlg,getUnitTypeName);
+                     If(count _type > 0)then
+                     {
+                       lbAdd [10024,_add_txt];
+                       _pic = getText(configfile >> "CfgVehicles" >> (_type select 0) >> "picture");
+                       If(count _pic > 0)then{lbSetPicture [10024,((lbSize 10024) - 1), _pic];lbSetPictureColor [10024,((lbSize 10024) - 1), [1, 0, 0, 1]];};
+                     };
+                     lbDelete [10028,((lbSelection _control) select 0)];
+                     sleep 0.04;
+                   };
+                 };
+              If((lbSize 10028) < 1)then{[3,0] spawn MFUNC(dlg,wowArtillery);};
           };
    case 5:{ //CONTROL AMMOLIST
 
