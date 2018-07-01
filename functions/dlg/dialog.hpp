@@ -130,7 +130,7 @@ class MSOT_ARTILLERY_TABLE
   movingEnable = 0;
   enableSimulation = true;
   onLoad = "uiNamespace setVariable ['msot_dlg',[36643]];[0] spawn MSOT_dlg_fnc_wowArtillery;";
-  onUnload = "";
+  onUnload = "[2] spawn MSOT_dlg_fnc_setArtilleryMarker;";
 
     class controls
     {
@@ -169,7 +169,7 @@ class MSOT_ARTILLERY_TABLE
 	       y = Y_CENTERED(0.55);
 	       w = W_SIZE(0.45);
 	       h = H_SIZE(0.55);
-         onMouseButtonClick = "hint str _this;";
+         onMouseButtonClick = "[1,(_this select 0),(_this select 2),(_this select 3)] spawn MSOT_dlg_fnc_setArtilleryMarker;";
       };
       class DIARSC(Frame1_Artillery,Infoframe): DIARSC(normal,RscFrame)
       {

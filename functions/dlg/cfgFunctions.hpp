@@ -7,6 +7,7 @@ class TAGADD
 		class addArtilleryUnits {};
 		class getAmmoTypes {};
 		class getUnitTypeName {};
+		class setArtilleryMarker {};
 		class wowArtillery {};
 	};
 };
