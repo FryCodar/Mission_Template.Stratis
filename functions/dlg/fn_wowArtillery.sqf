@@ -79,7 +79,7 @@ switch(_idx)do
          };
   case 3:{ // CONTROL SELECTED ARTILLERY LIST
            _control = ((findDisplay 36643) displayCtrl 10028);
-           If(!(_control lbIsSelected _info))then
+           If((count (lbSelection _control)) < 1)then
            {
              ctrlEnable [10031, false];ctrlEnable[10026,false];
              If(lbSize 10031 > 0)then{lbClear 10031;};

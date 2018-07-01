@@ -169,6 +169,7 @@ class MSOT_ARTILLERY_TABLE
 	       y = Y_CENTERED(0.55);
 	       w = W_SIZE(0.45);
 	       h = H_SIZE(0.55);
+         onMouseButtonClick = "hint str _this;";
       };
       class DIARSC(Frame1_Artillery,Infoframe): DIARSC(normal,RscFrame)
       {
