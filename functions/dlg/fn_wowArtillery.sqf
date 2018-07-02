@@ -1,6 +1,6 @@
 If(!hasInterface) exitWith {};
 #include "msot_components.hpp"
-private ["_holder","_add_txt","_control","_type","_config","_pic","_ammo"];
+private ["_holder","_add_txt","_control","_type","_config","_pic","_ammo","_i"];
 params ["_idx","_info"];
 disableSerialization;
 //private _control = ((findDisplay 36643) displayCtrl 10024);
@@ -81,21 +81,27 @@ switch(_idx)do
            _control = ((findDisplay 36643) displayCtrl 10028);
            If((count (lbSelection _control)) < 1)then
            {
-             ctrlEnable [10031, false];ctrlEnable[10026,false];
+             {ctrlEnable [_x, false];}forEach [10026,10031,10032,10034,10039,10040];
              If(lbSize 10031 > 0)then{lbClear 10031;};
              MSOT_AVAILABLE_AMMOTYPES = [];
-           }else{ctrlEnable [10031,true];ctrlEnable[10026,true];};
+           }else{ {ctrlEnable [_x, true];}forEach [10026,10031,10034];If(count (lbSelection _control) < 2)then{ctrlEnable [10032, true];}else{ctrlEnable [10032,false];};};
 
            _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
            _type = [(lbText [10028, _info]),_holder] call MFUNC(dlg,getUnitTypeName);
            If(count _type > 0 && {_control lbIsSelected _info})then
            {
+             _ammo = [(_type select 1),true] call MFUNC(dlg,getAmmoTypes);
              If(lbSize 10031 < 1)then
              {
-               _ammo = [(_type select 1),true] call MFUNC(dlg,getAmmoTypes);
                MSOT_AVAILABLE_AMMOTYPES = (_ammo select 0);
                {lbAdd [10031,_x];}forEach (_ammo select 1);
              };
+             If(count (lbSelection _control) > 0 && {count (lbSelection _control) < 2})then
+             {
+               {lbSetTooltip [10031,_forEachIndex,format["available Projectiles: %1",_x]];}forEach (_ammo select 2);
+             }else{
+                    F_LOOP(_i,0,((lbSize 10031) - 1)){lbSetTooltip [10031,_i,""];};
+                  };
            };
          };
    case 4:{ //CONTROL REMOVE BUTTON
@@ -132,7 +138,7 @@ switch(_idx)do
               If((lbSize 10028) < 1)then{[3,0] spawn MFUNC(dlg,wowArtillery);};
           };
    case 5:{ //CONTROL AMMOLIST
-
+            
           };
 
 };

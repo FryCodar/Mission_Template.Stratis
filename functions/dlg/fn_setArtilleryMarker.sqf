@@ -4,7 +4,7 @@ private ["_sidx","_world_pos","_markername"];
 params ["_idx",["_control",0],["_x_koordinate",0],["_y_koordinate",0]];
 disableSerialization;
 
-_sidx = If(count (missionNamespace getVariable [STRVAR_DO(artillery_marker),""]) == 0)then{0}else{_idx};
+_sidx = If(count (missionNamespace getVariable [STRVAR_DO(artillery_marker),""]) < 1 && {_idx <= 1})then{0}else{_idx};
 
 switch(_sidx)do
 {
