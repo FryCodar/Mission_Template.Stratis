@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1704.2672,17.261387,5643.3682};
-		dir[]={-0.86989677,-0.432935,0.236827};
-		up[]={-0.41780984,0.90135241,0.11375049};
-		aside[]={0.26272041,-3.0462979e-006,0.96499765};
+		pos[]={1823.0652,27.705093,5604.6011};
+		dir[]={0.6604811,-0.34668264,-0.66619539};
+		up[]={0.24415335,0.93791312,-0.2462694};
+		aside[]={-0.71023297,-3.1432137e-006,-0.7041378};
 	};
 };
 binarizationWanted=0;
@@ -706,8 +706,8 @@ class Mission
 		class Item12
 		{
 			dataType="Trigger";
-			position[]={1849.1545,5.5000005,5575.3276};
-			angle=-1.3123981;
+			position[]={1849.155,5.5,5575.3281};
+			angle=4.9707847;
 			class Attributes
 			{
 				condition="call{this && (count thisList) > 0 && (count thisList) < 2}";
@@ -716,12 +716,11 @@ class Mission
 				sizeB=9;
 				sizeC=5;
 				repeatable=1;
-				activationBy="WEST";
+				activationBy="ANYPLAYER";
 				isRectangle=1;
 			};
 			id=517;
 			type="EmptyDetector";
-			atlOffset=4.7683716e-007;
 		};
 		class Item13
 		{

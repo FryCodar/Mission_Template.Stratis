@@ -18,11 +18,11 @@ Author: Fry
 
 -------------------------------------------------------------------------------------------------- */
 private ["_vec_type","_vec_parents","_allow","_driver","_magazines","_timer","_removed","_turret_config","_x","_mags","_turrets","_i","_config"];
-params ["_vehicle",["_set_fuel",false]];
+params ["_vehicle",["_set_fuel",([false,true] select hasInterface)]];
 _chk_arr = ["Air","LandVehicle"];
 
-If(hasInterface)then{_set_fuel = true;};
-
+//If(hasInterface)then{_set_fuel = true;};
+If(isServer)then{missionNamespace setVariable [STRVAR_DO(vehicle_service_inuse),true,true]};
 _vec_type = typeOf _vehicle;
 _vec_parents = [configfile >> "CfgVehicles" >> _vec_type, true] call BIS_fnc_returnParents;
 _allow = ({_x In _vec_parents} count _chk_arr) > 0;
@@ -112,6 +112,7 @@ If(_set_fuel)then
 {
 _vehicle setfuel 1;
 };
+If(isServer)then{missionNamespace setVariable [STRVAR_DO(vehicle_service_inuse),false,true]};
 };
 }else{If(hasInterface && player == _vehicle)then{cutText ["<t color='#ff0000' size='3'>THIS SERVICEPOINT IS FOR<br/>!!! VEHICLES ONLY !!!</t>","PLAIN",-1,true,true];
       sleep 4;cutText ["","PLAIN",-1,true,true];

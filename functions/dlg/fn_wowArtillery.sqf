@@ -84,7 +84,8 @@ switch(_idx)do
              {ctrlEnable [_x, false];}forEach [10026,10031,10032,10034,10039,10040];
              If(lbSize 10031 > 0)then{lbClear 10031;};
              MSOT_AVAILABLE_AMMOTYPES = [];
-           }else{ {ctrlEnable [_x, true];}forEach [10026,10031,10034];If(count (lbSelection _control) < 2)then{ctrlEnable [10032, true];}else{ctrlEnable [10032,false];};};
+           }else{ {ctrlEnable [_x, true];}forEach [10026,10031,10034];
+                  If(count (lbSelection _control) < 2)then{ctrlEnable [10032, true];}else{ctrlEnable [10032,false];};};
 
            _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
            _type = [(lbText [10028, _info]),_holder] call MFUNC(dlg,getUnitTypeName);
@@ -138,7 +139,8 @@ switch(_idx)do
               If((lbSize 10028) < 1)then{[3,0] spawn MFUNC(dlg,wowArtillery);};
           };
    case 5:{ //CONTROL AMMOLIST
-            
+            If(!(ctrlEnabled 10039))then{ctrlEnable [10039,true];};
+            MSOT_SELECTED_AMMOTYPE = (MSOT_AVAILABLE_AMMOTYPES select _info);
           };
 
 };
