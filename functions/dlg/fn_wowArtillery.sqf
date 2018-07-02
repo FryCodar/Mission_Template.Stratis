@@ -85,7 +85,13 @@ switch(_idx)do
              If(lbSize 10031 > 0)then{lbClear 10031;};
              MSOT_AVAILABLE_AMMOTYPES = [];
            }else{ {ctrlEnable [_x, true];}forEach [10026,10031,10034];
-                  If(count (lbSelection _control) < 2)then{ctrlEnable [10032, true];}else{ctrlEnable [10032,false];};};
+                  If(count (lbSelection _control) < 2)then
+                  {
+                    If(!(missionNamespace getVariable [STRVAR_DO(artillery_reload_timer),false]))then
+                    {
+                      ctrlEnable [10032, true];
+                    }else{ctrlEnable [10032,false];};
+                  }else{ctrlEnable [10032,false];};};
 
            _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
            _type = [(lbText [10028, _info]),_holder] call MFUNC(dlg,getUnitTypeName);
