@@ -79,35 +79,37 @@ switch(_idx)do
          };
   case 3:{ // CONTROL SELECTED ARTILLERY LIST
            _control = ((findDisplay 36643) displayCtrl 10028);
+
            If((count (lbSelection _control)) < 1)then
            {
              {ctrlEnable [_x, false];}forEach [10026,10031,10032,10034,10039,10040];
              If(lbSize 10031 > 0)then{lbClear 10031;};
              MSOT_AVAILABLE_AMMOTYPES = [];
            }else{ {ctrlEnable [_x, true];}forEach [10026,10031,10034];
-                  If(count (lbSelection _control) < 2)then
+                  _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
+                  switch(true)do
                   {
-                    If(!(missionNamespace getVariable [STRVAR_DO(artillery_reload_timer),false]))then
-                    {
-                      ctrlEnable [10032, true];
-                    }else{ctrlEnable [10032,false];};
-                  }else{ctrlEnable [10032,false];};};
-
-           _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
-           _type = [(lbText [10028, _info]),_holder] call MFUNC(dlg,getUnitTypeName);
-           If(count _type > 0 && {_control lbIsSelected _info})then
-           {
-             _ammo = [(_type select 1),true] call MFUNC(dlg,getAmmoTypes);
-             If(lbSize 10031 < 1)then
-             {
-               MSOT_AVAILABLE_AMMOTYPES = (_ammo select 0);
-               {lbAdd [10031,_x];}forEach (_ammo select 1);
-             };
-             If(count (lbSelection _control) > 0 && {count (lbSelection _control) < 2})then
-             {
-               {lbSetTooltip [10031,_forEachIndex,format["available Projectiles: %1",_x]];}forEach (_ammo select 2);
-             }else{
-                    F_LOOP(_i,0,((lbSize 10031) - 1)){lbSetTooltip [10031,_i,""];};
+                    case (count (lbSelection _control) > 0 && {count (lbSelection _control) < 2}):{
+                                                                                                    _type = [(lbText [10028, ((lbSelection _control) select 0)]),_holder] call MFUNC(dlg,getUnitTypeName);
+                                                                                                    If(count _type > 0)then
+                                                                                                    {
+                                                                                                      _ammo = [(_type select 1),true] call MFUNC(dlg,getAmmoTypes);
+                                                                                                      If(lbSize 10031 < 1)then
+                                                                                                      {
+                                                                                                        MSOT_AVAILABLE_AMMOTYPES = (_ammo select 0);
+                                                                                                        {lbAdd [10031,_x];}forEach (_ammo select 1);
+                                                                                                      };
+                                                                                                      {lbSetTooltip [10031,_forEachIndex,format["available Projectiles: %1",_x]];}forEach (_ammo select 2);
+                                                                                                      If(!(missionNamespace getVariable [STRVAR_DO(artillery_reload_timer),false]))then
+                                                                                                      {
+                                                                                                        ctrlEnable [10032, true];
+                                                                                                      }else{ctrlEnable [10032,false];};
+                                                                                                    };
+                                                                                                  };
+                    case (count (lbSelection _control) > 1):{
+                                                              ctrlEnable [10032,false];
+                                                              F_LOOP(_i,0,((lbSize 10031) - 1)){lbSetTooltip [10031,_i,""];};
+                                                            };
                   };
            };
          };

@@ -32,11 +32,7 @@ params ["_obj","_caller","_idx","_xtra"];
             //ZWEITER TESTBEREICH
             hint "Script 2 begins";
             //______________________________________________________________________________________________________________________________
-            //_count = count (configFile >> "CfgVehicles" >> (typeOf AR4) >> "Turrets");
-            //_count = (typeOf AR4) call BFUNC(allTurrets);
-            hint str (gunner Ar9);
-            //_ret = [Ar9,true] call MFUNC(dlg,getAmmoTypes);
-            //hint str _ret;
+            [Ar10] spawn MFUNC(usage,doService);
           };
    case 4:{
             If(captive player)then
