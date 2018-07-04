@@ -103,7 +103,7 @@ switch(_idx)do
                                                                                                         {lbAdd [10031,_x];}forEach (_ammo select 1);
                                                                                                       };
                                                                                                       {lbSetTooltip [10031,_forEachIndex,format["available Projectiles: %1",_x]];}forEach (_ammo select 2);
-                                                                                                      If(!(missionNamespace getVariable [STRVAR_DO(artillery_reload_timer),false]))then
+                                                                                                      If(!(missionNamespace getVariable [STRVAR_DO(artillery_reload_timer),false]) && {!(MSOT_RELOAD_ARTILLERY getVariable [STRVAR_DO(vehicle_service_inuse),false])})then
                                                                                                       {
                                                                                                         ctrlEnable [10032, true];
                                                                                                       }else{ctrlEnable [10032,false];};
@@ -156,11 +156,11 @@ switch(_idx)do
    case 6:{
             If(!(isNull (gunner MSOT_RELOAD_ARTILLERY)) && {!(missionNamespace getVariable [STRVAR_DO(vehicle_service_inuse),false])} && {!(MSOT_RELOAD_ARTILLERY getVariable [STRVAR_DO(vehicle_service_inuse),false])})then
             {
-              missionNamespace setVariable [STRVAR_DO(artillery_reload_timer),true,true]);
-              private _state = {0,2} select isMultiplayer;
+              missionNamespace setVariable [STRVAR_DO(artillery_reload_timer),true,false];
+              private _state = [0,2] select isMultiplayer;
               REMOTE_TRIEXESM([MSOT_RELOAD_ARTILLERY,false],usage,doService,_state);
               sleep 40;
-              missionNamespace setVariable [STRVAR_DO(artillery_reload_timer),false,true]);
+              missionNamespace setVariable [STRVAR_DO(artillery_reload_timer),false,false];
               If((uiNamespace getVariable "msot_dlg") isEqualTo 36643)then{ctrlEnable [10032, true];};
             };
           };
