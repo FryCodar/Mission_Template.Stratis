@@ -11,6 +11,7 @@ switch(_idx)do
             sleep 0.1;
             If(missionNamespace getVariable[STRVAR_DO(available_artillery),false] && {(count (missionNamespace getVariable[STRVAR_DO(artillery_resources),[]])) > 0})then
             {
+
               ctrlEnable [10022, true];
               _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
               {
@@ -23,7 +24,7 @@ switch(_idx)do
                };
               }forEach _holder;
 
-            }else{ctrlSetText [10029, "No Artillery Units available!"];};
+            }else{ctrlSetText [10029, "No Artillery available!"];};
          };
   case 1:{
             //CONTROL ARTILLERY AVAILABLE LIST
@@ -85,6 +86,7 @@ switch(_idx)do
              {ctrlEnable [_x, false];}forEach [10026,10031,10032,10034,10039,10040];
              If(lbSize 10031 > 0)then{lbClear 10031;};
              MSOT_AVAILABLE_AMMOTYPES = [];
+             MSOT_RELOAD_ARTILLERY = [];
            }else{ {ctrlEnable [_x, true];}forEach [10026,10031,10034];
                   _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
                   switch(true)do
@@ -93,6 +95,7 @@ switch(_idx)do
                                                                                                     _type = [(lbText [10028, ((lbSelection _control) select 0)]),_holder] call MFUNC(dlg,getUnitTypeName);
                                                                                                     If(count _type > 0)then
                                                                                                     {
+                                                                                                      MSOT_RELOAD_ARTILLERY = (_type select 1);
                                                                                                       _ammo = [(_type select 1),true] call MFUNC(dlg,getAmmoTypes);
                                                                                                       If(lbSize 10031 < 1)then
                                                                                                       {
@@ -149,6 +152,17 @@ switch(_idx)do
    case 5:{ //CONTROL AMMOLIST
             If(!(ctrlEnabled 10039))then{ctrlEnable [10039,true];};
             MSOT_SELECTED_AMMOTYPE = (MSOT_AVAILABLE_AMMOTYPES select _info);
+          };
+   case 6:{
+            If(!(isNull (gunner MSOT_RELOAD_ARTILLERY)) && {!(missionNamespace getVariable [STRVAR_DO(vehicle_service_inuse),false])} && {!(MSOT_RELOAD_ARTILLERY getVariable [STRVAR_DO(vehicle_service_inuse),false])})then
+            {
+              missionNamespace setVariable [STRVAR_DO(artillery_reload_timer),true,true]);
+              private _state = {0,2} select isMultiplayer;
+              REMOTE_TRIEXESM([MSOT_RELOAD_ARTILLERY,false],usage,doService,_state);
+              sleep 40;
+              missionNamespace setVariable [STRVAR_DO(artillery_reload_timer),false,true]);
+              If((uiNamespace getVariable "msot_dlg") isEqualTo 36643)then{ctrlEnable [10032, true];};
+            };
           };
 
 };

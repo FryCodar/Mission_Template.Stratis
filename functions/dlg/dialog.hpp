@@ -286,7 +286,7 @@ class MSOT_ARTILLERY_TABLE
   			h = H_SIZE(0.075);
   			text = "Reload";
         toolTip = "Reload Vehicle";
-  			action = "";
+  			action = "[6] spawn MSOT_dlg_fnc_wowArtillery;";
       };
       class DIARSC(Frame4_Artillery,Infoframe): DIARSC(normal,RscFrame)
       {
