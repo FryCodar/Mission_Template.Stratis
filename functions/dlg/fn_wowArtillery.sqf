@@ -154,7 +154,7 @@ switch(_idx)do
             MSOT_SELECTED_AMMOTYPE = (MSOT_AVAILABLE_AMMOTYPES select _info);
             If(count (missionNamespace getVariable [STRVAR_DO(artillery_marker),""]) == 0)then
             {
-
+              ctrlSetText [10029, "Select your Target on Map!"];
             };
           };
    case 6:{
@@ -171,5 +171,8 @@ switch(_idx)do
               If((uiNamespace getVariable "msot_dlg") isEqualTo 36643)then{ctrlEnable [10032, true];};
             };
           };
+   case 7:{
+            
 
+          };
 };

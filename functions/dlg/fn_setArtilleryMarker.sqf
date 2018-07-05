@@ -22,7 +22,10 @@ switch(_sidx)do
                   _markername setMarkerType "mil_destroy";
                   _markername setMarkerColor "ColorRed";
                 };
+
+            ctrlSetText [10029, "Target area selected!"];
             missionNamespace setVariable [STRVAR_DO(artillery_marker),_markername,false];
+
          };
   case 1:{
             _world_pos = _control ctrlMapScreenToWorld [_x_koordinate,_y_koordinate];
@@ -32,6 +35,7 @@ switch(_sidx)do
             }else{
                    (missionNamespace getVariable [STRVAR_DO(artillery_marker),""]) setMarkerPos [(_world_pos select 0),(_world_pos select 1)];
                  };
+            ctrlSetText [10029, "Target area changed!"];
          };
   case 2:{
            If(count (missionNamespace getVariable [STRVAR_DO(artillery_marker),""]) > 0)then

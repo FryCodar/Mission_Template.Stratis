@@ -370,7 +370,7 @@ class MSOT_ARTILLERY_TABLE
       	y = Y_CALC(0.71);
       	w = W_SIZE(0.07);
       	h = H_SIZE(0.044);
-        onCheckBoxesSelChanged = "";
+        onCheckBoxesSelChanged = "[7] spawn MSOT_dlg_fnc_wowArtillery;";
       };
       class DIARSC(FireBtn_Artillery,ActBtn): DIARSC(normal,RscButton)
       {
