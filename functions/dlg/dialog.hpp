@@ -385,7 +385,7 @@ class MSOT_ARTILLERY_TABLE
   			h = H_SIZE(0.075);
   			text = "FIRE";
         toolTip = "";
-  			action = "";
+  			action = "[8] spawn MSOT_dlg_fnc_wowArtillery;";
       };
     };
 };

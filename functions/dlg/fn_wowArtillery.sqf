@@ -165,7 +165,7 @@ switch(_idx)do
             };
           };
    case 6:{
-
+            //CONTROL RELOAD BUTTON
             If(!(isNull (gunner MSOT_RELOAD_ARTILLERY)) && {!(missionNamespace getVariable [STRVAR_DO(artillery_reload_timer),false])} && {!(MSOT_RELOAD_ARTILLERY getVariable [STRVAR_DO(vehicle_service_inuse),false])})then
             {
               ctrlEnable [10032, false];
@@ -179,7 +179,7 @@ switch(_idx)do
             };
           };
    case 7:{
-
+            //CONTROL CHECK SWITCH
             If((_info # 2) > 0)then{
             _control = ((findDisplay 36643) displayCtrl 10028);
             _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
@@ -212,6 +212,7 @@ switch(_idx)do
                 MSOT_ETA_TIMER = round (_eta / (count _arr));
                 MSOT_ARTILLERY_UNITS = _arr;
                 MSOT_ARTILLERY_ROUNDS = (call compile (ctrlText 10034));
+                MSOT_ARTILLERY_TARGET = (getMarkerPos (missionNamespace getVariable [STRVAR_DO(artillery_marker),""]));
               }else{(_info select 0) ctrlSetChecked [(_info select 1), false];ctrlSetText [10029, (_chk # 1)];};
 
 
@@ -225,6 +226,7 @@ switch(_idx)do
                  };
           };
    case 8:{
-            
+            //CONTROL FIRE BUTTON
+
           };
 };
