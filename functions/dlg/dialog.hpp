@@ -335,14 +335,14 @@ class MSOT_ARTILLERY_TABLE
       {
   	     idc = 10037;//9800
          style = 2;
-  	     text = "ETM(sec):";
+  	     text = "ETA(sec):";
          colorBackground[] = {0.5, 0.2, 0.1, 0.8};
   	     x = X_RIGHT_SIDED(0.236,0);
   	     y = Y_CALC(0.655);
   	     w = W_SIZE(0.07);
   	     h = H_SIZE(0.02);
       };
-      class DIARSC(ETMNum_Artillery,InfoText): DIARSC(normal,RscText)
+      class DIARSC(ETANum_Artillery,InfoText): DIARSC(normal,RscText)
       {
          idc = 10038;//9800
          style = 1;
@@ -370,7 +370,7 @@ class MSOT_ARTILLERY_TABLE
       	y = Y_CALC(0.71);
       	w = W_SIZE(0.07);
       	h = H_SIZE(0.044);
-        onCheckBoxesSelChanged = "[7] spawn MSOT_dlg_fnc_wowArtillery;";
+        onCheckBoxesSelChanged = "[7,_this] spawn MSOT_dlg_fnc_wowArtillery;";
       };
       class DIARSC(FireBtn_Artillery,ActBtn): DIARSC(normal,RscButton)
       {

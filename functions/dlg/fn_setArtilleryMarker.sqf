@@ -1,6 +1,6 @@
 If(!hasInterface) exitWith {};
 #include "msot_components.hpp"
-private ["_sidx","_world_pos","_markername"];
+private ["_sidx","_world_pos","_markername","_m_control"];
 params ["_idx",["_control",0],["_x_koordinate",0],["_y_koordinate",0]];
 disableSerialization;
 
@@ -35,6 +35,8 @@ switch(_sidx)do
             }else{
                    (missionNamespace getVariable [STRVAR_DO(artillery_marker),""]) setMarkerPos [(_world_pos select 0),(_world_pos select 1)];
                  };
+            _m_control = ((findDisplay 36643) displayCtrl 10039);
+            If(_m_control ctrlChecked 0)then{_m_control ctrlSetChecked [0, false]; ctrlEnable [10040, false];};
             ctrlSetText [10029, "Target area changed!"];
          };
   case 2:{

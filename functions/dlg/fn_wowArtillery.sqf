@@ -80,7 +80,8 @@ switch(_idx)do
          };
   case 3:{ // CONTROL SELECTED ARTILLERY LIST
            _control = ((findDisplay 36643) displayCtrl 10028);
-
+           private _m_control = ((findDisplay 36643) displayCtrl 10039);
+           If(_m_control ctrlChecked 0)then{_m_control ctrlSetChecked [0, false]; ctrlEnable [10040, false];};
            If((count (lbSelection _control)) < 1)then
            {
              {ctrlEnable [_x, false];}forEach [10026,10031,10032,10034,10039,10040];
@@ -151,7 +152,13 @@ switch(_idx)do
           };
    case 5:{ //CONTROL AMMOLIST
             If(!(ctrlEnabled 10039))then{ctrlEnable [10039,true];};
-            MSOT_SELECTED_AMMOTYPE = (MSOT_AVAILABLE_AMMOTYPES select _info);
+            _control = ((findDisplay 36643) displayCtrl 10039);
+            If(_control ctrlChecked 0)then{_control ctrlSetChecked [0, false]; ctrlEnable [10040, false];};
+            If(_info > -1)then
+            {
+              If(!(ctrlEnabled 10039))then{ctrlEnable [10039,true];};
+              MSOT_SELECTED_AMMOTYPE = (MSOT_AVAILABLE_AMMOTYPES select _info);
+            }else{MSOT_SELECTED_AMMOTYPE = "";};
             If(count (missionNamespace getVariable [STRVAR_DO(artillery_marker),""]) == 0)then
             {
               ctrlSetText [10029, "Select your Target on Map!"];
@@ -172,7 +179,52 @@ switch(_idx)do
             };
           };
    case 7:{
-            
 
+            If((_info # 2) > 0)then{
+            _control = ((findDisplay 36643) displayCtrl 10028);
+            _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
+            private _arr = [];
+            {
+              _type = [(lbText [10028,_x]),_holder] call MFUNC(dlg,getUnitTypeName);
+              _ammo = [(_type select 1),false] call MFUNC(dlg,getAmmoTypes);
+              If(((_ammo select 2) select (lbCurSel 10039)) >= (call compile (ctrlText 10034)))then
+              {
+                _arr pushBack (_type select 1);
+              }else{_control lbSetSelected [_x, false];};
+            }forEach (lbSelection _control);
+            If(count _arr > 0)then
+            {
+              private _chk = switch(true)do
+                             {
+                               case ((call compile (ctrlText 10034)) < 1):{[false,"Check Rounds per Unit"]};
+                               case (count (missionNamespace getVariable [STRVAR_DO(artillery_marker),""]) == 0):{[false,"No Target Area selected!"]};
+                               case (count MSOT_SELECTED_AMMOTYPE == 0):{[false,"No Artillery Ammo Type selected!"]};
+                               case (!((getMarkerPos (missionNamespace getVariable [STRVAR_DO(artillery_marker),""])) inRangeOfArtillery [_arr, MSOT_SELECTED_AMMOTYPE])):{[false,"Out Of Artillery Range!"]};
+                               default {[true,""]};
+                             };
+              If(_chk # 0)then
+              {
+                ctrlEnable [10040, true];
+                private _eta = 0;
+                {_eta = _eta + (_x getArtilleryETA [(getMarkerPos (missionNamespace getVariable [STRVAR_DO(artillery_marker),""])), MSOT_SELECTED_AMMOTYPE]);}forEach _arr;
+                ctrlSetText [10038, (str(round (_eta / (count _arr))))];
+                ctrlSetText [10036, (str ((call compile (ctrlText 10034)) * (count _arr)))];
+                MSOT_ETA_TIMER = round (_eta / (count _arr));
+                MSOT_ARTILLERY_UNITS = _arr;
+                MSOT_ARTILLERY_ROUNDS = (call compile (ctrlText 10034));
+              }else{(_info select 0) ctrlSetChecked [(_info select 1), false];ctrlSetText [10029, (_chk # 1)];};
+
+
+            }else{(_info select 0) ctrlSetChecked [(_info select 1), false];
+                  ctrlSetText [10029, "Selected Artillery Ammo not available!"];
+                  If(lbSize 10031 > 0)then{lbClear 10031;};ctrlEnable [10039,false];
+                  lbSetCurSel [10031, -1];
+                 };
+            }else{ctrlEnable [10040, false];ctrlSetText [10038,"0"];
+                  ctrlSetText [10036,"0"];
+                 };
+          };
+   case 8:{
+            
           };
 };
