@@ -7,7 +7,7 @@ class MSOT_Tactic_Table
 idd = 36642;
 movingEnable = 0;
 enableSimulation = true;
-onLoad = "uiNamespace setVariable ['msot_dlg',[36642]];";
+onLoad = "uiNamespace setVariable ['msot_dlg',[36642]];[] spawn MSOT_dlg_fnc_setDlgCtrl;";
 onUnload = "uiNamespace setVariable ['msot_dlg',[]];";
 
   class controls

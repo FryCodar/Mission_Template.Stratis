@@ -25,7 +25,7 @@ params ["_obj","_caller","_idx","_xtra"];
 
             //  hint str [safezoneW,safezoneX,(safezoneW + safezoneX)];
             //  copyToClipboard str [safezoneW,safezoneX,(safezoneW + safezoneX)];
-            createDialog "MSOT_ARTILLERY_TABLE";
+            createDialog "MSOT_Tactic_Table";
 
           };
    case 3:{
