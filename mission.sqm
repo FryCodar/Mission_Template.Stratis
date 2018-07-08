@@ -8,7 +8,7 @@ class EditorData
 	toggles=2;
 	class ItemIDProvider
 	{
-		nextID=603;
+		nextID=608;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1792.5571,49.208992,5641.6812};
-		dir[]={0.23697159,-0.32801357,0.91459918};
-		up[]={0.082300223,0.94460422,0.31763026};
-		aside[]={0.9681499,-3.0015945e-006,-0.2508482};
+		pos[]={1730.6896,73.669029,5525.75};
+		dir[]={-0.55192637,-0.65285534,0.51903701};
+		up[]={-0.47560927,0.75741816,0.44727135};
+		aside[]={0.68515241,-2.2696913e-006,0.72856653};
 	};
 };
 binarizationWanted=0;
@@ -707,7 +707,7 @@ class Mission
 		{
 			dataType="Trigger";
 			position[]={1849.155,5.5,5575.3281};
-			angle=4.9707842;
+			angle=4.9707828;
 			class Attributes
 			{
 				condition="call{this && (count thisList) > 0 && (count thisList) < 2}";

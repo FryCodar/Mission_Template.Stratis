@@ -22,5 +22,8 @@ class TAGADD
 				class setMapMarker {
 															description = "Creates Marker on Map";
 													 };
+				class useArtilleryFire {
+																 description = "Use available Artillery Units";
+															 };
 		 };
 	};
