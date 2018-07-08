@@ -25,6 +25,18 @@ params ["_units","_pos","_ammo_type","_num"];
 
 switch(typeName _units)do
 {
-  case "OBJECT":{_units doArtilleryFire [_pos,_ammo_type,_num];};
-  case "ARRAY":{{_x doArtilleryFire [_pos,_ammo_type,_num];}forEach _units};
+  case "OBJECT":{
+                  If(alive _units && {!(isNull (gunner _units))} && {!(_unit getVariable [STRVAR_DO(vehicle_service_inuse),false])})then
+                  {
+                    _units doArtilleryFire [_pos,_ammo_type,_num];
+                  };
+                };
+  case "ARRAY":{
+                 {
+                   If(alive _x && {!(isNull (gunner _x))} && {!(_x getVariable [STRVAR_DO(vehicle_service_inuse),false])})then
+                   {
+                     _x doArtilleryFire [_pos,_ammo_type,_num];
+                   };
+                 }forEach _units
+               };
 };
