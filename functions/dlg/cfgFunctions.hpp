@@ -8,6 +8,7 @@ class TAGADD
 		class getAmmoTypes {};
 		class getUnitTypeName {};
 		class setArtilleryMarker {};
+		class setDlgCtrl {};
 		class wowArtillery {};
 	};
 };

@@ -1,6 +1,6 @@
 If(!hasInterface) exitWith {};
 #include "msot_components.hpp"
-private ["_holder","_add_txt","_control","_type","_config","_pic","_ammo","_i"];
+private ["_holder","_add_txt","_control","_type","_config","_pic","_ammo","_i","_state","_para"];
 params ["_idx","_info"];
 disableSerialization;
 //private _control = ((findDisplay 36643) displayCtrl 10024);
@@ -170,12 +170,12 @@ switch(_idx)do
             {
               ctrlEnable [10032, false];
               missionNamespace setVariable [STRVAR_DO(artillery_reload_timer),true,false];
-              private _state = [0,2] select isMultiplayer;
-              private _para = [MSOT_RELOAD_ARTILLERY,false];
+              _state = [0,2] select isMultiplayer;
+              _para = [MSOT_RELOAD_ARTILLERY,false];
               REMOTE_TRIEXESM(_para,usage,doService,_state);
               sleep 40;
               missionNamespace setVariable [STRVAR_DO(artillery_reload_timer),false,false];
-              If((uiNamespace getVariable "msot_dlg") isEqualTo 36643)then{ctrlEnable [10032, true];};
+              ctrlEnable [10032, true];
             };
           };
    case 7:{
@@ -187,7 +187,7 @@ switch(_idx)do
             {
               _type = [(lbText [10028,_x]),_holder] call MFUNC(dlg,getUnitTypeName);
               _ammo = [(_type select 1),false] call MFUNC(dlg,getAmmoTypes);
-              If(((_ammo select 2) select (lbCurSel 10039)) >= (call compile (ctrlText 10034)))then
+              If(((_ammo select 2) select (lbCurSel 10031)) >= (call compile (ctrlText 10034)) && {!(isNull (gunner (_type select 1)))})then
               {
                 _arr pushBack (_type select 1);
               }else{_control lbSetSelected [_x, false];};
@@ -204,6 +204,11 @@ switch(_idx)do
                              };
               If(_chk # 0)then
               {
+                If(missionNamespace getVariable [STRVAR_DO(artillery_fire_timer),false]) exitWith {
+                                                                                                    (_info select 0) ctrlSetChecked [(_info select 1), false];
+                                                                                                    ctrlSetText [10029, "Standby! Artillery in Use!"];
+                                                                                                  };
+
                 ctrlEnable [10040, true];
                 private _eta = 0;
                 {_eta = _eta + (_x getArtilleryETA [(getMarkerPos (missionNamespace getVariable [STRVAR_DO(artillery_marker),""])), MSOT_SELECTED_AMMOTYPE]);}forEach _arr;
@@ -217,7 +222,7 @@ switch(_idx)do
 
 
             }else{(_info select 0) ctrlSetChecked [(_info select 1), false];
-                  ctrlSetText [10029, "Selected Artillery Ammo not available!"];
+                  ctrlSetText [10029, "Selected Artillery or Artillery Ammo not available!"];
                   If(lbSize 10031 > 0)then{lbClear 10031;};ctrlEnable [10039,false];
                   lbSetCurSel [10031, -1];
                  };
@@ -227,6 +232,14 @@ switch(_idx)do
           };
    case 8:{
             //CONTROL FIRE BUTTON
-
+            ctrlEnable [10040, false];ctrlSetText [10029, "Call Artillery Fire!"];
+            _control = ((findDisplay 36643) displayCtrl 10039);
+            If(_control ctrlChecked 0)then{_control ctrlSetChecked [0, false];};
+            missionNamespace setVariable [STRVAR_DO(artillery_fire_timer),true,false];
+            _state = [0,2] select isMultiplayer;
+            _para = [MSOT_ARTILLERY_UNITS,MSOT_ARTILLERY_TARGET,MSOT_SELECTED_AMMOTYPE,MSOT_ARTILLERY_ROUNDS];
+            REMOTE_TRIEXESM(_para,usage,useArtilleryFire,_state);
+            sleep MSOT_ETA_TIMER;
+            missionNamespace setVariable [STRVAR_DO(artillery_fire_timer),false,false];
           };
 };
