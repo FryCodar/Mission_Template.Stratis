@@ -159,7 +159,8 @@ switch(_idx)do
             {
               If(!(ctrlEnabled 10039))then{ctrlEnable [10039,true];};
               MSOT_SELECTED_AMMOTYPE = (MSOT_AVAILABLE_AMMOTYPES select _info);
-            }else{MSOT_SELECTED_AMMOTYPE = "";};
+              MSOT_SELECTED_AMMOINDEX = _info;
+            }else{MSOT_SELECTED_AMMOTYPE = ""; MSOT_SELECTED_AMMOINDEX = -1;};
             If(count (missionNamespace getVariable [STRVAR_DO(artillery_marker),""]) == 0)then
             {
               ctrlSetText [10029, "Select your Target on Map!"];
@@ -175,6 +176,7 @@ switch(_idx)do
               _para = [MSOT_RELOAD_ARTILLERY,false];
               REMOTE_TRIEXESM(_para,usage,doService,_state);
               sleep 40;
+              ["RELOAD",MSOT_RELOAD_ARTILLERY] call MFUNC(dlg,doAmmoUpdate);
               missionNamespace setVariable [STRVAR_DO(artillery_reload_timer),false,false];
               ctrlEnable [10032, true];
             };
@@ -238,13 +240,14 @@ switch(_idx)do
             //_v_control = ((findDisplay 36643) displayCtrl 10028);
             //{_v_control lbSetSelected [_x, false];}forEach (lbSelection _v_control);
             //lbClear 10031; lbSetCurSel [10031, -1];
-            
+
             ctrlEnable [10028, false]; ctrlEnable [10031, false]; ctrlSetText [10034,"0"];
             If(_control ctrlChecked 0)then{_control ctrlSetChecked [0, false];};
             missionNamespace setVariable [STRVAR_DO(artillery_fire_timer),true,false];
             _state = [0,2] select isMultiplayer;
             _para = [MSOT_ARTILLERY_UNITS,MSOT_ARTILLERY_TARGET,MSOT_SELECTED_AMMOTYPE,MSOT_ARTILLERY_ROUNDS];
             REMOTE_TRIEXESM(_para,usage,useArtilleryFire,_state);
+            {["UPDATE",_x,MSOT_SELECTED_AMMOINDEX,MSOT_ARTILLERY_ROUNDS] call MFUNC(dlg,doAmmoUpdate);}forEach MSOT_ARTILLERY_UNITS;
             sleep MSOT_ETA_TIMER;
             ctrlEnable [10028, true]; ctrlEnable [10031, true];
             missionNamespace setVariable [STRVAR_DO(artillery_fire_timer),false,false];
