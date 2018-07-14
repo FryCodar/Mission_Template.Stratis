@@ -13,26 +13,17 @@ If(isMultiplayer)then{If(!isServer) exitWith {};};
     {
       _side = _chk_arr select 0;
       _groups = allGroups;
-      _sided_groups = [];
 
       If(count _groups > 0)then
       {
-        F_LOOP(_i,0,((count _groups) - 1))
+        _sided_groups = _groups select {!((side _x) isEqualTo _side)};
+        If(count _sided_groups > 0)then
         {
-          If(!(_side isEqualTo (side (_groups select _i)))) then
           {
-           ARR_ADDVAR(_sided_groups,(_groups select _i));
-          };
-          sleep 0.04;
+            [_x] call MFUNC(system,setUnitSkill);
+            _x setCombatMode "YELLOW";
+          }forEach _sided_groups;
         };
-      };
-
-      If(count _sided_groups > 0)then
-      {
-        {
-          [_x] call MFUNC(system,setUnitSkill);
-          _x setCombatMode "YELLOW";
-        }forEach _sided_groups;
       };
     };
 };

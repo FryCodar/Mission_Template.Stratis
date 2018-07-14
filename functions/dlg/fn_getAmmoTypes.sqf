@@ -4,6 +4,7 @@ If(!hasInterface) exitWith {};
 params ["_vec",["_get_all_infos",false]];
 
 private _arr = [];
+private _holder = [];
 private _config = (configFile >> "CfgVehicles" >> (typeOf _vec) >> "Turrets" >> "MainTurret");
 If(_config call BFUNC(getCfgIsClass))then
 {
@@ -23,13 +24,21 @@ If(_config call BFUNC(getCfgIsClass))then
     }else{
             _arr = [[],[]];
          };
-    private _ammo_arr = (magazinesAllTurrets _vec) select {(_x select 1) isEqualTo [0]};
-    If(count _ammo_arr > 0)then
+    If(count (_vec getVariable [STRVAR_DO(artillery_availammo),[]]) > 0)then
     {
-      private _ammo_count = [];
-      {ARR_ADDVAR(_ammo_count,(_x select 2));}forEach _ammo_arr;
-      ARR_ADDVAR(_arr,_ammo_count);
-    }else{_arr = [[],[],[]];};
+      _holder = ((_vec getVariable [STRVAR_DO(artillery_availammo),[]]) select 0);
+      ARR_ADDVAR(_arr,_holder);
+    }else{
+           private _ammo_arr = (magazinesAllTurrets _vec) select {(_x select 1) isEqualTo [0]};
+           If(count _ammo_arr > 0)then
+           {
+             private _ammo_count = [];
+             {ARR_ADDVAR(_ammo_count,(_x select 2));}forEach _ammo_arr;
+             ARR_ADDVAR(_arr,_ammo_count);
+             _holder = [_ammo_count,_ammo_count];
+             _vec setVariable [STRVAR_DO(artillery_availammo),_holder,true];
+           }else{_arr = [[],[],[]];};
+         };
   };
 };
 _arr

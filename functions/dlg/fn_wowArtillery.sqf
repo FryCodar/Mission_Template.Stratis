@@ -1,6 +1,6 @@
 If(!hasInterface) exitWith {};
 #include "msot_components.hpp"
-private ["_holder","_add_txt","_control","_type","_config","_pic","_ammo","_i","_state","_para"];
+private ["_holder","_add_txt","_control","_v_control","_type","_config","_pic","_ammo","_i","_state","_para"];
 params ["_idx","_info"];
 disableSerialization;
 //private _control = ((findDisplay 36643) displayCtrl 10024);
@@ -60,7 +60,7 @@ switch(_idx)do
             };
          };
   case 2:{ // CONTROL ADD BUTTON FOR SELECTED ARTILLERY LIST
-            ctrlEnable [10028,true];
+            If(!(missionNamespace getVariable [STRVAR_DO(artillery_fire_timer),false]))then{ctrlEnable [10028,true];};
             _control = ((findDisplay 36643) displayCtrl 10024);
             _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
             While{count (lbSelection _control) > 0}do
@@ -153,6 +153,7 @@ switch(_idx)do
    case 5:{ //CONTROL AMMOLIST
             If(!(ctrlEnabled 10039))then{ctrlEnable [10039,true];};
             _control = ((findDisplay 36643) displayCtrl 10039);
+            _v_control = ((findDisplay 36643) displayCtrl 10039);
             If(_control ctrlChecked 0)then{_control ctrlSetChecked [0, false]; ctrlEnable [10040, false];};
             If(_info > -1)then
             {
@@ -214,7 +215,7 @@ switch(_idx)do
                 {_eta = _eta + (_x getArtilleryETA [(getMarkerPos (missionNamespace getVariable [STRVAR_DO(artillery_marker),""])), MSOT_SELECTED_AMMOTYPE]);}forEach _arr;
                 ctrlSetText [10038, (str(round (_eta / (count _arr))))];
                 ctrlSetText [10036, (str ((call compile (ctrlText 10034)) * (count _arr)))];
-                MSOT_ETA_TIMER = round (_eta / (count _arr));
+                MSOT_ETA_TIMER = (round (_eta / (count _arr)) + 10);
                 MSOT_ARTILLERY_UNITS = _arr;
                 MSOT_ARTILLERY_ROUNDS = (call compile (ctrlText 10034));
                 MSOT_ARTILLERY_TARGET = (getMarkerPos (missionNamespace getVariable [STRVAR_DO(artillery_marker),""]));
@@ -234,12 +235,18 @@ switch(_idx)do
             //CONTROL FIRE BUTTON
             ctrlEnable [10040, false];ctrlSetText [10029, "Call Artillery Fire!"];
             _control = ((findDisplay 36643) displayCtrl 10039);
+            //_v_control = ((findDisplay 36643) displayCtrl 10028);
+            //{_v_control lbSetSelected [_x, false];}forEach (lbSelection _v_control);
+            //lbClear 10031; lbSetCurSel [10031, -1];
+            
+            ctrlEnable [10028, false]; ctrlEnable [10031, false]; ctrlSetText [10034,"0"];
             If(_control ctrlChecked 0)then{_control ctrlSetChecked [0, false];};
             missionNamespace setVariable [STRVAR_DO(artillery_fire_timer),true,false];
             _state = [0,2] select isMultiplayer;
             _para = [MSOT_ARTILLERY_UNITS,MSOT_ARTILLERY_TARGET,MSOT_SELECTED_AMMOTYPE,MSOT_ARTILLERY_ROUNDS];
             REMOTE_TRIEXESM(_para,usage,useArtilleryFire,_state);
             sleep MSOT_ETA_TIMER;
+            ctrlEnable [10028, true]; ctrlEnable [10031, true];
             missionNamespace setVariable [STRVAR_DO(artillery_fire_timer),false,false];
           };
 };
