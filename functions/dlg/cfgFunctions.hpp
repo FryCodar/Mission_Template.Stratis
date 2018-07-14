@@ -5,6 +5,7 @@ class TAGADD
 	class dlg
 	{
 		class addArtilleryUnits {};
+		class doAmmoUpdate {};
 		class getAmmoTypes {};
 		class getUnitTypeName {};
 		class setArtilleryMarker {};
