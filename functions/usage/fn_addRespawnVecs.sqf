@@ -15,6 +15,6 @@ If(typeName _vecs_arr isEqualTo "ARRAY" && {count _vecs_arr > 0})then
     _dir = GET_DIR(_vec);
     _set_in = [_type,_pos_asl,_dir,_resp_time];
     _vec setVariable [(format["resp_info_%1",_vec]),_set_in,false];
-    _vec addEventHandler ["Killed",{REMOTE_TRIEXESM(_this,system,setRespawnVecs,0);}];
+    _vec addEventHandler ["MPKilled",{_this call MFUNC(system,setRespawnVecs);}];
   }forEach _vecs_arr;
 };
