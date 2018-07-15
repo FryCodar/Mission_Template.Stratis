@@ -104,7 +104,7 @@ switch(_idx)do
                                                                                                         {lbAdd [10031,_x];}forEach (_ammo select 1);
                                                                                                       };
                                                                                                       {lbSetTooltip [10031,_forEachIndex,format["available Projectiles: %1",_x]];}forEach (_ammo select 2);
-                                                                                                      If(!(missionNamespace getVariable [STRVAR_DO(artillery_reload_timer),false]) && {!(MSOT_RELOAD_ARTILLERY getVariable [STRVAR_DO(vehicle_service_inuse),false])})then
+                                                                                                      If(!(missionNamespace getVariable [STRVAR_DO(artillery_reload_timer),false]))then
                                                                                                       {
                                                                                                         ctrlEnable [10032, true];
                                                                                                       }else{ctrlEnable [10032,false];};
@@ -115,6 +115,7 @@ switch(_idx)do
                                                               F_LOOP(_i,0,((lbSize 10031) - 1)){lbSetTooltip [10031,_i,""];};
                                                             };
                   };
+                  If((lbCurSel 10031) < 0)then{ctrlSetText [10029, "Select a Artillery Ammo please!"];};
            };
          };
    case 4:{ //CONTROL REMOVE BUTTON
@@ -168,17 +169,21 @@ switch(_idx)do
           };
    case 6:{
             //CONTROL RELOAD BUTTON
-            If(!(isNull (gunner MSOT_RELOAD_ARTILLERY)) && {!(missionNamespace getVariable [STRVAR_DO(artillery_reload_timer),false])} && {!(MSOT_RELOAD_ARTILLERY getVariable [STRVAR_DO(vehicle_service_inuse),false])})then
+            If(!(isNull (gunner MSOT_RELOAD_ARTILLERY)))then
             {
+              missionNamespace setVariable [STRVAR_DO(artillery_reload_vec),[MSOT_RELOAD_ARTILLERY],true];
+              _control = ((findDisplay 36643) displayCtrl 10028);
               ctrlEnable [10032, false];
               missionNamespace setVariable [STRVAR_DO(artillery_reload_timer),true,false];
+              ((missionNamespace getVariable (STRVAR_DO(artillery_reload_vec))) select 0) setVariable [STRVAR_DO(artillery_vec_inService),true,true];
               _state = [0,2] select isMultiplayer;
               _para = [MSOT_RELOAD_ARTILLERY,false];
               REMOTE_TRIEXESM(_para,usage,doService,_state);
               sleep 40;
-              ["RELOAD",MSOT_RELOAD_ARTILLERY] call MFUNC(dlg,doAmmoUpdate);
+              ["RELOAD",((missionNamespace getVariable (STRVAR_DO(artillery_reload_vec))) select 0)] call MFUNC(dlg,doAmmoUpdate);
+              ((missionNamespace getVariable (STRVAR_DO(artillery_reload_vec))) select 0) setVariable [STRVAR_DO(artillery_vec_inService),false,true];
               missionNamespace setVariable [STRVAR_DO(artillery_reload_timer),false,false];
-              ctrlEnable [10032, true];
+              If(count (lbSelection _control) > 0 && {count (lbSelection _control) < 2})then{ctrlEnable [10032,true];};
             };
           };
    case 7:{
@@ -186,15 +191,20 @@ switch(_idx)do
             If((_info # 2) > 0)then{
             _control = ((findDisplay 36643) displayCtrl 10028);
             _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
-            private _arr = [];
+            private _arr = [];private _del_arr = [];
             {
               _type = [(lbText [10028,_x]),_holder] call MFUNC(dlg,getUnitTypeName);
               _ammo = [(_type select 1),false] call MFUNC(dlg,getAmmoTypes);
-              If(((_ammo select 2) select (lbCurSel 10031)) >= (call compile (ctrlText 10034)) && {!(isNull (gunner (_type select 1)))})then
-              {
-                _arr pushBack (_type select 1);
-              }else{_control lbSetSelected [_x, false];};
+              private _allowed =  switch(true)do
+                                  {
+                                    case (isNull (gunner (_type select 1))):{false};
+                                    case (((_type select 1) getVariable [STRVAR_DO(artillery_vec_inService),false])):{false};
+                                    case (((_ammo select 2) select (lbCurSel 10031)) < (call compile (ctrlText 10034))):{false};
+                                    default {true};
+                                  };
+              If(_allowed)then{_arr pushBack (_type select 1);}else{_del_arr pushBack _x;};
             }forEach (lbSelection _control);
+            If(count _del_arr > 0)then{{_control lbSetSelected [_x, false];}forEach _del_arr;};
             If(count _arr > 0)then
             {
               private _chk = switch(true)do
@@ -215,9 +225,9 @@ switch(_idx)do
                 ctrlEnable [10040, true];
                 private _eta = 0;
                 {_eta = _eta + (_x getArtilleryETA [(getMarkerPos (missionNamespace getVariable [STRVAR_DO(artillery_marker),""])), MSOT_SELECTED_AMMOTYPE]);}forEach _arr;
-                ctrlSetText [10038, (str(round (_eta / (count _arr))))];
-                ctrlSetText [10036, (str ((call compile (ctrlText 10034)) * (count _arr)))];
                 MSOT_ETA_TIMER = (round (_eta / (count _arr)) + 10);
+                ctrlSetText [10038, (str(MSOT_ETA_TIMER))];
+                ctrlSetText [10036, (str ((call compile (ctrlText 10034)) * (count _arr)))];
                 MSOT_ARTILLERY_UNITS = _arr;
                 MSOT_ARTILLERY_ROUNDS = (call compile (ctrlText 10034));
                 MSOT_ARTILLERY_TARGET = (getMarkerPos (missionNamespace getVariable [STRVAR_DO(artillery_marker),""]));
@@ -226,8 +236,8 @@ switch(_idx)do
 
             }else{(_info select 0) ctrlSetChecked [(_info select 1), false];
                   ctrlSetText [10029, "Selected Artillery or Artillery Ammo not available!"];
-                  If(lbSize 10031 > 0)then{lbClear 10031;};ctrlEnable [10039,false];
-                  lbSetCurSel [10031, -1];
+                  If(lbSize 10031 > 0)then{lbClear 10031;};ctrlEnable [10039,false];lbSetCurSel [10031, -1];
+                  If(count (lbSelection _control) < 1)then{ctrlEnable [10032, false];};
                  };
             }else{ctrlEnable [10040, false];ctrlSetText [10038,"0"];
                   ctrlSetText [10036,"0"];
