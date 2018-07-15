@@ -174,7 +174,7 @@ switch(_idx)do
               missionNamespace setVariable [STRVAR_DO(artillery_reload_vec),[MSOT_RELOAD_ARTILLERY],true];
               _control = ((findDisplay 36643) displayCtrl 10028);
               ctrlEnable [10032, false];
-              missionNamespace setVariable [STRVAR_DO(artillery_reload_timer),true,false];
+              missionNamespace setVariable [STRVAR_DO(artillery_reload_timer),true,true];
               ((missionNamespace getVariable (STRVAR_DO(artillery_reload_vec))) select 0) setVariable [STRVAR_DO(artillery_vec_inService),true,true];
               _state = [0,2] select isMultiplayer;
               _para = [MSOT_RELOAD_ARTILLERY,false];
@@ -182,7 +182,7 @@ switch(_idx)do
               sleep 40;
               ["RELOAD",((missionNamespace getVariable (STRVAR_DO(artillery_reload_vec))) select 0)] call MFUNC(dlg,doAmmoUpdate);
               ((missionNamespace getVariable (STRVAR_DO(artillery_reload_vec))) select 0) setVariable [STRVAR_DO(artillery_vec_inService),false,true];
-              missionNamespace setVariable [STRVAR_DO(artillery_reload_timer),false,false];
+              missionNamespace setVariable [STRVAR_DO(artillery_reload_timer),false,true];
               If(count (lbSelection _control) > 0 && {count (lbSelection _control) < 2})then{ctrlEnable [10032,true];};
             };
           };
@@ -247,19 +247,15 @@ switch(_idx)do
             //CONTROL FIRE BUTTON
             ctrlEnable [10040, false];ctrlSetText [10029, "Call Artillery Fire!"];
             _control = ((findDisplay 36643) displayCtrl 10039);
-            //_v_control = ((findDisplay 36643) displayCtrl 10028);
-            //{_v_control lbSetSelected [_x, false];}forEach (lbSelection _v_control);
-            //lbClear 10031; lbSetCurSel [10031, -1];
-
             ctrlEnable [10028, false]; ctrlEnable [10031, false]; ctrlSetText [10034,"0"];
             If(_control ctrlChecked 0)then{_control ctrlSetChecked [0, false];};
-            missionNamespace setVariable [STRVAR_DO(artillery_fire_timer),true,false];
+            missionNamespace setVariable [STRVAR_DO(artillery_fire_timer),true,true];
             _state = [0,2] select isMultiplayer;
             _para = [MSOT_ARTILLERY_UNITS,MSOT_ARTILLERY_TARGET,MSOT_SELECTED_AMMOTYPE,MSOT_ARTILLERY_ROUNDS];
             REMOTE_TRIEXESM(_para,usage,useArtilleryFire,_state);
             {["UPDATE",_x,MSOT_SELECTED_AMMOINDEX,MSOT_ARTILLERY_ROUNDS] call MFUNC(dlg,doAmmoUpdate);}forEach MSOT_ARTILLERY_UNITS;
             sleep MSOT_ETA_TIMER;
             ctrlEnable [10028, true]; ctrlEnable [10031, true];
-            missionNamespace setVariable [STRVAR_DO(artillery_fire_timer),false,false];
+            missionNamespace setVariable [STRVAR_DO(artillery_fire_timer),false,true];
           };
 };
