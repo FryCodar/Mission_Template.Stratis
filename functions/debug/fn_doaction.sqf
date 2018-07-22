@@ -25,7 +25,9 @@ params ["_obj","_caller","_idx","_xtra"];
 
             //  hint str [safezoneW,safezoneX,(safezoneW + safezoneX)];
             //  copyToClipboard str [safezoneW,safezoneX,(safezoneW + safezoneX)];
-
+            _type = "CAR";
+            _pos_idx = [1,2] select (_type In ["APC_AAIR","ARTY"]);
+            hint str _pos_idx;
 
           };
    case 3:{

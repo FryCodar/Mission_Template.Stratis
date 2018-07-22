@@ -48,7 +48,7 @@ switch(_idx)do
             _output = [(position _streetblockname),_dir];
           };
    case 3:{
-            _dir = GET_DIRPOS((position _streetblockname),_optpos;
+            _dir = GET_DIRPOS((position _streetblockname),_optpos);
             _output = [(position _streetblockname),_dir];
           };
   default {LOG_ERR("GRAD_spawnhelp_fnc_getStreetDir: NO POSSIBLE INDEX NUMBER FOUND!");};
