@@ -35,7 +35,7 @@ Parameters: [POSITION,RADIUS,NUMBER GROUPS,NUMBER UNITS,GROUP INDEX,LOCATION,(BE
 Returns: [ARRAY with Names of all created Vehicles]
 
 Examples:
-            _isStored = [(getMarkerPos "start"), 200, 20, 5, "CAR","AREA"] call MSOT_creating_fnc_setUnits;
+            _isStored = [(getMarkerPos "start"), 200,5, "CAR","AREA"] call MSOT_creating_fnc_setUnits;
 
 Author: Fry
 
@@ -52,7 +52,6 @@ switch(true)do
   case (typeName (_pos select 0) == "ARRAY" && typeName (_pos select 1) == "ARRAY"):{_main_pos = (_pos select 0);_spawn_pos = (_pos select 1);};
   case (typeName (_pos select 0) == "SCALAR" && typeName (_pos select 1) == "SCALAR"):{_main_pos = _pos;_spawn_pos = _pos;};
 };
-
 _types_arr = switch(_type)do
              {
                case "CAR":{MSOT_CARS};
@@ -76,11 +75,11 @@ If(count _types_arr > 0)then
                If(count _posses_arr >= _num)then
                {
                  _check_arr = []; _add_st_arr = [];
-                 F_LOOP(_i,0,_num)
+                 F_LOOP(_i,0,(_num - 1))
                  {
-                   _st_bl = random _posses_arr;
+                   _st_bl = selectRandom _posses_arr;
                    _ch = 0;
-                   while{_st_bl In _check_arr && _ch < 30}do{_st_bl = random _posses_arr;_ch = _ch + 1;};
+                   while{_st_bl In _check_arr && _ch < 30}do{_st_bl = selectRandom _posses_arr;_ch = _ch + 1;};
                    ARR_ADDVAR(_add_st_arr,_st_bl);ARR_ADDVAR(_check_arr,_st_bl);
                  };
                  If(count _add_st_arr == _num)then
@@ -97,7 +96,7 @@ If(count _types_arr > 0)then
          switch(_pos_idx)do
          {
            case 1:{
-                    _st_bl = [_pos,800] call MFUNC(spawnhelp,getStreetInDistance);
+                    _st_bl = [_pos,(_radius * 3)] call MFUNC(spawnhelp,getStreetInDistance);
                     If(count _st_bl > 0)then
                     {
                       _new_pos = [_st_bl,_pos,_num] call MFUNC(spawnhelp,getStreetLine);
@@ -112,7 +111,7 @@ If(count _types_arr > 0)then
     If(count _new_pos > 0)then
     {
       _grp_store = []; _vec_store = [];
-      F_LOOP(_i,0,_num)
+      F_LOOP(_i,0,(_num - 1))
       {
         _vec = [];
         _grp = CREA_GROUP(MSOT_ENEMY_SIDE);
@@ -139,10 +138,37 @@ If(count _types_arr > 0)then
           ARR_ADDVAR(_vec_store,(_vec select 0));
           ARR_ADDARR(_grp_store,(_vec select 1));
           [(_vec select 2)] call MFUNC(system,setUnitSkill);
+          (_vec select 2) setBehaviour _behavior;
+	        (_vec select 2) setCombatMode _combat;
+          switch(_pos_idx)do
+          {
+            case 1:{
+                     If(_location isEqualTo "BORDER")then
+                     {
+                       [(_vec select 2),_spawn_pos] call BFUNC(taskAttack);
+                       (_vec select 2) setSpeedMode "LIMITED";
+                     }else{
+                            If(_is_night)then
+                            {
+                              (driver (_vec select 0)) action ["engineOff", (_vec select 0)];
+                            }else{
+                                  [(_vec select 2),_spawn_pos,(round(_radius * 0.5))] call BFUNC(taskPatrol);
+                                  (_vec select 2) setSpeedMode "LIMITED";
+                                 };
+                          };
+                   };
+            case 2:{
+                      (_vec select 0) setFuel 0;
+                   };
+          };
         };
       };
+      If(count _grp_store > 0)then{["GROUPS",_main_pos,_grp_store] spawn MFUNC(system,addToSystem);};
+      If(count _vec_store > 0)then{
+                                    _output = _vec_store;
+                                    ["VEHICLES",_main_pos,_vec_store] spawn MFUNC(system,addToSystem);
+                                    If(_type isEqualTo "ARTY")then{["ARTILLERY",_main_pos,_vec_store] spawn MFUNC(system,addToSystem);};
+                                  };
     };
-
-
 }else{LOG_ERR("NO VEHICLE CLASSES FOUND: CHECK MSOT_creating_fnc_setUnits");};
 _output

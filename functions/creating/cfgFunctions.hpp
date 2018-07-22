@@ -22,5 +22,8 @@ class TAGADD
 			class setCargoUnits {
 														 description = "Fills the Cargo Slots of an Vehicle with Soldiers";
 													 };
+			class setVehicles {
+													description = "Create Vehicles in specific Range!";
+												};
 		 };
 	};
