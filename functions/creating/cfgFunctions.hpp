@@ -4,6 +4,9 @@ class TAGADD
 	{
      class creating
 		 {
+			 class setAirForce {
+				 										description = "Create Air Vehicles!";
+			 									 };
 			 class setUnits {
 				                description = "Create Units/Groups in specific Range!";
 			 								};
@@ -23,7 +26,7 @@ class TAGADD
 														 description = "Fills the Cargo Slots of an Vehicle with Soldiers";
 													 };
 			class setVehicles {
-													description = "Create Vehicles in specific Range!";
+													description = "Create Vehicles!";
 												};
 		 };
 	};

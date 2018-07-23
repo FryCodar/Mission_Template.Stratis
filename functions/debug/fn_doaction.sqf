@@ -25,7 +25,11 @@ params ["_obj","_caller","_idx","_xtra"];
 
             //  hint str [safezoneW,safezoneX,(safezoneW + safezoneX)];
             //  copyToClipboard str [safezoneW,safezoneX,(safezoneW + safezoneX)];
-            [(position player),300,3,"TANK","AREA"] call MFUNC(creating,setVehicles);
+            _vecaaa = [(position player),3000,1] call MFUNC(creating,setAirForce);
+            sleep 15;
+            hint "sprit geht weg";
+            (_vecaaa select 0) setFuel 0;
+            hint str (fuel (_vecaaa select 0));
 
           };
    case 3:{

@@ -7,7 +7,7 @@ Description: Creates defined Vehicles on Battlefield.
 
               SERVER/HEADLESS CLIENT
 
-Parameters: [POSITION,RADIUS,NUMBER GROUPS,NUMBER UNITS,GROUP INDEX,LOCATION,(BEHAVIORMODE),(COMBATMODE)]
+Parameters: [POSITION,RADIUS,NUMBER VEHICLES,INDEX,LOCATION,(NIGHTMODE),(BEHAVIORMODE),(COMBATMODE)]
 
             POSITION  -  ARRAY with Position or ARRAY with 2 Position Arrays
                          1 Position array is the Main- and Spawnposition together to add the Vehicles in System
@@ -136,7 +136,7 @@ If(count _types_arr > 0)then
         If(count _vec > 0)then
         {
           ARR_ADDVAR(_vec_store,(_vec select 0));
-          ARR_ADDARR(_grp_store,(_vec select 1));
+          ARR_ADDVAR(_grp_store,(_vec select 2));
           [(_vec select 2)] call MFUNC(system,setUnitSkill);
           (_vec select 2) setBehaviour _behavior;
 	        (_vec select 2) setCombatMode _combat;
