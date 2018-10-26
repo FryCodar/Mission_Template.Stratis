@@ -7,7 +7,7 @@ _player = player;
 
 _player setUnitTrait ["UAVHacker",true];
 
-If((missionNamespace getVariable [STRVAR_DO(equip_cleaner),true]) && (["start_with_nothing",0] call BFUNC(getParamValue)) == 1)then{
+If(MSOT_CLEAR_EQUIPMENT && (["start_with_nothing",0] call BFUNC(getParamValue)) == 1)then{
 If(count NEW_SETTING > 0)then{
   [_player] execVM NEW_SETTING;
 }else{

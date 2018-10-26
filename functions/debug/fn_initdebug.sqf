@@ -4,7 +4,7 @@ if(!hasInterface) exitwith {};
 
 private ["_counter"];
 
-If((["debug_modus",1] call BIS_fnc_getParamValue) == 1)then
+If((["debug_modus",1] call BIS_fnc_getParamValue) == 1 || MSOT_DEBUG_MODE)then
 {
 diag_log "INIT DEBUG: Starte DEBUG MODE";
 _counter = 0;
