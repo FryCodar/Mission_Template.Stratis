@@ -10,11 +10,11 @@ params ["_idx","_state",["_target",objNull],["_added_txt",""]];
 switch(_idx)do
 {
   case 0:{
-            _task_name = "";
+            _task_name = "TASK1";
 
-            _task_description_long = "";
+            _task_description_long = "Hello";
 
-            _task_description_forHUD = "";
+            _task_description_forHUD = "ich da";
 
             _task_Type  = "move";
 

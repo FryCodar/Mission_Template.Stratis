@@ -23,14 +23,6 @@ params ["_obj","_caller","_idx","_xtra"];
             hint "Script 1 begins";
             //_____________________________________________________________________________________________________________________________
 
-            //  hint str [safezoneW,safezoneX,(safezoneW + safezoneX)];
-            //  copyToClipboard str [safezoneW,safezoneX,(safezoneW + safezoneX)];
-            _vecaaa = [(position player),3000,1] call MFUNC(creating,setAirForce);
-            sleep 15;
-            hint "sprit geht weg";
-            (_vecaaa select 0) setFuel 0;
-            hint str (fuel (_vecaaa select 0));
-
           };
    case 3:{
             //ZWEITER TESTBEREICH
