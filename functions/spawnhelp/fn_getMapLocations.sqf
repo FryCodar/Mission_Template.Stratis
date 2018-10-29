@@ -4,13 +4,13 @@ Function: MSOT_spawnhelp_fnc_getMapLocations
 
 Description: Find Locations on Map
 
-Parameters: [Number,position,min radius, max radius]
+Parameters: [position,min radius, max radius, numberof houses]
 
-            Number (Optinal): minimum count of Houses - 6 Houses is default Value
+
             Position (Optional): Center for Searching Locations
             MIN RADIUS (Optional): Minimum Distance to find Locations in metres
             MAX RADIUS (Optional): Maximum Distance to find Locations in metres
-
+            Number (Optinal): minimum count of Houses - 6 Houses is default Value
 
 Returns: Array with Arrays of available Locations
          [["CityName",position, size]]
@@ -24,7 +24,7 @@ Author: Fry
 -------------------------------------------------------------------------------------------------- */
 private ["_not_allowed","_output","_dist","_location_arr","_config","_angle","_name","_pos","_xsize","_ysize","_type","_text","_size",
          "_house_num","_town_arr"];
-params ["_center","_min_radius","_max_radius",["_min_houses",6]];
+params [["_center",[0,0,0]],["_min_radius",0],["_max_radius",worldSize],["_min_houses",6]];
 
 If(_min_radius >= _max_radius)then{If(true) exitWith {LOG_ERR("GRAD_spawnhelp_fnc_getMapLocations: CHECK MIN/MAX RADIUS");};};
 _not_allowed = ["Hill","NameMarine","Mount"];
@@ -52,7 +52,7 @@ If(count _location_arr > 0)then
       {
         _town_arr = [_name,_pos,_size];
         ARR_ADDVAR(_output,_town_arr);
-      };      
+      };
     };
   }forEach _location_arr;
 };
