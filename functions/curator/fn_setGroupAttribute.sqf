@@ -15,7 +15,7 @@ Author: Fry
 
 ----------------------------------------------------------------------------------------------------------------- */
 params["_curator","_added_group"];
-sleep 2;
+sleep (1 + (random 1));
 private _owner_id = clientOwner;
 If((groupOwner _added_group) isEqualTo _owner_id)then{
 [_added_group] spawn MFUNC(system,setUnitSkill);
