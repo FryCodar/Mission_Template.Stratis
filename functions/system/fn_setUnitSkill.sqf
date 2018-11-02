@@ -17,7 +17,6 @@ Author: Fry
 -------------------------------------------------------------------------------------------------- */
 private ["_skill","_x"];
 params ["_grp_name"];
-
 _skill = [];
 
 switch(["mission_difficulty",2] call BFUNC(getParamValue))do

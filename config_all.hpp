@@ -66,6 +66,7 @@ class CfgFunctions
 		#include "functions\geometry\cfgFunctions.hpp"
 		#include "functions\creating\cfgFunctions.hpp"
 		#include "functions\briefing\cfgFunctions.hpp"
+		#include "functions\curator\cfgFunctions.hpp"
 		#include "functions\dlg\cfgFunctions.hpp"
 };
 

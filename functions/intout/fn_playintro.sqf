@@ -1,10 +1,9 @@
 If(!hasInterface) exitWith {};
 #include "msot_components.hpp"
 
-//If(isMultiplayer)then{waitUntil{getClientStateNumber > 9};};
+
 
 private ["_segmented_time","_hour","_minute","_missionName","_stringed_minute","_intro_datas"];
-
 If(((["play_intro_music",1] call BIS_fnc_getParamValue) isEqualTo 1) && MSOT_PLAY_INTRO_MUSIC)then{playMusic "EventTrack01_F_EPA";};
 _stringed_minute = "";
 _hour = floor daytime;
@@ -13,12 +12,13 @@ If(_minute < 10)then{_stringed_minute = format["0%1",_minute];}else{_stringed_mi
 If(((["play_intro", 1] call BFUNC(getParamValue)) isEqualTo 1) && MSOT_PLAY_INTRO_WITH_CAM)then
 {
   _segmented_time = round(MSOT_INTRO_TIME * 0.5);
-  cutText ["","BLACK"];
+  cutText ["","BLACK",0.001];
   sleep 2;
   [] spawn MFUNC(intout,runcamera);
   cutText ["","BLACK IN",2];
   sleep _segmented_time;
 };
+
 sleep 2;
 If(MSOT_PLAY_INTRO_WITH_LOGO)then
 {
