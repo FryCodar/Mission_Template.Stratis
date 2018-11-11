@@ -10,9 +10,9 @@ class TAGADD
 				class checkParachute {
 															 description = "Check and add a Parachute to given Unit.";
 														 };
-			  class doCutText {
-													description = "Shows an Black Screen with Text.";
-												};
+			  class deleteAllinArea {
+																description = "Delete all Objects in a defined Area.";
+															};
 			  class doService {
 					                description = "Servicing and Reload Vehicles.";
 												};
