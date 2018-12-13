@@ -55,9 +55,8 @@ If(_counter < 1 && {missionNamespace getVariable ["msot_run_countdown",true]})th
 
 MSOT_fnc_actionCount = {
 If(!hasInterface)exitWith{};
-private ["_new_counter","_txt","_txt_minutes","_txt_seconds","_calc_time","_sec_calc"];
+private ["_new_counter","_new_value","_txt","_txt_minutes","_txt_seconds","_calc_time","_sec_calc"];
 params ["_seconds"];
-
 _new_counter = _seconds;
 _txt = "";
 _txt_minutes = "00:";
@@ -71,7 +70,7 @@ while{_new_counter > 0 && {missionNamespace getVariable ["msot_run_countdown",tr
   {
     _calc_time = _new_counter / 60; _sec_calc = (_calc_time - (floor _calc_time));
     If((floor _calc_time) > 9)then{_txt_minutes = format["%1:",(floor _calc_time)];}else{_txt_minutes = format["0%1:",(floor _calc_time)];};
-    If((_sec_calc * 60) > 10)then{_txt_seconds = format["%1",(round(_sec_calc * 60))];}else{_txt_seconds = format["0%1",(round(_sec_calc * 60))];};
+    If((round(_sec_calc * 60)) >= 10)then{_txt_seconds = format["%1",(round(_sec_calc * 60))];}else{_txt_seconds = format["0%1",(round(_sec_calc * 60))];};
   }else{
          _txt_minutes = "00:";
          If(_new_counter > 9)then{_txt_seconds = format["%1",_new_counter];}else{_txt_seconds = format["0%1",_new_counter];};
