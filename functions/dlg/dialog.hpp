@@ -49,7 +49,7 @@ onUnload = "uiNamespace setVariable ['msot_dlg',[]];";
 			h = H_SIZE(0.043);
 			text = "";
       toolTip = "Close Tablet";
-			action = "closeDialog ((uiNamespace getVariable ['msot_dlg',[0]]) select 0);";
+			action = "closeDialog ((uiNamespace getVariable ['msot_dlg',[0]]) select 0)";
 		};
 
     class DIARSC(Artillery_1st,Btn): DIARSC(normal,RscPicButton)
@@ -67,7 +67,7 @@ onUnload = "uiNamespace setVariable ['msot_dlg',[]];";
 			h = H_SIZE(0.2);
 			text = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\artillery_ca.paa";
       toolTip = "Call Artillery Strike";
-			action = "createDialog 'MSOT_ARTILLERY_TABLE';";
+			action = "createDialog 'MSOT_ARTILLERY_TABLE'";
 		};
     class DIARSC(Airsupply_2nd,Btn): DIARSC(normal,RscPicButton)
 		{
@@ -84,7 +84,7 @@ onUnload = "uiNamespace setVariable ['msot_dlg',[]];";
 			h = H_SIZE(0.2);
 			text = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\supplydrop_ca.paa";
       toolTip = "Call Air Supplies";
-			action = "hint 'Airsupply';";
+			action = "hint 'Airsupply'";
 		};
     class DIARSC(Aircas_3rd,Btn): DIARSC(normal,RscPicButton)
 		{
@@ -101,7 +101,7 @@ onUnload = "uiNamespace setVariable ['msot_dlg',[]];";
 			h = H_SIZE(0.2);
       text = "\a3\Ui_f\data\GUI\Cfg\CommunicationMenu\cas_ca.paa";
 			toolTip = "Call Close Air Support (CAS)";
-			action = "hint 'C A S';";
+			action = "hint 'C A S'";
 		};
     class DIARSC(Satview_4th,Btn): DIARSC(normal,RscPicButton)
 		{
@@ -118,7 +118,7 @@ onUnload = "uiNamespace setVariable ['msot_dlg',[]];";
 			h = H_SIZE(0.2);
 			text = "\a3\Ui_f\data\GUI\Rsc\RscDisplayArsenal\gps_ca.paa";
       toolTip = "Open SatView System";
-			action = "hint 'SatView';";
+			action = "hint 'SatView'";
 
 		};
   };
@@ -160,7 +160,7 @@ class MSOT_ARTILLERY_TABLE
    			h = H_SIZE(0.043);
    			text = "";
         toolTip = "Go Back";
-   			action = "closeDialog ((uiNamespace getVariable ['msot_dlg',[0]]) select 0);";
+   			action = "closeDialog ((uiNamespace getVariable ['msot_dlg',[0]]) select 0)";
    		};
       class DIARSC(Map_Artillery,Screen): DIARSC(normal,Map)
       {
@@ -190,7 +190,7 @@ class MSOT_ARTILLERY_TABLE
         y = Y_CALC(0.240);
         w = W_SIZE(0.316);
         h = H_SIZE(0.09);
-        onLBSelChanged = "[1,(_this select 1)] spawn MSOT_dlg_fnc_wowArtillery;";
+        onLBSelChanged = "[1,(_this select 1)] spawn MSOT_dlg_fnc_wowArtillery";
       };
       class DIARSC(AddBtn_Artillery,ListBtn): DIARSC(normal,RscButton)
       {
@@ -205,7 +205,7 @@ class MSOT_ARTILLERY_TABLE
   			h = H_SIZE(0.03);
   			text = "Add";
         toolTip = "Add Vehicle";
-  			action = "[2] spawn MSOT_dlg_fnc_wowArtillery;";
+  			action = "[2] spawn MSOT_dlg_fnc_wowArtillery";
       };
       class DIARSC(RemBtn_Artillery,ListBtn): DIARSC(normal,RscButton)
       {
@@ -220,7 +220,7 @@ class MSOT_ARTILLERY_TABLE
   			h = H_SIZE(0.03);
   			text = "Remove";
         toolTip = "Remove Vehicle";
-  			action = "[4] spawn MSOT_dlg_fnc_wowArtillery;";
+  			action = "[4] spawn MSOT_dlg_fnc_wowArtillery";
       };
       class DIARSC(Frame2_Artillery,Infoframe): DIARSC(normal,RscFrame)
       {
@@ -241,7 +241,7 @@ class MSOT_ARTILLERY_TABLE
         y = Y_CALC(0.397);
         w = W_SIZE(0.316);
         h = H_SIZE(0.09);
-        onLBSelChanged = "[3,(_this select 1)] spawn MSOT_dlg_fnc_wowArtillery;";
+        onLBSelChanged = "[3,(_this select 1)] spawn MSOT_dlg_fnc_wowArtillery";
       };
       class DIARSC(Text1_Artillery,InfoText): DIARSC(normal,RscText)
       {
@@ -271,7 +271,7 @@ class MSOT_ARTILLERY_TABLE
         y = Y_CALC(0.542);
         w = W_SIZE(0.155);
         h = H_SIZE(0.075);
-        onLBSelChanged = "[5,(_this select 1)] spawn MSOT_dlg_fnc_wowArtillery;";
+        onLBSelChanged = "[5,(_this select 1)] spawn MSOT_dlg_fnc_wowArtillery";
       };
       class DIARSC(RelBtn_Artillery,ListBtn): DIARSC(normal,RscButton)
       {
@@ -286,7 +286,7 @@ class MSOT_ARTILLERY_TABLE
   			h = H_SIZE(0.075);
   			text = "Reload";
         toolTip = "Reload Vehicle";
-  			action = "[6] spawn MSOT_dlg_fnc_wowArtillery;";
+  			action = "[6] spawn MSOT_dlg_fnc_wowArtillery";
       };
       class DIARSC(Frame4_Artillery,Infoframe): DIARSC(normal,RscFrame)
       {
@@ -370,7 +370,7 @@ class MSOT_ARTILLERY_TABLE
       	y = Y_CALC(0.71);
       	w = W_SIZE(0.07);
       	h = H_SIZE(0.044);
-        onCheckBoxesSelChanged = "[7,_this] spawn MSOT_dlg_fnc_wowArtillery;";
+        onCheckBoxesSelChanged = "[7,_this] spawn MSOT_dlg_fnc_wowArtillery";
       };
       class DIARSC(FireBtn_Artillery,ActBtn): DIARSC(normal,RscButton)
       {
@@ -385,7 +385,7 @@ class MSOT_ARTILLERY_TABLE
   			h = H_SIZE(0.075);
   			text = "FIRE";
         toolTip = "";
-  			action = "[8] spawn MSOT_dlg_fnc_wowArtillery;";
+  			action = "[8] spawn MSOT_dlg_fnc_wowArtillery";
       };
     };
 };

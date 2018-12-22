@@ -27,7 +27,7 @@ If(_safety_zone)then
     _angle = floor (random 360);
     _new_radius = (round(random _radius));
     If(_new_radius <= _num)then{_new_radius = (_num + 2);};
-    _ari_point = _center getPos [_new_radius * sqrt random 1, _angle];
+    _ari_point = _center getPos [_new_radius, _angle];
     while{count _ari_point == 0 && _co < 20}do
     {
       _angle = floor (random 360);
