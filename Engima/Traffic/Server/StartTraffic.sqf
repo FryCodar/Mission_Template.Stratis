@@ -396,7 +396,7 @@ ENGIMA_TRAFFIC_StartTraffic = {
                     player sideChat _logMsg;
                 };
 
-				if (_goOnWithSpawn && { _vehicleClassName != "" } && { !_userMessedUp }) then {
+				if (_goOnWithSpawn && { _vehicleClassName != "" } && { !_userMessedUp } && {!(missionNamespace getVariable ["engima_stop_traffic",false])}) then {
 		            _result = [_pos, _direction, _vehicleClassName, _side] call BIS_fnc_spawnVehicle;
 		            _vehicle = _result select 0;
 		            _vehiclesCrew = _result select 1;
