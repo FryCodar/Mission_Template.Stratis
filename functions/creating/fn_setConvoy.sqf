@@ -28,7 +28,9 @@ Author: Fry
 
 ------------------------------------------------------------------------------------------------------------- */
 private ["_output","_class_types","_street_data","_street_block","_vec_block","_crew_count","_vec_store","_re_veh","_force_calc","_script","_grp_arr","_street_wp","_street_wppos"];
-params ["_main_pos","_radius","_types","_delopat",["_pat_radius",200]];
+params ["_main_pos","_radius","_types",["_delopat","PATROL"],["_pat_radius",200]];
+
+If((missionNamespace getVariable [STRVAR_DO(allow_engima_traffic),1]) == 1)then{missionNamespace setVariable ["engima_stop_traffic",true,true];};
 
 _output = [];
 _street_pos = If((typeName _radius) isEqualTo "SCALAR")then{[_main_pos,_radius] call MFUNC(spawnhelp,getStreetInDistance)}else{_radius};
@@ -87,7 +89,7 @@ If(count _street_pos > 0)then
        missionNamespace setVariable[STRVAR_DO(convoy_route),nil];
       }else{
             _street_wp = [_main_pos,_pat_radius] call MFUNC(spawnhelp,nearestStreet);
-            _street_wppos = If(!(_street_wp isEqualTo ""))then{position _street_wp}else{_main_pos};
+            _street_wppos = If(!(_street_wp isEqualTo ""))then{position _street_wp}else{[_main_pos,_pat_radius,50] call MFUNC(geometry,getCirclePos)};
             sleep 0.1;
             [_grp,_street_wppos,1,"MOVE","AWARE","GREEN","NORMAL","FILE"] call CBA_fnc_addWaypoint;
             [_grp,_street_wppos,2,"TR UNLOAD","AWARE","GREEN","NORMAL","FILE"] call CBA_fnc_addWaypoint;
@@ -104,7 +106,7 @@ If(count _street_pos > 0)then
                                        };
 
           };
-          {_x setConvoySeparation 15;}forEach _output;
+          {_x setConvoySeparation 10;}forEach _output;
           _script = {If(!(missionNamespace getVariable["msot_convoy_stopped",false]))then
                      {
                        {if(alive _x && canMove _x)then{_x limitSpeed 40;};}forEach _this;
@@ -139,6 +141,7 @@ If(count _street_pos > 0)then
           _attackPos = (position _first_vec);
           {
             _vec = (_x select 0); _grp_arr = (_x select 1);_crew_num = (_x select 2);
+            (driver _vec) allowFleeing 0;
             If(count _grp_arr > 0)then
             {
               If(alive _vec)then
@@ -260,6 +263,7 @@ If(count _street_pos > 0)then
 
              };
         missionNamespace setVariable["msot_convoy_stopped",nil];
+        If((missionNamespace getVariable [STRVAR_DO(allow_engima_traffic),1]) == 1)then{missionNamespace setVariable ["engima_stop_traffic",false,true];};
       };
     };
   };
