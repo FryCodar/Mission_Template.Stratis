@@ -10,7 +10,7 @@
  * Parameter(s):
  * A list with configuration options for the traffic instance.
  */
-"engima_stop_traffic"
+
 ENGIMA_TRAFFIC_StartTraffic = {
 	private ["_allPlayerPositions", "_allPlayerPositionsTemp", "_activeVehicles", "_undamagedVehiclesCount", "_vehiclesGroup", "_spawnSegment", "_vehicle", "_group", "_result", "_vehicleClassName", "_vehiclesCrew", "_skill", "_minDistance", "_trafficLocation"];
 	private ["_currentEntityNo", "_vehicleVarName", "_tempVehicles", "_deletedVehiclesCount", "_firstIteration", "_roadSegments", "_destinationSegment", "_destinationPos", "_direction"];

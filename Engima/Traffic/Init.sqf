@@ -21,7 +21,7 @@ if (_headlessClientPresent && isMultiplayer) then {
 }
 else {
     if (isServer) then {
-        _runOnThisMachine = true;;   
+        _runOnThisMachine = true;
     };
 };
 
