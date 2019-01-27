@@ -2,7 +2,12 @@
 //this in every Mission
 //**************************************************************************************************************************************************
 waitUntil{!isNil "bis_fnc_init"};
-DEBUG_MODE = ((["debug_modus",1] call BIS_fnc_getParamValue) isEqualTo 0);
+[] spawn {
+            private _st_timer = (time + 10);
+            waitUntil{!isNil "MSOT_DEBUG_MODE" || {time > _st_timer}};
+            If(isNil "MSOT_DEBUG_MODE")then{MSOT_DEBUG_MODE = false;};
+            DEBUG_MODE = If(((["debug_modus",1] call BIS_fnc_getParamValue) isEqualTo 1) || MSOT_DEBUG_MODE)then{true}else{false};
+         };
 FRY_INIT = false;
 
 If(!hasInterface)then{FRY_INIT = true;}else{If(isNull player)then{[] spawn {waitUntil {!isNull player && player == player}; FRY_INIT = true;};}else{FRY_INIT = true;};};
