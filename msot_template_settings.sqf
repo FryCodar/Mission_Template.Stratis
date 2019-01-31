@@ -10,17 +10,17 @@ umzubenennen.
 */
 
 //Aktiviert den DEBUG-Modus: true - an / false - aus
-MSOT_DEBUG_MODE = true; //default: false
+MSOT_DEBUG_MODE = false; //default: false
 
 //------------------------------------------------------------------------
 // Spielt das Intro mit Camerafahrt ab: true - an / false - aus
-MSOT_PLAY_INTRO_WITH_CAM = false; //default: true
+MSOT_PLAY_INTRO_WITH_CAM = true; //default: true
 
 // Spielt das MSOT LOGO ab: true - an / false - aus
-MSOT_PLAY_INTRO_WITH_LOGO = false; //default: true
+MSOT_PLAY_INTRO_WITH_LOGO = true; //default: true
 
 // Spielt die Intro Musik ab: true - an / false - aus
-MSOT_PLAY_INTRO_MUSIC = false; //default: true
+MSOT_PLAY_INTRO_MUSIC = true; //default: true
 
 //Intro Länge in Sekunden
 MSOT_INTRO_TIME = 25; //default: 25
