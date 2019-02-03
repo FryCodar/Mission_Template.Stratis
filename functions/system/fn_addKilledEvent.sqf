@@ -26,11 +26,15 @@ params["_obj","_state"];
 _chk = true;
 _script = switch(toUpper _state)do
           {
-            case "SUCCESS":{{["MAINTARGETS",(_this select 0),"SUCCESS"] spawn MSOT_system_fnc_eventHandling;}};
-            case "FAILED":{{["MAINTARGETS",(_this select 0),"FAILED"] spawn MSOT_system_fnc_eventHandling;}};
+            case "SUCCESS":{{["MAINTARGETS",(_this select 0),"SUCCESS"] spawn MSOT_system_fnc_manageMissionCheck;}};
+            case "FAILED":{{["MAINTARGETS",(_this select 0),"FAILED"] spawn MSOT_system_fnc_manageMissionCheck;}};
             default {_chk = false;LOG_ERR("ADDKILLEDEVENT : WRONG INDEX TYPE DETECTED! NO EVENTHANDLER ATTACHED!");};
           };
 If(_chk)then
 {
-  _obj addEventHandler ["killed", _script];
+  switch(([0,1] select isMultiplayer))do
+  {
+    case 0:{_obj addEventHandler ["killed", _script];};
+    case 1:{_obj addMPEventHandler ["mpkilled", _script];};
+  };
 };

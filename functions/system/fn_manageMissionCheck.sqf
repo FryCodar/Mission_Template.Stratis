@@ -15,7 +15,7 @@ Author: Fry
 
 If(isNil "MANAGE_MISSION_HOLDER")then{MANAGE_MISSION_HOLDER = [];};
 private _check_arr = _this;
-sleep 1;
+sleep 2;
 missionNamespace setVariable [STRVAR_DO(write_to_manager),true,false];
 ARR_ADDVAR(MANAGE_MISSION_HOLDER,_check_arr);
 missionNamespace setVariable [STRVAR_DO(write_to_manager),false,false];

@@ -25,9 +25,6 @@ class TAGADD
 			 class eventHandling {
 				 										 description = "Edit and handle the pushed Event";
 			 										 };
-			 class getClientAction {
-				 											 description = "AddAction Framework";
-			 											 };
 			 class getForcesCalc {
 				 										 description = "Calculated number of enemies";
 			 										 };

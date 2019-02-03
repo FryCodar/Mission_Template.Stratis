@@ -42,7 +42,7 @@ If(count _holder > 0)then
   };
   If(_this call (compile (_holder select 2)))then
   {
-    ["MAINTARGETS",_obj,(_holder select 0)] spawn MFUNC(system,eventHandling);
+    ["MAINTARGETS",_obj,(_holder select 0)] remoteExec [STR_MFUNC(system,manageMissionCheck),([0,-2] select isDedicated),false];
     If(_holder select 3)then
     {
       deleteVehicle _obj;
