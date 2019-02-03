@@ -22,9 +22,6 @@ class TAGADD
 			 class doMissionCheck {
 				 											description = "Framework for Missions";
 			 											};
-			 class eventHandling {
-				 										 description = "Edit and handle the pushed Event";
-			 										 };
 			 class getForcesCalc {
 				 										 description = "Calculated number of enemies";
 			 										 };
