@@ -22,7 +22,9 @@ params ["_obj","_caller","_idx","_xtra"];
             // ERSTER TESTBEREICH
             hint "Script 1 begins";
             //_____________________________________________________________________________________________________________________________
-            
+            _modules = [Car1,true] call MSOT_creating_fnc_setFSeffect;
+
+
           };
    case 3:{
             //ZWEITER TESTBEREICH

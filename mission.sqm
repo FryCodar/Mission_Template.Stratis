@@ -5,21 +5,21 @@ class EditorData
 	angleGridStep=0.2617994;
 	scaleGridStep=1;
 	autoGroupingDist=10;
-	toggles=2;
+	toggles=514;
 	class ItemIDProvider
 	{
-		nextID=662;
+		nextID=673;
 	};
 	class MarkerIDProvider
 	{
-		nextID=11;
+		nextID=12;
 	};
 	class Camera
 	{
-		pos[]={1252.0283,610.31177,4921.1475};
-		dir[]={0.70220917,-0.53652316,0.46827659};
-		up[]={0.44642696,0.84380317,0.29770252};
-		aside[]={0.55488324,-2.288929e-006,-0.83208144};
+		pos[]={2060.8032,15.824814,5593.1187};
+		dir[]={0.26507273,-0.52360272,0.80982417};
+		up[]={0.16290423,0.85187852,0.49768659};
+		aside[]={0.95050919,-3.4347031e-006,-0.31112331};
 	};
 };
 binarizationWanted=0;
@@ -27,6 +27,7 @@ addons[]=
 {
 	"A3_Ui_F",
 	"A3_Characters_F",
+	"ace_explosives",
 	"A3_Structures_F_Mil_Shelters",
 	"A3_Structures_F_EPA_Mil_Scrapyard",
 	"A3_Supplies_F_Heli_Slingload",
@@ -43,7 +44,7 @@ class AddonsMetaData
 {
 	class List
 	{
-		items=12;
+		items=13;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -60,68 +61,75 @@ class AddonsMetaData
 		};
 		class Item2
 		{
+			className="ace_explosives";
+			name="ACE3 - Explosives";
+			author="ACE-Team";
+			url="http://ace3mod.com/";
+		};
+		class Item3
+		{
 			className="A3_Structures_F_Mil";
 			name="Arma 3 - Military Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item3
+		class Item4
 		{
 			className="A3_Structures_F_EPA";
 			name="Arma 3 Survive Episode - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item4
+		class Item5
 		{
 			className="A3_Supplies_F_Heli";
 			name="Arma 3 Helicopters - Ammoboxes and Supplies";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item5
+		class Item6
 		{
 			className="ace_refuel";
 			name="ACE3 - Refuel";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item6
+		class Item7
 		{
 			className="ace_repair";
 			name="ACE3 - Repair";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item7
+		class Item8
 		{
 			className="ace_cargo";
 			name="ACE3 - Cargo";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item8
+		class Item9
 		{
 			className="ace_rearm";
 			name="ACE3 - Rearm";
 			author="ACE-Team";
 			url="http://ace3mod.com/";
 		};
-		class Item9
+		class Item10
 		{
 			className="A3_Structures_F_Bootcamp";
 			name="Arma 3 Bootcamp Update - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item10
+		class Item11
 		{
 			className="A3_Structures_F_Heli";
 			name="Arma 3 Helicopters - Buildings and Structures";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
-		class Item11
+		class Item12
 		{
 			className="A3_Modules_F_Curator";
 			name="Arma 3 Zeus Update - Scripted Modules";
@@ -256,7 +264,7 @@ class Mission
 			side="West";
 			class Entities
 			{
-				items=6;
+				items=8;
 				class Item0
 				{
 					dataType="Object";
@@ -272,7 +280,7 @@ class Mission
 						skill=0.80332088;
 						rank="CAPTAIN";
 						name="S1";
-						description="Teamleader";
+						description="Teamleader (Zeus)";
 						isPlayer=1;
 						isPlayable=1;
 					};
@@ -628,6 +636,130 @@ class Mission
 										};
 									};
 									value=1.03;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item6
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2065.5681,6.7314386,5602.479};
+						angles[]={0,4.9375362,0};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						skill=0.80332088;
+						rank="SERGEANT";
+						description="Sani";
+						isPlayable=1;
+					};
+					id=671;
+					type="B_medic_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male04ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=1;
+								};
+							};
+						};
+						nAttributes=2;
+					};
+				};
+				class Item7
+				{
+					dataType="Object";
+					class PositionInfo
+					{
+						position[]={2063.76,6.7314386,5602.6641};
+						angles[]={0,4.8290877,0};
+					};
+					side="West";
+					flags=5;
+					class Attributes
+					{
+						skill=0.80332088;
+						rank="SERGEANT";
+						description="Sprengmeister";
+						isPlayable=1;
+					};
+					id=672;
+					type="B_soldier_exp_F";
+					class CustomAttributes
+					{
+						class Attribute0
+						{
+							property="speaker";
+							expression="_this setspeaker _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"STRING"
+										};
+									};
+									value="Male02ENG";
+								};
+							};
+						};
+						class Attribute1
+						{
+							property="pitch";
+							expression="_this setpitch _value;";
+							class Value
+							{
+								class data
+								{
+									class type
+									{
+										type[]=
+										{
+											"SCALAR"
+										};
+									};
+									value=0.97000003;
 								};
 							};
 						};
@@ -1154,12 +1286,12 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={2128.5774,20.840597,6393.1455};
+				position[]={2230.0945,20.84082,6376.917};
 			};
 			name="CURATOR1";
 			id=655;
 			type="ModuleCurator_F";
-			atlOffset=55.931374;
+			atlOffset=59.359634;
 			class CustomAttributes
 			{
 				class Attribute0

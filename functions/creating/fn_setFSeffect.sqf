@@ -22,7 +22,7 @@ Author: Fry
 -------------------------------------------------------------------------------------------------- */
 If(isMultiplayer)then{if(hasInterface)exitwith{};};
 #include "msot_components.hpp"
-private ["_make_damage","_output_arr","_module_name_arr","_center_log","_Gmodul","_pos","_bound_pos",
+private ["_make_damage","_output_arr","_module_name_arr","_pos","_bound_pos",
          "_modul1","_modul2","_save_arr","_x"];
 
 params["_obj","_dofulldamage"];
@@ -33,8 +33,6 @@ _output_arr = [];
 switch(typeName _obj)do
 {
   case "ARRAY":{
-                 _center_log = createCenter sideLogic;
-                 _Gmodul = CREA_GROUP(_center_log);
                 {
                   If(typeName _x == "OBJECT")then
                   {
@@ -44,8 +42,8 @@ switch(typeName _obj)do
                    };
                   _pos = position _x;
                   _bound_pos = ((boundingCenter _x) select 2);
-                  _modul1 = _Gmodul createUnit ["ModuleEffectsSmoke_F", _pos, [], 0, "CAN_COLLIDE"];
-                  _modul2 = _Gmodul createUnit ["ModuleEffectsFire_F", _pos, [], 0, "CAN_COLLIDE"];
+                  _modul1 = createVehicle ["test_EmptyObjectForSmoke", _pos, [], 0, "CAN_COLLIDE"];
+                  _modul2 = createVehicle ["test_EmptyObjectForFireBig", _pos, [], 0, "CAN_COLLIDE"];
                   SET_POSNOR(_modul1,_pos,_bound_pos);
                   SET_POSNOR(_modul2,_pos,_bound_pos);
                   ARR_ADDVAR(_module_name_arr,_modul1);
@@ -54,17 +52,14 @@ switch(typeName _obj)do
                 }forEach _obj
                };
   case "OBJECT":{
-                  _center_log = createCenter sideLogic;
-                  _Gmodul = createGroup _center_log;
-
                   if(_make_damage)then
                   {
                     _obj setDamage [1,false];
                   };
                  _pos = position _obj;
                  _bound_pos = ((boundingCenter _obj) select 2);
-                 _modul1 = _Gmodul createUnit ["ModuleEffectsSmoke_F", _pos, [], 0, "CAN_COLLIDE"];
-                 _modul2 = _Gmodul createUnit ["ModuleEffectsFire_F", _pos, [], 0, "CAN_COLLIDE"];
+                 _modul1 = createVehicle ["test_EmptyObjectForSmoke", _pos, [], 0, "CAN_COLLIDE"];
+                 _modul2 = createVehicle ["test_EmptyObjectForFireBig", _pos, [], 0, "CAN_COLLIDE"];
                  SET_POSNOR(_modul1,_pos,_bound_pos);
                  SET_POSNOR(_modul2,_pos,_bound_pos);
                  ARR_ADDVAR(_module_name_arr,_modul1);
