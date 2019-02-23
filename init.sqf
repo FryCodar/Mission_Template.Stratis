@@ -19,9 +19,9 @@ enableSentences false;
 //***************************************************************************************************************************************************
 If(isServer)then
 {
-  //[[A1,A2],30] call MFUNC(usage,addRespawnVecs);
-  //[Ar1,Ar2,Ar3,Ar4] call MFUNC(dlg,addArtilleryUnits);
-  //missionNameSpace setVariable [STRVAR_DO(available_artillery),true,true];
+  //[[F1],30] call MFUNC(usage,addRespawnVecs);
+  [F1] call MFUNC(dlg,addArtilleryUnits);
+  missionNameSpace setVariable [STRVAR_DO(available_artillery),true,true];
    execVM "Engima\enigma_init.sqf";
 };
 If(hasInterface)then

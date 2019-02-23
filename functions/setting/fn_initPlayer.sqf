@@ -64,13 +64,13 @@ if(count (missionNamespace getVariable [STRVAR_DO(missions_stored_tasks),[]]) > 
 };
 
 // Add Tactic Tablet to ACE SelfInteraction
-/*
+
 If(isClass(configfile >> "CfgMods" >> "ace"))then
 {
   private _action = ["msot_tactic_tablet","Open Tablet","",{createDialog "MSOT_Tactic_Table"},{true}] call ace_interact_menu_fnc_createAction;
   [player, 1, ["ACE_SelfActions"], _action] call ace_interact_menu_fnc_addActionToObject;
 };
-*/
+
 init_player = true;
 
 true

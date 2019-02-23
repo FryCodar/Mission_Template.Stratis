@@ -10,6 +10,7 @@ class TAGADD
 		class getUnitTypeName {};
 		class setArtilleryMarker {};
 		class setDlgCtrl {};
+		class useTravelService {};
 		class wowArtillery {};
 	};
 };
