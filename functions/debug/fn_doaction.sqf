@@ -7,7 +7,7 @@ params ["_obj","_caller","_idx","_xtra"];
   switch(_xtra)do
   {
    case 0:{
-            _this call MFUNC(usage,fastTravel);
+            createDialog "MSOT_TRAVEL_TABLE";
    	      };
    case 1:{
             private _pos = (position _caller);
@@ -23,13 +23,12 @@ params ["_obj","_caller","_idx","_xtra"];
             hint "Script 1 begins";
             //_____________________________________________________________________________________________________________________________
            //  _modules = [Car1,true] call MSOT_creating_fnc_setFSeffect;
-           createDialog "MSOT_TRAVEL_TABLE";
+
           };
    case 3:{
             //ZWEITER TESTBEREICH
             hint "Script 2 begins";
             //______________________________________________________________________________________________________________________________
-
           
           };
    case 4:{

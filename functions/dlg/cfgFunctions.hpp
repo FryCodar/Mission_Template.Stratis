@@ -6,6 +6,7 @@ class TAGADD
 	{
 		class addArtilleryUnits {};
 		class doAmmoUpdate {};
+		class doTravel {};
 		class getAmmoTypes {};
 		class getUnitTypeName {};
 		class setArtilleryMarker {};

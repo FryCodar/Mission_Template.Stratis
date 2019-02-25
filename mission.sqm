@@ -8,7 +8,7 @@ class EditorData
 	toggles=2;
 	class ItemIDProvider
 	{
-		nextID=706;
+		nextID=708;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1740.6553,355.38467,5304.5581};
-		dir[]={-0.11679149,-0.63794202,0.76134455};
-		up[]={-0.096735395,0.76998782,0.63060558};
-		aside[]={0.98856699,-3.7776772e-006,0.15164769};
+		pos[]={2053.6777,11.906217,5619.1245};
+		dir[]={0.90521765,-0.40223789,0.13799864};
+		up[]={0.39775509,0.91543233,0.060635552};
+		aside[]={0.15072718,-3.6526617e-006,-0.98871118};
 	};
 };
 binarizationWanted=0;
@@ -39,16 +39,13 @@ addons[]=
 	"A3_Structures_F_Heli_Items_Airport",
 	"A3_Structures_F_Mil_Flags",
 	"A3_Modules_F_Curator_Curator",
-	"mcc_sandbox",
-	"A3_Structures_F_Exp_Infrastructure_Airports",
-	"A3_Armor_F_Gamma_MBT_01",
-	"ace_realisticnames"
+	"mcc_sandbox"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=16;
+		items=14;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -145,20 +142,6 @@ class AddonsMetaData
 			className="mcc_sandbox";
 			name="MCC Sandbox";
 			author="shay_gman";
-		};
-		class Item14
-		{
-			className="A3_Structures_F_Exp_Infrastructure";
-			name="Arma 3 Apex - Infrastructure Objects";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
-		};
-		class Item15
-		{
-			className="A3_Armor_F_Gamma";
-			name="Arma 3 - Armored Land Vehicles";
-			author="Bohemia Interactive";
-			url="https://www.arma3.com";
 		};
 	};
 };
@@ -273,7 +256,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=32;
+		items=29;
 		class Item0
 		{
 			dataType="Marker";
@@ -1132,11 +1115,10 @@ class Mission
 			flags=5;
 			class Attributes
 			{
-				init="call{this addAction ['<t color=''#f000ff00''>Schnelles Reisen</t>',{_this call MSOT_usage_fnc_fastTravel},(1),8,false,true,"""",""_this == player""];}";
+				init="call{this addAction ['<t color=''#f000ff00''>Schnelles Reisen</t>',{createDialog ""MSOT_TRAVEL_TABLE"";},(1),8,false,true,"""",""_this == player""];}";
 			};
 			id=653;
 			type="Flag_Red_F";
-			atlOffset=-4.7683716e-007;
 		};
 		class Item15
 		{
@@ -3295,170 +3277,6 @@ class Mission
 			type="b_hq";
 			id=697;
 			atlOffset=0.00043678284;
-		};
-		class Item29
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1896.6538,16.538857,5733.3418};
-			};
-			side="Empty";
-			flags=5;
-			class Attributes
-			{
-			};
-			id=698;
-			type="Land_Airport_02_controlTower_F";
-			atlOffset=0.028723717;
-		};
-		class Item30
-		{
-			dataType="Group";
-			side="West";
-			class Entities
-			{
-				items=3;
-				class Item0
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={1672.563,5.5014391,5620.5957};
-						angles[]={0,1.7843199,0};
-					};
-					side="West";
-					flags=4;
-					class Attributes
-					{
-						name="F1D";
-					};
-					id=702;
-					type="B_crew_F";
-				};
-				class Item1
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={1672.563,5.5014391,5620.5957};
-						angles[]={0,1.7843199,0};
-					};
-					side="West";
-					flags=4;
-					class Attributes
-					{
-						name="F1G";
-					};
-					id=703;
-					type="B_crew_F";
-				};
-				class Item2
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={1672.563,5.5014391,5620.5957};
-						angles[]={0,1.7843199,0};
-					};
-					side="West";
-					flags=6;
-					class Attributes
-					{
-						name="F1C";
-					};
-					id=704;
-					type="B_crew_F";
-				};
-			};
-			class Attributes
-			{
-			};
-			class CrewLinks
-			{
-				class LinkIDProvider
-				{
-					nextID=3;
-				};
-				class Links
-				{
-					items=3;
-					class Item0
-					{
-						linkID=0;
-						item0=702;
-						item1=701;
-						class CustomData
-						{
-							role=1;
-						};
-					};
-					class Item1
-					{
-						linkID=1;
-						item0=703;
-						item1=701;
-						class CustomData
-						{
-							role=2;
-							turretPath[]={0};
-						};
-					};
-					class Item2
-					{
-						linkID=2;
-						item0=704;
-						item1=701;
-						class CustomData
-						{
-							role=2;
-							turretPath[]={0,0};
-						};
-					};
-				};
-			};
-			id=700;
-		};
-		class Item31
-		{
-			dataType="Object";
-			class PositionInfo
-			{
-				position[]={1672.563,8.583312,5620.5459};
-				angles[]={0,1.7843199,0};
-			};
-			side="West";
-			flags=6;
-			class Attributes
-			{
-				fuel=0;
-				name="F1";
-			};
-			id=701;
-			type="B_MBT_01_arty_F";
-			class CustomAttributes
-			{
-				class Attribute0
-				{
-					property="ammoBox";
-					expression="[_this,_value] call bis_fnc_initAmmoBox;";
-					class Value
-					{
-						class data
-						{
-							class type
-							{
-								type[]=
-								{
-									"STRING"
-								};
-							};
-							value="[[[[""arifle_MXC_F"",""FirstAidKit""],[2,10]],[[""SmokeShell"",""SmokeShellBlue"",""30Rnd_65x39_caseless_mag""],[2,2,4]],[[],[]],[[],[]]],false]";
-						};
-					};
-				};
-				nAttributes=1;
-			};
 		};
 	};
 	class Connections

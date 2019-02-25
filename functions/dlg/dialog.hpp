@@ -395,7 +395,7 @@ class MSOT_TRAVEL_TABLE
   idd = 36646;
   movingEnable = 0;
   enableSimulation = true;
-  onLoad = "uiNamespace setVariable ['msot_dlg',[36646]];[] spawn MSOT_dlg_fnc_setDlgCtrl;[0] spawn MSOT_dlg_fnc_useTravelService;";
+  onLoad = "uiNamespace setVariable ['msot_dlg',[36646]];[] spawn MSOT_dlg_fnc_setDlgCtrl;[0] spawn MSOT_dlg_fnc_useTravelService";
   onUnload = "[2] spawn MSOT_dlg_fnc_setArtilleryMarker; uiNamespace setVariable ['msot_dlg',[]];";
 
   class controls
@@ -416,12 +416,13 @@ class MSOT_TRAVEL_TABLE
        y = Y_CENTERED(0.55);
        w = W_SIZE(0.774);
        h = H_SIZE(0.40);
-       onMouseButtonClick = "[1,(_this select 0),(_this select 2),(_this select 3)] spawn MSOT_dlg_fnc_setArtilleryMarker;[1] spawn MSOT_dlg_fnc_useTravelService;";
+       onMouseButtonClick = "[1,(_this select 0),(_this select 2),(_this select 3)] spawn MSOT_dlg_fnc_setArtilleryMarker;[1] spawn MSOT_dlg_fnc_useTravelService";
     };
     class DIARSC(Text1_Travel,InfoText): DIARSC(normal,RscText)
     {
        idc = 10043;//9800
        style = 2;
+       sizeEx = 0.05;
        text = "Select Travel Position on Map!";
        colorBackground[] = {0.5, 0.2, 0.1, 0.8};
        x = X_CALC(0.28);
@@ -444,7 +445,7 @@ class MSOT_TRAVEL_TABLE
        h = H_SIZE(0.088);
        text = "Teleport";
        toolTip = "Normal Teleport";
-       action = "[2] spawn MSOT_dlg_fnc_useTravelService;";
+       action = "[2] spawn MSOT_dlg_fnc_useTravelService";
      };
      class DIARSC(Parachute_Travel,ListBtn): DIARSC(normal,RscButton)
      {
@@ -461,7 +462,7 @@ class MSOT_TRAVEL_TABLE
        h = H_SIZE(0.088);
        text = "HALO Jump";
        toolTip = "Jump with Parachute";
-       action = "[3] spawn MSOT_dlg_fnc_useTravelService;";
+       action = "[3] spawn MSOT_dlg_fnc_useTravelService";
      };
      class DIARSC(Confirm_Travel,ListBtn): DIARSC(normal,RscButton)
      {
@@ -478,7 +479,7 @@ class MSOT_TRAVEL_TABLE
        h = H_SIZE(0.088);
        text = "Action";
        toolTip = "Confirm Traveling";
-       action = "";
+       action = "[5] spawn MSOT_dlg_fnc_useTravelService";
      };
      class DIARSC(Frame_Travel,Infoframe): DIARSC(normal,RscFrame)
      {
@@ -499,7 +500,7 @@ class MSOT_TRAVEL_TABLE
         y = Y_CALC(0.69);
         w = W_SIZE(0.22);
         h = H_SIZE(0.025);
-	      onSliderPosChanged = "";
+	      onSliderPosChanged = "[4] spawn MSOT_dlg_fnc_useTravelService";
      };
      class DIARSC(Text2_Travel,InfoText): DIARSC(normal,RscText)
      {
