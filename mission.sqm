@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2053.6777,11.906217,5619.1245};
-		dir[]={0.90521765,-0.40223789,0.13799864};
-		up[]={0.39775509,0.91543233,0.060635552};
-		aside[]={0.15072718,-3.6526617e-006,-0.98871118};
+		pos[]={2009.4695,87.296326,5667.7246};
+		dir[]={0.56382996,-0.63713479,-0.52574891};
+		up[]={0.46601346,0.77065492,-0.43454096};
+		aside[]={-0.68206966,-3.7224963e-006,-0.73147285};
 	};
 };
 binarizationWanted=0;
@@ -1119,6 +1119,7 @@ class Mission
 			};
 			id=653;
 			type="Flag_Red_F";
+			atlOffset=-4.7683716e-007;
 		};
 		class Item15
 		{
@@ -1292,12 +1293,12 @@ class Mission
 			dataType="Logic";
 			class PositionInfo
 			{
-				position[]={2230.0945,20.84082,6376.917};
+				position[]={2230.094,20.841236,6376.917};
 			};
 			name="CURATOR1";
 			id=655;
 			type="ModuleCurator_F";
-			atlOffset=59.359634;
+			atlOffset=59.360001;
 			class CustomAttributes
 			{
 				class Attribute0
@@ -3283,11 +3284,11 @@ class Mission
 	{
 		class LinkIDProvider
 		{
-			nextID=8;
+			nextID=7;
 		};
 		class Links
 		{
-			items=8;
+			items=7;
 			class Item0
 			{
 				linkID=0;
@@ -3353,16 +3354,6 @@ class Mission
 				linkID=6;
 				item0=661;
 				item1=655;
-				class CustomData
-				{
-					type="Sync";
-				};
-			};
-			class Item7
-			{
-				linkID=7;
-				item0=655;
-				item1=25;
 				class CustomData
 				{
 					type="Sync";
