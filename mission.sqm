@@ -8,7 +8,7 @@ class EditorData
 	toggles=514;
 	class ItemIDProvider
 	{
-		nextID=741;
+		nextID=760;
 	};
 	class MarkerIDProvider
 	{
@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={1570.0704,167.74445,5345.2681};
-		dir[]={0.78585148,-0.50372607,0.35910797};
-		up[]={0.45824158,0.86375278,0.20940013};
-		aside[]={0.41568393,-3.2723183e-006,-0.90966022};
+		pos[]={4063.3774,107.71709,5408.2427};
+		dir[]={0.81761032,-0.40100166,-0.41348535};
+		up[]={0.35795629,0.91596764,-0.18102793};
+		aside[]={-0.45135874,-3.0447845e-006,-0.89249754};
 	};
 };
 binarizationWanted=0;
@@ -233,7 +233,7 @@ class Mission
 		briefingName="MSOT -Template";
 		resistanceWest=0;
 		timeOfChanges=1800.0002;
-		startWeather=0.1020204;
+		startWeather=0;
 		startWind=0.046763863;
 		startWaves=0.1;
 		forecastWeather=0;

@@ -18,43 +18,45 @@ params["_curator","_added_object"];
 sleep (1 + (random 1));
 If(_added_object isKindOf "AllVehicles")then
 {
-  hint str _added_object;
-/*
-    private _vec_arr = [];
-{private _vec = (objectParent _x);if(!(isNull _vec))then{_vec_arr pushBackUnique _vec;};}forEach units _added_group;
-If((count _vec_arr) > 0)then
-{
-  If(count _vec_arr < 2)then
+
+  private _grp_arr = [];
+  {_grp_arr pushBackUnique (group _x);}forEach (crew _added_object);
+
+  If((count _grp_arr) > 0)then
   {
+    private _grp_name = (_grp_arr select 0);
+
     private _radius = 0;
-    private _runpos =  (_vec_arr select 0);
-    private _vec_name = (_vec_arr select 0);
-    private _parents = [configFile >> "CfgVehicles" >> (typeOf _vec_name),true] call BIS_fnc_returnParents;
+    private _runpos =  (position _added_object);
+    private _parents = [configFile >> "CfgVehicles" >> (typeOf _added_object),true] call BIS_fnc_returnParents;
     private _set_Patrol = switch(true)do
                           {
-                            case ("StaticWeapon" in _parents):{2};
-                            case ("Tank" in _parents):{If("Artillery" in (getArray(configFile >> "CfgVehicles" >> (typeOf _x) >> "availableForSupportTypes")))then{2}else{0};};
-                            case ("Car" in _parents):{0};
-                            case ("Air" in _parents):{1};
+                            case ("StaticWeapon" in _parents):{0};
+                            case ("Tank" in _parents):{If("Artillery" in (getArray(configFile >> "CfgVehicles" >> (typeOf _added_object) >> "availableForSupportTypes")))then{3}else{1};};
+                            case ("Car" in _parents):{1};
+                            case ("Air" in _parents):{2};
+                            case ("Man" in _parents):{0};
                           };
-    _added_group setBehaviour "COMBAT";
-    _added_group setCombatMode (selectRandom ["RED","YELLOW","RED","YELLOW","RED","RED","YELLOW","RED","YELLOW","RED"]);
-    switch(_set_Patrol)do
-    {
-      case 0:{ _radius = (round(random 250));
-               If(_radius < 150)then{_radius = 150;};
-               [_added_group,_runpos,_radius] call BFUNC(taskPatrol);
-             };
-      case 1:{
-              _added_group setCombatMode "YELLOW";
-               _radius = (round(random 1500));
-               If(_radius < 900)then{_radius = 900;};
-               [_added_group,_runpos,_radius] call BFUNC(taskPatrol);
-               _added_group setSpeedMode "NORMAL";
-             };
+
+      switch(_set_Patrol)do
+      {
+        case 0:{};
+        case 1:{ _radius = (round(random 250));
+                If(_radius < 150)then{_radius = 150;};
+                [_grp_name,_runpos,_radius] call BFUNC(taskPatrol);
+              };
+        case 2:{
+                _grp_name setCombatMode "YELLOW";
+                _radius = (round(random 1500));
+                If(_radius < 900)then{_radius = 900;};
+                [_grp_name,_runpos,_radius] call BFUNC(taskPatrol);
+                _grp_name setSpeedMode "NORMAL";
+              };
+        default {_added_object setFuel 0;_grp_name setCombatMode (selectRandom ["RED","YELLOW","RED","YELLOW","RED","RED","YELLOW","RED","YELLOW","RED"]);};
+      };
+      _grp_name setBehaviour "COMBAT";
+      If(_set_Patrol < 1)then{_grp_name setCombatMode (selectRandom ["RED","YELLOW","RED","YELLOW","RED","RED","YELLOW","RED","YELLOW","RED"]);};
+      [_grp_name] spawn MFUNC(system,setUnitSkill);
     };
 
-  };
-};
-*/
 };
