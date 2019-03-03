@@ -40,22 +40,30 @@ If(_added_object isKindOf "AllVehicles")then
 
       switch(_set_Patrol)do
       {
-        case 0:{};
+        case 0:{
+                _grp_name setBehaviour "AWARE";
+                _grp_name setCombatMode (selectRandom ["RED","YELLOW","RED","YELLOW","RED","RED","YELLOW","RED","YELLOW","RED"]);
+               };
         case 1:{ _radius = (round(random 250));
                 If(_radius < 150)then{_radius = 150;};
                 [_grp_name,_runpos,_radius] call BFUNC(taskPatrol);
+                _grp_name setBehaviour "COMBAT";
+                _grp_name setCombatMode (selectRandom ["RED","YELLOW","RED","YELLOW","RED","RED","YELLOW","RED","YELLOW","RED"]);
               };
         case 2:{
-                _grp_name setCombatMode "YELLOW";
+
                 _radius = (round(random 1500));
                 If(_radius < 900)then{_radius = 900;};
                 [_grp_name,_runpos,_radius] call BFUNC(taskPatrol);
+                _grp_name setBehaviour "COMBAT";
+                _grp_name setCombatMode "YELLOW";
                 _grp_name setSpeedMode "NORMAL";
               };
-        default {_added_object setFuel 0;_grp_name setCombatMode (selectRandom ["RED","YELLOW","RED","YELLOW","RED","RED","YELLOW","RED","YELLOW","RED"]);};
+        default {_added_object setFuel 0;
+                 _grp_name setBehaviour "COMBAT";
+                 _grp_name setCombatMode (selectRandom ["RED","YELLOW","RED","YELLOW","RED","RED","YELLOW","RED","YELLOW","RED"]);
+                };
       };
-      _grp_name setBehaviour "COMBAT";
-      If(_set_Patrol < 1)then{_grp_name setCombatMode (selectRandom ["RED","YELLOW","RED","YELLOW","RED","RED","YELLOW","RED","YELLOW","RED"]);};
       [_grp_name] spawn MFUNC(system,setUnitSkill);
     };
 

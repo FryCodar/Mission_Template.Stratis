@@ -18,7 +18,7 @@ params["_curator","_added_group"];
 sleep (1 + (random 1));
 private _owner_id = clientOwner;
 If((groupOwner _added_group) isEqualTo _owner_id)then{
-hint str _added_group;
+
 private _leader = (leader _added_group);
 private _runpos = position _leader;
 
