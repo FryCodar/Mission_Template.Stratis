@@ -43,12 +43,16 @@ If(_added_object isKindOf "AllVehicles")then
         case 0:{
                 _grp_name setBehaviour "AWARE";
                 _grp_name setCombatMode (selectRandom ["RED","YELLOW","RED","YELLOW","RED","RED","YELLOW","RED","YELLOW","RED"]);
+                _grp_name enableAttack true;
+                _grp_name enableGunLights "AUTO";
                };
         case 1:{ _radius = (round(random 250));
                 If(_radius < 150)then{_radius = 150;};
                 [_grp_name,_runpos,_radius] call BFUNC(taskPatrol);
                 _grp_name setBehaviour "COMBAT";
                 _grp_name setCombatMode (selectRandom ["RED","YELLOW","RED","YELLOW","RED","RED","YELLOW","RED","YELLOW","RED"]);
+                _grp_name enableAttack true;
+                _grp_name enableGunLights "AUTO";
               };
         case 2:{
 
