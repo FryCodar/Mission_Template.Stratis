@@ -13,6 +13,9 @@ class TAGADD
        class setFSeffect {
 				 								   description = "Set Smoke/Fire to Objects";
 			 									 };
+			 class setInHouseReforces {
+				 													description = "Create Units/Groups in Houses in a specific Range!";
+			 													};
 			 class setArtillery {
 				 										description = "Creates Artillery Fire";
 			 										};
@@ -22,6 +25,9 @@ class TAGADD
 			 class setConvoy {
 				 								 description = "Create a Convoy";
 			 								 };
+			class setFlares {
+												description = "Create Flares in a specific Area";
+											};
 			class setCargoUnits {
 														 description = "Fills the Cargo Slots of an Vehicle with Soldiers";
 													 };
