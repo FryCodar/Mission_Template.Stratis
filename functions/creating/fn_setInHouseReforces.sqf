@@ -96,7 +96,7 @@ If(_do_your_job)then
                       };
        If(count _spawn_poses > 0)then
        {
-       ARR_ADDUNIVAR(_house_check,_get_house);
+       ARR_ADDVAR(_house_check,_get_house);
        {
          _spawn_at_pos = (selectRandom _spawn_poses);
          _unit = _grp createUnit [_x,_spawn_at_pos, [], 1,"CAN_COLLIDE"];
