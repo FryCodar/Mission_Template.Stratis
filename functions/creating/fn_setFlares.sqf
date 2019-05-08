@@ -24,7 +24,7 @@ Author: Fry
 
 ----------------------------------------------------------------------------------------------------------------- */
 private ["_i","_flare_pos","_flare"];
-params ["_fl_pos","_fl_radius",["_fl_time",30]["_fl_script",""]];
+params ["_fl_pos","_fl_radius",["_fl_time",30],["_fl_script",""]];
 If(isClass(configfile >> "CfgMods" >> "ace"))then
 {
   private _flares_num = (round(random 20));
