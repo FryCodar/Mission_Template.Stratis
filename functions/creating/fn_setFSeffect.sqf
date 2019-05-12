@@ -6,7 +6,7 @@ Description: Sets Smoke and Fire Effekt to Objects
 
 Parameters: [OBJECTNAME/ARRAY, SETDAMAGE]
 
-           OBJECTNAME/ARRAY - OBJECTNAME or ARRAY filled with OBJECTS
+           OBJECTNAME/ARRAY - OBJECTNAME or ARRAY filled with OBJECTS/POSITIONS
            SETDAMAGE - BOOL: true for set damage to Object / default: false
 
 Important: all Modulenames are saved in - missionNamespace getVariable ["msot_fs_modulenames",[]]
@@ -34,22 +34,30 @@ switch(typeName _obj)do
 {
   case "ARRAY":{
                 {
-                  If(typeName _x == "OBJECT")then
+                  switch(typeName _x)do
                   {
-                   if(_make_damage)then
-                   {
-                     _x setDamage [1,false];
-                   };
-                  _pos = position _x;
-                  _bound_pos = ((boundingCenter _x) select 2);
-                  _modul1 = createVehicle ["test_EmptyObjectForSmoke", _pos, [], 0, "CAN_COLLIDE"];
-                  _modul2 = createVehicle ["test_EmptyObjectForFireBig", _pos, [], 0, "CAN_COLLIDE"];
-                  SET_POSNOR(_modul1,_pos,_bound_pos);
-                  SET_POSNOR(_modul2,_pos,_bound_pos);
-                  ARR_ADDVAR(_module_name_arr,_modul1);
-                  ARR_ADDVAR(_module_name_arr,_modul2);
-                 };
-                }forEach _obj
+                    case "OBJECT":{
+                                    If(_make_damage)then
+                                    {
+                                      _x setDamage [1,false];
+                                    };
+                                    _pos = position _x;
+                                    _bound_pos = ((boundingCenter _x) select 2);
+                                    _modul1 = createVehicle ["test_EmptyObjectForSmoke", _pos, [], 0, "CAN_COLLIDE"];
+                                    _modul2 = createVehicle ["test_EmptyObjectForFireBig", _pos, [], 0, "CAN_COLLIDE"];
+                                    SET_POSNOR(_modul1,_pos,_bound_pos);
+                                    SET_POSNOR(_modul2,_pos,_bound_pos);
+                                    ARR_ADDVAR(_module_name_arr,_modul1);
+                                    ARR_ADDVAR(_module_name_arr,_modul2);
+                                  };
+                    case "ARRAY":{
+                                  _modul1 = createVehicle ["test_EmptyObjectForSmoke", _x, [], 0, "CAN_COLLIDE"];
+                                  _modul2 = createVehicle ["test_EmptyObjectForFireBig", _x, [], 0, "CAN_COLLIDE"];
+                                  ARR_ADDVAR(_module_name_arr,_modul1);
+                                  ARR_ADDVAR(_module_name_arr,_modul2);
+                                 };
+                  };
+                }forEach _obj;
                };
   case "OBJECT":{
                   if(_make_damage)then
