@@ -23,7 +23,7 @@ params ["_obj","_caller","_idx","_xtra"];
             hint "Script 1 begins";
             //_____________________________________________________________________________________________________________________________
            //  _modules = [Car1,true] call MSOT_creating_fnc_setFSeffect;
-           
+           ["TOWNS"] spawn MSOT_creamission_fnc_createMission;
 
           };
    case 3:{
