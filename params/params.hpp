@@ -71,4 +71,13 @@
       default = 1;
       isGlobal = 1;
   };
+  class View_Distance
+  {
+
+        title = "View distance";
+	      values[] = {2000, 5000, 6000, 7000, 8000, 9000, 10000 };
+	      texts[] = { "2000 m", "5000 m", "6000 m", "7000 m" ,"8000 m", "9000 m","10000 m"};
+	      default = 9000;
+	      isGlobal = 1;
+  };
 };
