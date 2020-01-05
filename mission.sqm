@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2159.9375,371.40082,5943.9678};
-		dir[]={0.24895911,-0.47799641,0.84249592};
-		up[]={0.13548961,0.8782419,0.45850593};
-		aside[]={0.95913583,-3.1273812e-006,-0.28342625};
+		pos[]={2072.894,15.283894,5606.0122};
+		dir[]={-0.80332321,-0.59570897,-0.0077568335};
+		up[]={-0.59575278,0.80308145,-0.005751858};
+		aside[]={-0.0096548088,-3.5528674e-006,1.0000883};
 	};
 };
 binarizationWanted=0;
@@ -280,7 +280,7 @@ class Mission
 			side="West";
 			class Entities
 			{
-				items=8;
+				items=6;
 				class Item0
 				{
 					dataType="Object";
@@ -350,132 +350,6 @@ class Mission
 					dataType="Object";
 					class PositionInfo
 					{
-						position[]={2063.998,6.7314339,5610.458};
-						angles[]={0,5.0070705,0};
-					};
-					side="West";
-					flags=5;
-					class Attributes
-					{
-						skill=0.79993224;
-						rank="SERGEANT";
-						name="S2";
-						description="Schütze";
-						isPlayable=1;
-					};
-					id=647;
-					type="B_Soldier_F";
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male12ENG";
-								};
-							};
-						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.01;
-								};
-							};
-						};
-						nAttributes=2;
-					};
-				};
-				class Item2
-				{
-					dataType="Object";
-					class PositionInfo
-					{
-						position[]={2066.5171,6.7314386,5610.0068};
-						angles[]={0,4.9902363,0};
-					};
-					side="West";
-					flags=5;
-					class Attributes
-					{
-						skill=0.79993224;
-						rank="SERGEANT";
-						name="S3";
-						description="Grenadier";
-						isPlayable=1;
-					};
-					id=648;
-					type="B_Soldier_GL_F";
-					class CustomAttributes
-					{
-						class Attribute0
-						{
-							property="speaker";
-							expression="_this setspeaker _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"STRING"
-										};
-									};
-									value="Male09ENG";
-								};
-							};
-						};
-						class Attribute1
-						{
-							property="pitch";
-							expression="_this setpitch _value;";
-							class Value
-							{
-								class data
-								{
-									class type
-									{
-										type[]=
-										{
-											"SCALAR"
-										};
-									};
-									value=1.05;
-								};
-							};
-						};
-						nAttributes=2;
-					};
-				};
-				class Item3
-				{
-					dataType="Object";
-					class PositionInfo
-					{
 						position[]={2065.9441,6.7314386,5606.9229};
 						angles[]={0,4.9504895,0};
 					};
@@ -534,7 +408,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item4
+				class Item2
 				{
 					dataType="Object";
 					class PositionInfo
@@ -595,7 +469,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item5
+				class Item3
 				{
 					dataType="Object";
 					class PositionInfo
@@ -658,7 +532,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item6
+				class Item4
 				{
 					dataType="Object";
 					class PositionInfo
@@ -720,7 +594,7 @@ class Mission
 						nAttributes=2;
 					};
 				};
-				class Item7
+				class Item5
 				{
 					dataType="Object";
 					class PositionInfo
