@@ -32,7 +32,7 @@ F_LOOP(_i,0,((count _grp_list) - 1))
 {
   _vec_list = [];
   _data_list = [];
-  _fill _list = [];
+  _fill_list = [];
   _found_grp = (_grp_list select _i);
   _units_in_grp = (units _found_grp);
   {If(!(isNull (objectParent _x)))then{If(!((objectParent _x) isKindOf "Air"))then{_vec_list pushBackUnique (objectParent _x);_units_in_grp = _units_in_grp - [_x];}else{_units_in_grp = _units_in_grp - [_x];};};}forEach (units _found_grp);
