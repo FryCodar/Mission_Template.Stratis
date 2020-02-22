@@ -16,10 +16,10 @@ class EditorData
 	};
 	class Camera
 	{
-		pos[]={2072.894,15.283894,5606.0122};
-		dir[]={-0.80332321,-0.59570897,-0.0077568335};
-		up[]={-0.59575278,0.80308145,-0.005751858};
-		aside[]={-0.0096548088,-3.5528674e-006,1.0000883};
+		pos[]={2074.5896,10.811789,5612.9702};
+		dir[]={0.84796399,-0.52746952,0.054672878};
+		up[]={0.52647084,0.8494522,0.033943698};
+		aside[]={0.064348221,-3.8497128e-006,-0.99806321};
 	};
 };
 binarizationWanted=0;
@@ -708,7 +708,7 @@ class Mission
 			flags=4;
 			class Attributes
 			{
-				init="call{this addAction ['<t color=''#f000ff00''>Open Arsenal</t>',{[] spawn MSOT_arsenal_fnc_initArsenal}];}";
+				init="call{this addAction ['<t color=''#f000ff00''>Open Arsenal</t>',{[player, player, true] call ace_arsenal_fnc_openBox},[],1.5,true,true,"""",""true"",5];}";
 				name="MUNBOX";
 			};
 			id=33;
