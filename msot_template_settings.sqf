@@ -10,14 +10,14 @@ umzubenennen.
 */
 
 //Aktiviert den DEBUG-Modus: true - an / false - aus
-MSOT_DEBUG_MODE = true; //default: false
+MSOT_DEBUG_MODE = false; //default: false
 
 //------------------------------------------------------------------------
 // Spielt das Intro mit Camerafahrt ab: true - an / false - aus
-MSOT_PLAY_INTRO_WITH_CAM = false; //default: true
+MSOT_PLAY_INTRO_WITH_CAM = true; //default: true
 
 // Spielt das MSOT LOGO ab: true - an / false - aus
-MSOT_PLAY_INTRO_WITH_LOGO = false; //default: true
+MSOT_PLAY_INTRO_WITH_LOGO = true; //default: true
 
 // Spielt die Intro Musik ab: true - an / false - aus
 MSOT_PLAY_INTRO_MUSIC = true; //default: true
@@ -39,7 +39,7 @@ MSOT_CAM_START_MARKER = ""; // default: ""
 //-------------------------------------------------------------------------
 
 //Verliert seine Ausrüstung am Start der Mission: true - an / false - aus
-MSOT_CLEAR_EQUIPMENT = false; //default: true
+MSOT_CLEAR_EQUIPMENT = true; //default: true
 
 //*********** Neue Ausrüstung - NEW_SETTING = "scripts\newEquipments.sqf"; ***** Playernamen wird übergeben ****************************************
 //Teilt dem Spieler (sofern er im Script mit Player angesprochen wird) eine neue Ausrüstung zu!
@@ -54,8 +54,11 @@ this addAction ['<t color=''#f000ff00''>Open Arsenal</t>',{[player, player, true
 
 In die ARSENAL_BLACKLIST dann einfach die Classnames Eintragen die NICHT hinzugefügt werden sollen
 zBsp ARSENAL_BLACKLIST = ["B_UavTerminal","O_UavTerminal","I_UavTerminal","C_UavTerminal"];
+
+
+this allowdamage false; this addAction ['<t color=''#f000ff00''>Schnelles Reisen</t>',{createDialog "MSOT_TRAVEL_TABLE";},[],1.5,true,true,"","true",5];
 */
 
-ARSENAL_BLACKLIST = [];
+ARSENAL_BLACKLIST = ["ItemMap","ItemGPS"];
 
 //**************************************************************************************************************************************************

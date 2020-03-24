@@ -44,7 +44,7 @@ Examples:
 Author: Fry
 
 ----------------------------------------------------------------------------------------------------------------- */
-private ["_output","_do_your_job","_main_pos","_spawn_pos","_work_arr","_allowed_to_create","_calculate_units","_house_arr",
+private ["_output","_do_your_job","_main_pos","_spawn_pos","_work_arr","_allowed_to_create","_calculate_units","_house_arr","_spawn_at_pos",
          "_x","_setting_grp_num","_setting_unit_num","_grp_crea","_group_classes","_unit_crea","_grp_arr","_grp","_house_ctrl_arr","_set_in_house","_house_ctrl",
          "_ctrl_num","_house_lvl","_unit","_spawn_pos_holder","_unit_counter","_housew_arr","_everyhouse","_gethouse","_house_spawn","_border_pos","_searched_house"];
 
@@ -78,14 +78,13 @@ If(_do_your_job)then
                        If(count _housew_arr > 0)then
                        {{
                           If(count ([_x,"LEVELS"] call MFUNC(spawnhelp,checkHousePos)) >= 2)then
-                          {ARR_ADDVAR(_house_arr,_x);};
+                          {
+                            _house_lvl = [_x,"LEVELS"] call MFUNC(spawnhelp,checkHousePos);
+                            _spawn_at_pos = (_house_lvl select ((count _house_lvl) - 1));
+                            ARR_ADDARR(_house_arr,_spawn_at_pos);
+                          };
                         }forEach _housew_arr;
-                        switch(true)do
-                        {
-                          case (count _house_arr >= (2 * _grp_num)):{ARR_ADDVAR(_work_arr,"HOUSE_TOP");};
-                          case (count _house_arr >= _grp_num):{ARR_ADDVAR(_work_arr,"HOUSE_TOP");_everyhouse = false;};
-                          case (count _house_arr < _grp_num):{ARR_ADDVAR(_work_arr,"HOUSE_TOP");_everyhouse = true;};
-                        };
+                        If(count _house_arr >= (_grp_num * _units_in_grp_num))then{ARR_ADDVAR(_work_arr,"HOUSE_TOP");};
                        };
                      };
     case "MIXED":{
@@ -124,34 +123,25 @@ If(_do_your_job)then
         {
           case "AREA":{_spawn_at_pos = [_spawn_pos,_radius] call MFUNC(geometry,getCirclePos);};
           case "BORDER":{
-                         _border_pos = (([_spawn_pos,(round(_radius * 4))] call MFUNC(geometry,getCircleBorderPos)) select 0);
-                         _spawn_at_pos = [_border_pos,_radius] call MFUNC(geometry,getCirclePos);;
+                         //_border_pos = (([_spawn_pos,(round(_radius * 2))] call MFUNC(geometry,getCircleBorderPos)) select 0);
+                         //_spawn_at_pos = [_border_pos,_radius] call MFUNC(geometry,getCirclePos);
+                         _spawn_at_pos = [_spawn_pos,_radius,50,true] call MFUNC(geometry,getSafePos);
                           //If(!isMultiplayer)then{player setPos _border_pos;};
                         };
           case "HOUSE":{ _ctrl_num = 0;
+                         _house_ctrl = [];
                          _house_ctrl = (selectRandom _house_arr);
-                         while{_house_ctrl In _house_ctrl_arr && _ctrl_num < (count _house_arr)}do
+                         while{_house_ctrl In _house_ctrl_arr && _ctrl_num <= (count _house_arr)}do
                          {_house_ctrl = (selectRandom _house_arr);_ctrl_num = _ctrl_num + 1;sleep 0.01;};
-                          ARR_ADDVAR(_house_ctrl_arr,_house_ctrl);_spawn_at_pos = [_house_ctrl];_set_in_house = true;
+                          ARR_ADDVAR(_house_ctrl_arr,_house_ctrl);
+                          _spawn_at_pos = [_house_ctrl];
+                          _house_spawn = _house_ctrl;
+                          _set_in_house = true;
                         };
-          case "HOUSE_TOP":{_ctrl_num = 0;
-                            If(_everyhouse)then
-                            { _ctrl_num = ((count _house_arr) - 1);
-                              for "_gethouse" from 0 to _ctrl_num do{
-                              _searched_house = (_house_arr select _gethouse);
-                              If(!(_searched_house In _house_ctrl_arr))then
-                              {ARR_ADDVAR(_house_ctrl_arr,_searched_house);_ctrl_num = _gethouse;};sleep 0.01;};
-                              _house_lvl = [(_house_arr select _ctrl_num),"LEVELS"] call MFUNC(spawnhelp,checkHousePos);
-                              _spawn_at_pos = (_house_lvl select ((count _house_lvl) - 1));
-                              _house_spawn = _spawn_at_pos;
-                            }else{ _house_ctrl = (selectRandom _house_arr);
-                                   while{_house_ctrl In _house_ctrl_arr && _ctrl_num < (count _house_arr)}do
-                                   {_house_ctrl = (selectRandom _house_arr);_ctrl_num = _ctrl_num + 1;sleep 0.01;};
-                                   _house_lvl = [_house_ctrl,"LEVELS"] call MFUNC(spawnhelp,checkHousePos);
-                                   _spawn_at_pos = (_house_lvl select ((count _house_lvl) - 1));
-                                   _house_spawn = _spawn_at_pos;
-                                 };
-                            _set_in_house = true;
+          case "HOUSE_TOP":{
+                             _spawn_at_pos = _house_arr;
+                             _house_spawn = _house_arr;
+                             _set_in_house = true;
                            };
         };
         If(count _spawn_at_pos > 0)then
@@ -161,11 +151,12 @@ If(_do_your_job)then
           {
             switch(_x)do
             {
-              case "HOUSE":{_spawn_pos_holder = [(_spawn_at_pos select 0),"ALL"] call MFUNC(spawnhelp,checkHousePos);
+              case "HOUSE":{_spawn_pos_holder = [_house_spawn,"ALL"] call MFUNC(spawnhelp,checkHousePos);
                             _spawn_at_pos = (selectRandom _spawn_pos_holder);
                            };
               case "HOUSE_TOP":{
                                  _spawn_at_pos = (selectRandom _house_spawn);
+                                 _house_spawn deleteAt (_house_spawn find _spawn_at_pos);
                                };
             };
             _unit = _grp createUnit [(_group_classes select _unit_crea), _spawn_at_pos, [], 1,"CAN_COLLIDE"];
@@ -194,6 +185,7 @@ If(_do_your_job)then
 
    }forEach _work_arr;
   };
+  _output = _grp_arr;
   private _save_group = missionNameSpace getVariable [STRVAR_DO(save_in_system),true];
   If(count _grp_arr > 0 && _save_group)then{["GROUPS",_main_pos,_grp_arr] spawn MFUNC(system,addToSystem);};
 };
