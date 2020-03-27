@@ -18,6 +18,7 @@ switch(_travel_index)do
             sleep 2;
             playSound "Topic_Selection";
             private _loadout = getUnitLoadout _player;
+            removeBackpackGlobal _player;
             _player addBackpack "B_Parachute";
             [_player,true] remoteExec ["setCaptive",0];
             sleep 1;
