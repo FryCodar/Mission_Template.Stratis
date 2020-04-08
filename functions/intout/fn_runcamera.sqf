@@ -36,4 +36,5 @@ camDestroy _cam;
 camera_run = true;
 cutText ["","BLACK IN",2];
 };
+camera_run = true;
 true

@@ -39,6 +39,10 @@ switch(_idx)do
                     _trigger_name setTriggerActivation ["ANYPLAYER","PRESENT", false];
                     _trigger_name setTriggerStatements ["this", "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck",""];
                  };
+ case "ACTIVATE2":{
+                    _trigger_name setTriggerActivation [MSOT_EMYTR_SIDE,"PRESENT", false];
+                    _trigger_name setTriggerStatements ["this", "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck",""];
+                 };
  case "LEAVE":{
                _trigger_name setTriggerActivation ["ANYPLAYER", "NOT PRESENT", false];
                _trigger_name setTriggerStatements ["this", "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck",""];
@@ -52,6 +56,15 @@ switch(_idx)do
                                   "this && {('Man' countType thisList) < 5} && {('LandVehicle' countType thisList) == 0}",
                                   "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck",
                                   ""
+                                 ];
+                      _trigger_name setTriggerActivation [MSOT_EMYTR_SIDE,"PRESENT", false];
+                      _trigger_name setTriggerStatements _exp_arr;
+                    };
+  case "CONTROLLED2":{
+                      _exp_arr = [
+                                    "this && {('Man' countType thisList) < 5}",
+                                    "nul = ['MAINTRIGGER',thisTrigger] spawn MSOT_system_fnc_manageMissionCheck",
+                                    ""
                                  ];
                       _trigger_name setTriggerActivation [MSOT_EMYTR_SIDE,"PRESENT", false];
                       _trigger_name setTriggerStatements _exp_arr;

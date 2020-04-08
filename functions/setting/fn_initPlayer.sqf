@@ -59,7 +59,7 @@ waitUntil{!isNil "camera_run"};
 sleep 2;
 if(count (missionNamespace getVariable [STRVAR_DO(missions_stored_tasks),[]]) > 0)then
 {
-  {_x call MFUNC(tasks,storedTasks);; sleep 6;}forEach (missionNamespace getVariable [STRVAR_DO(missions_stored_tasks),[]]);
+  {_x call MFUNC(tasks,storedTasks); sleep 6;}forEach (missionNamespace getVariable [STRVAR_DO(missions_stored_tasks),[]]);
 };
 };
 

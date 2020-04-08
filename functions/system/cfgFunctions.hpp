@@ -19,6 +19,9 @@ class TAGADD
 			 class doClientRespawn {
 				 												description = "Add and Remove Respawnpositions";
 			 											 };
+			 class doHoldAction {
+				 										description = "Functions for ClientHoldAction";
+			 										};
 			 class doMissionCheck {
 				 											description = "Framework for Missions";
 			 											};
@@ -46,6 +49,9 @@ class TAGADD
 			 class setClientAction {
 				 											 description = "Add a Action to Objects";
 			 											 };
+			 class setClientHoldAction {
+				 													 description = "Add a Hold Action to Object";
+			 													 };
 			 class setWorkClasses {
 				 											description = "Load Classes to System";
 															postInit = 1;

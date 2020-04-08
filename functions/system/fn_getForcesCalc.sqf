@@ -57,7 +57,7 @@ _static_weapon_calc = 0;
       _cal_num = 0;
       switch(_i)do
       {
-        case 0:{_cal_num = If((round(_men_count * _group_calc)) > 22)then{(22 * 0.5)}else{(round((_men_count * _group_calc) * 0.5))};ARR_ADDVAR(_output,_cal_num);};
+        case 0:{_cal_num = If((ceil(_men_count * _group_calc)) > 22)then{(22 * 0.5)}else{(ceil(_men_count * _group_calc))};ARR_ADDVAR(_output,_cal_num);};
         case 1:{_cal_num = (round(_unit_calc * 0.5));ARR_ADDVAR(_output,_cal_num);};
         case 2:{If(_vehicle_calc > 0)then{_cal_num = If((round(_men_count * _vehicle_calc)) > 12)then{12}else{(round(_men_count * _vehicle_calc))};ARR_ADDVAR(_output,_cal_num);}else{ARR_ADDVAR(_output,_cal_num);};};
         case 3:{If(_static_weapon_calc > 0)then{_cal_num = If((round(_men_count * _static_weapon_calc)) > 15)then{15}else{(round(_men_count * _static_weapon_calc))};ARR_ADDVAR(_output,_cal_num);}else{ARR_ADDVAR(_output,_cal_num);};};
