@@ -13,6 +13,12 @@ class TAGADD
 			  class deleteAllinArea {
 																description = "Delete all Objects in a defined Area.";
 															};
+			  class doCutText {
+													description = "Shows a Screen Info";
+												};
+				class doCutText2 {
+													 description = "Shows a Screen Info";
+												 };								
 			  class doService {
 					                description = "Servicing and Reload Vehicles.";
 												};
