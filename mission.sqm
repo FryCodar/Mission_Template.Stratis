@@ -8,18 +8,18 @@ class EditorData
 	toggles=514;
 	class ItemIDProvider
 	{
-		nextID=772;
+		nextID=774;
 	};
 	class MarkerIDProvider
 	{
-		nextID=13;
+		nextID=14;
 	};
 	class Camera
 	{
-		pos[]={2184.0708,20.387934,5489.5811};
-		dir[]={0.42047873,-0.64566457,0.63761616};
-		up[]={0.35548589,0.76349819,0.53905946};
-		aside[]={0.83491975,-3.7522987e-006,-0.55059558};
+		pos[]={930.32678,321.91019,5697.2627};
+		dir[]={0.65821636,-0.74960512,0.071300015};
+		up[]={0.7452606,0.66177648,0.080728769};
+		aside[]={0.10770226,-2.8199138e-006,-0.99430484};
 	};
 };
 binarizationWanted=0;
@@ -43,13 +43,14 @@ addons[]=
 	"A3_Structures_F_Mark_Training",
 	"A3_Structures_F_Mil_Helipads",
 	"A3_Structures_F_Mil_BagFence",
-	"A3_Structures_F_System"
+	"A3_Structures_F_System",
+	"A3_Boat_F_Destroyer_Destroyer_01"
 };
 class AddonsMetaData
 {
 	class List
 	{
-		items=15;
+		items=16;
 		class Item0
 		{
 			className="A3_Ui_F";
@@ -152,6 +153,13 @@ class AddonsMetaData
 		{
 			className="A3_Structures_F_Mark";
 			name="Arma 3 Marksmen - Buildings and Structures";
+			author="Bohemia Interactive";
+			url="https://www.arma3.com";
+		};
+		class Item15
+		{
+			className="A3_Boat_F_Destroyer";
+			name="Arma 3 Jets - Boats and Submersibles";
 			author="Bohemia Interactive";
 			url="https://www.arma3.com";
 		};
@@ -975,7 +983,7 @@ class Mission
 	};
 	class Entities
 	{
-		items=34;
+		items=36;
 		class Item0
 		{
 			dataType="Marker";
@@ -2923,6 +2931,31 @@ class Mission
 			};
 			id=771;
 			type="Land_ClutterCutter_large_F";
+		};
+		class Item34
+		{
+			dataType="Object";
+			class PositionInfo
+			{
+				position[]={1344.373,-0.00016403198,5711.9922};
+			};
+			side="Empty";
+			class Attributes
+			{
+				init="call{this setObjectTextureGlobal [1, ""pics\blackcamo.jpg""];}";
+			};
+			id=772;
+			type="Land_Destroyer_01_base_F";
+			atlOffset=43.440002;
+		};
+		class Item35
+		{
+			dataType="Marker";
+			position[]={109.351,-0.067000002,5919.7402};
+			name="startmark";
+			type="Empty";
+			id=773;
+			atlOffset=111.53296;
 		};
 	};
 	class Connections
