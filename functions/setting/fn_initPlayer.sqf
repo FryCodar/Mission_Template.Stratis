@@ -55,13 +55,15 @@ If(count (missionNamespace getVariable [STRVAR_DO(action_storage),[]]) > 0)then
 };
 //Setzt Task
 [] spawn {
-waitUntil{!isNil "camera_run"};
-sleep 2;
-if(count (missionNamespace getVariable [STRVAR_DO(missions_stored_tasks),[]]) > 0)then
-{
-  {_x call MFUNC(tasks,storedTasks); sleep 6;}forEach (missionNamespace getVariable [STRVAR_DO(missions_stored_tasks),[]]);
-};
-};
+            waitUntil{!isNil "camera_run"};
+            sleep 2;
+            if(count (missionNamespace getVariable [STRVAR_DO(missions_stored_tasks),[]]) > 0)then
+            {
+              {_x call MFUNC(tasks,setTask); sleep 6;}forEach (missionNamespace getVariable [STRVAR_DO(missions_stored_tasks),[]]);
+            };
+            sleep 1;
+            [] spawn MFUNC(setting,setLoadouts);
+          };
 
 // Add Tactic Tablet to ACE SelfInteraction
 /*

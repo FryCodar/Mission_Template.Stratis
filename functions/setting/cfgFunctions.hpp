@@ -7,5 +7,8 @@ class TAGADD
 		class initPlayer {
 					            description = "Initialize Player";
 				             };
+	  class setLoadouts {
+												description = "set defined Player Loadouts";
+											};
 	};
 };
