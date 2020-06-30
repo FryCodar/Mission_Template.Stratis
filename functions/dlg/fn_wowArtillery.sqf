@@ -3,7 +3,7 @@ If(!hasInterface) exitWith {};
 private ["_holder","_add_txt","_control","_v_control","_type","_config","_pic","_ammo","_i","_state","_para"];
 params ["_idx","_info"];
 disableSerialization;
-//private _control = ((findDisplay 36643) displayCtrl 10024);
+//private _control = ((findDisplay 36641) displayCtrl 10024);
 switch(_idx)do
 {
   case 0:{  //LOAD LIST
@@ -28,7 +28,7 @@ switch(_idx)do
          };
   case 1:{
             //CONTROL ARTILLERY AVAILABLE LIST
-            _control = ((findDisplay 36643) displayCtrl 10024);
+            _control = ((findDisplay 36641) displayCtrl 10024);
             _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
             _type = [(lbText [10024, _info]),_holder] call MFUNC(dlg,getUnitTypeName);
             If(count _type > 0)then
@@ -61,7 +61,7 @@ switch(_idx)do
          };
   case 2:{ // CONTROL ADD BUTTON FOR SELECTED ARTILLERY LIST
             If(!(missionNamespace getVariable [STRVAR_DO(artillery_fire_timer),false]))then{ctrlEnable [10028,true];};
-            _control = ((findDisplay 36643) displayCtrl 10024);
+            _control = ((findDisplay 36641) displayCtrl 10024);
             _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
             While{count (lbSelection _control) > 0}do
             {
@@ -79,8 +79,8 @@ switch(_idx)do
             ctrlEnable [10025, false];
          };
   case 3:{ // CONTROL SELECTED ARTILLERY LIST
-           _control = ((findDisplay 36643) displayCtrl 10028);
-           private _m_control = ((findDisplay 36643) displayCtrl 10039);
+           _control = ((findDisplay 36641) displayCtrl 10028);
+           private _m_control = ((findDisplay 36641) displayCtrl 10039);
            If(_m_control ctrlChecked 0)then{_m_control ctrlSetChecked [0, false]; ctrlEnable [10040, false];};
            If((count (lbSelection _control)) < 1)then
            {
@@ -119,7 +119,7 @@ switch(_idx)do
            };
          };
    case 4:{ //CONTROL REMOVE BUTTON
-            _control = ((findDisplay 36643) displayCtrl 10028);
+            _control = ((findDisplay 36641) displayCtrl 10028);
             _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
             If((count (lbSelection _control)) isEqualTo (lbSize 10028))then
             {
@@ -153,8 +153,8 @@ switch(_idx)do
           };
    case 5:{ //CONTROL AMMOLIST
             If(!(ctrlEnabled 10039))then{ctrlEnable [10039,true];};
-            _control = ((findDisplay 36643) displayCtrl 10039);
-            _v_control = ((findDisplay 36643) displayCtrl 10039);
+            _control = ((findDisplay 36641) displayCtrl 10039);
+            _v_control = ((findDisplay 36641) displayCtrl 10039);
             If(_control ctrlChecked 0)then{_control ctrlSetChecked [0, false]; ctrlEnable [10040, false];};
             If(_info > -1)then
             {
@@ -172,7 +172,7 @@ switch(_idx)do
             If(!(isNull (gunner MSOT_RELOAD_ARTILLERY)))then
             {
               missionNamespace setVariable [STRVAR_DO(artillery_reload_vec),[MSOT_RELOAD_ARTILLERY],true];
-              _control = ((findDisplay 36643) displayCtrl 10028);
+              _control = ((findDisplay 36641) displayCtrl 10028);
               ctrlEnable [10032, false];
               missionNamespace setVariable [STRVAR_DO(artillery_reload_timer),true,true];
               ((missionNamespace getVariable (STRVAR_DO(artillery_reload_vec))) select 0) setVariable [STRVAR_DO(artillery_vec_inService),true,true];
@@ -189,7 +189,7 @@ switch(_idx)do
    case 7:{
             //CONTROL CHECK SWITCH
             If((_info # 2) > 0)then{
-            _control = ((findDisplay 36643) displayCtrl 10028);
+            _control = ((findDisplay 36641) displayCtrl 10028);
             _holder = missionNamespace getVariable[STRVAR_DO(artillery_resources),[]];
             private _arr = [];private _del_arr = [];
             {
@@ -246,7 +246,11 @@ switch(_idx)do
    case 8:{
             //CONTROL FIRE BUTTON
             ctrlEnable [10040, false];ctrlSetText [10029, "Call Artillery Fire!"];
-            _control = ((findDisplay 36643) displayCtrl 10039);
+            private _art_sounds = ["a3\dubbing_f_heli\mp_groundsupport\45_Artillery\mp_groundsupport_45_artillery_BHQ_0.ogg",
+                                   "a3\dubbing_f_heli\mp_groundsupport\45_Artillery\mp_groundsupport_45_artillery_BHQ_1.ogg",
+                                   "a3\dubbing_f_heli\mp_groundsupport\45_Artillery\mp_groundsupport_45_artillery_BHQ_2.ogg"];
+            playSound3D [(selectRandom _art_sounds) , player];
+            _control = ((findDisplay 36641) displayCtrl 10039);
             ctrlEnable [10028, false]; ctrlEnable [10031, false]; ctrlSetText [10034,"0"];
             If(_control ctrlChecked 0)then{_control ctrlSetChecked [0, false];};
             missionNamespace setVariable [STRVAR_DO(artillery_fire_timer),true,true];

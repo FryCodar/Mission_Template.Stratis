@@ -211,7 +211,7 @@ class DIARSC(alpha,RscPicture)
 
 class DIARSC(normal,Black_Backround)
 {
-    type = 0;
+  type = 0;
 	idc = -1;
 	style = 2;
 	shadow = 1;
@@ -385,8 +385,8 @@ class DIARSC(normal,Checkboxes)
 	onCheckBoxesSelChanged = "";
 	columns = 1;
 	rows = 1;
-	strings[] = {"DISARMED"};
-	checked_strings[] = {">> ARMED <<"};
+	strings[] = {""};
+	checked_strings[] = {""};
 };
 
 class DIARSC(normal,Map)
@@ -828,3 +828,5 @@ class DIARSC(normal,Controls_Group)
 	};
 	class Controls{};
 };
+
+class IGUIBack;

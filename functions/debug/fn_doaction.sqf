@@ -23,13 +23,14 @@ params ["_obj","_caller","_idx","_xtra"];
             hint "Script 1 begins";
             //_____________________________________________________________________________________________________________________________
            //  _modules = [Car1,true] call MSOT_creating_fnc_setFSeffect;
-           ["TOWNS"] spawn MSOT_creamission_fnc_createMission;
+           createDialog "MSOT_SATVIEW_TABLE";
 
           };
    case 3:{
             //ZWEITER TESTBEREICH
             hint "Script 2 begins";
             //______________________________________________________________________________________________________________________________
+            
 
           };
    case 4:{

@@ -10,17 +10,17 @@ umzubenennen.
 */
 
 //Aktiviert den DEBUG-Modus: true - an / false - aus
-MSOT_DEBUG_MODE = false; //default: false
+MSOT_DEBUG_MODE = true; //default: false
 
 //------------------------------------------------------------------------
 // Spielt das Intro mit Camerafahrt ab: true - an / false - aus
-MSOT_PLAY_INTRO_WITH_CAM = true; //default: true
+MSOT_PLAY_INTRO_WITH_CAM = false; //default: true
 
 // Spielt das MSOT LOGO ab: true - an / false - aus
-MSOT_PLAY_INTRO_WITH_LOGO = true; //default: true
+MSOT_PLAY_INTRO_WITH_LOGO = false; //default: true
 
 // Spielt die Intro Musik ab: true - an / false - aus
-MSOT_PLAY_INTRO_MUSIC = true; //default: true
+MSOT_PLAY_INTRO_MUSIC = false; //default: true
 
 //Intro Länge in Sekunden
 MSOT_INTRO_TIME = 25; //default: 25
@@ -39,7 +39,7 @@ MSOT_CAM_START_MARKER = "startmark"; // default: ""
 //-------------------------------------------------------------------------
 
 //Verliert seine Ausrüstung am Start der Mission: true - an / false - aus
-MSOT_CLEAR_EQUIPMENT = true; //default: true
+MSOT_CLEAR_EQUIPMENT = false; //default: true
 
 //*********** Neue Ausrüstung - NEW_SETTING = "scripts\newEquipments.sqf"; ***** Playernamen wird übergeben ****************************************
 //Teilt dem Spieler (sofern er im Script mit Player angesprochen wird) eine neue Ausrüstung zu!

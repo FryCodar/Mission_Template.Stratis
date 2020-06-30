@@ -15,20 +15,17 @@ Author: Fry
 
 ----------------------------------------------------------------------------------------------------------------- */
 params["_curator","_added_group"];
-sleep (1 + (random 1));
 
-private _leader = (leader _added_group);
-private _runpos = position _leader;
+If(count (uiNamespace getVariable ['msot_dlg',[]]) < 1 && ((getAssignedCuratorUnit _curator) isEqualTo player))then
+{
 
-
-_radius = (round(random 250));
-If(_radius < 150)then{_radius = 150;};
-[_added_group,_runpos,_radius] call BFUNC(taskPatrol);
-_added_group enableAttack true;
-_added_group enableGunLights "AUTO";
-
-_added_group setBehaviour "COMBAT";
-_added_group setCombatMode (selectRandom ["RED","YELLOW","RED","YELLOW","RED","RED","YELLOW","RED","YELLOW","RED"]);
+  private _leader = (leader _added_group);
+  private _runpos = position _leader;
 
 
-[_added_group] spawn MFUNC(system,setUnitSkill);
+  private _add_info = [1,_runpos,_added_group,_leader];
+  missionNamespace setVariable [STRVAR_DO(group_control_resources),_add_info,false];
+
+  sleep 0.5;
+  createDialog "MSOT_ZEUS_PATROL";
+};
