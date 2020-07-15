@@ -23,6 +23,8 @@ Parameters:   [POSITION,DISTANCE,DIRECTION,NUMBER GROUPS,NUMBER UNITS,GROUP INDE
               GROUP INDEX   -  Index of Different Classnames(if Classnames available!)
                                "NORMAL_UNITS","URBAN_UNITS","SPECIAL_UNITS","MIXED_NORMSPEC","MIXED_NORMSNIP","MIXED_ALL"
 
+              ATTACK_POINT   - Optional: default false - Groups attacks the Spawnpoint
+
               (BEHAVIORMODE) - Optional: default "COMBAT"
 
               (COMBATMODE)   - Optional : default "YELLOW"
@@ -38,12 +40,12 @@ Examples:
 Author: Fry
 
 ----------------------------------------------------------------------------------------------------------------- */
-private ["_main_pos","_spawn_pos","_i","_grp","_group_classes","_co","_get_house","_house_levels","_spawn_poses","_spawn_at_pos","_unit"];
-params ["_position","_min_radius","_angle","_grp_num","_units_in_grp_num","_group_choice",["_behaviour_idx","COMBAT"],["_combat_idx","YELLOW"]];
+private ["_main_pos","_spawn_pos","_i","_grp","_group_classes","_co","_get_house","_house_levels","_spawn_poses","_spawn_at_pos","_unit","_wpa"];
+params ["_position","_min_radius","_angle","_grp_num","_units_in_grp_num","_group_choice",["_attack_point",false],["_behaviour_idx","COMBAT"],["_combat_idx","YELLOW"]];
 
 
 IF(count MSOT_MEN == 0 && count MSOT_SFMEN == 0) exitWith {LOG_ERR("Control MSOT_MEN ARRAY");};
-
+If(_attack_point)then{_behaviour_idx = "AWARE"; _combat_idx = "RED";};
 private _output = [];
 private _do_your_job = If(_group_choice != "CIV_MEN")then{true}else{false};
 If(_do_your_job)then
@@ -105,7 +107,14 @@ If(_do_your_job)then
        }forEach _group_classes;
        _grp enableAttack true;
        _grp enableGunLights "AUTO";
-       [_grp,_spawn_pos,(round(_min_radius * 0.5))] call BFUNC(taskPatrol);
+       If(_attack_point)then
+       {
+          _wpa =  _grp addWaypoint [_spawn_pos, 0];
+          _wpa setWaypointType "SAD";
+          _wpa setWaypointSpeed "NORMAL";
+       }else{
+              [_grp,_spawn_pos,(round(_min_radius * 0.5))] call BFUNC(taskPatrol);
+            };
        _grp setBehaviour _behaviour_idx;
        _grp setCombatMode _combat_idx;
        [_grp] call MFUNC(system,setUnitSkill);
