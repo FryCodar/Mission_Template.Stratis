@@ -43,7 +43,6 @@ Author: Fry
 private ["_main_pos","_spawn_pos","_i","_grp","_group_classes","_co","_get_house","_house_levels","_spawn_poses","_spawn_at_pos","_unit","_wpa"];
 params ["_position","_min_radius","_angle","_grp_num","_units_in_grp_num","_group_choice",["_attack_point",false],["_behaviour_idx","COMBAT"],["_combat_idx","YELLOW"]];
 
-
 IF(count MSOT_MEN == 0 && count MSOT_SFMEN == 0) exitWith {LOG_ERR("Control MSOT_MEN ARRAY");};
 If(_attack_point)then{_behaviour_idx = "AWARE"; _combat_idx = "RED";};
 private _output = [];
@@ -56,18 +55,24 @@ If(_do_your_job)then
     case (typeName (_position select 0) == "SCALAR" && typeName (_position select 1) == "SCALAR"):{_main_pos = _position;_spawn_pos = _position;};
   };
 
-  private _houses_arr = [_spawn_pos,(_min_radius + 100),true,true] call MFUNC(spawnhelp,checkHouses);
-  If(count _houses_arr > 0)then
+  private _houses_arr = [_spawn_pos,(_min_radius + 100),true,false] call MFUNC(spawnhelp,checkHouses);
+  If(_houses_arr > 0)then
   {
     private _selected_houses = [];
     private _ran_angle = (round _angle);
     private _max_radius = (_min_radius + 50);
-    private _right_angle = if((_ran_angle + 45) > 360)then{(_ran_angle + 45) - 360}else{(_ran_angle + 45)};
-    private _left_angle = if((_ran_angle - 45) < 0)then{(_ran_angle - 45) + 360}else{(_ran_angle - 45)};
-    private _check_arr = [];
+    while{count _selected_houses < _grp_num}do
+    {
+      _houses_arr = [_spawn_pos,(_min_radius + 50),true,true] call MFUNC(spawnhelp,checkHouses);
+      if(count _houses_arr > 0)then
+      {
+        _selected_houses = (_houses_arr select {((position _x) distance _spawn_pos) >= _min_radius && {((position _x) distance _spawn_pos) <= _max_radius} && {([_spawn_pos,_ran_angle, 100, (position _x)] call MFUNC(geometry,inAngleSector))}});
+        If(count _selected_houses < _grp_num)then{_min_radius = _min_radius + 50;_max_radius = (_min_radius + 50);};
 
-    _selected_houses = (_houses_arr select {(_x distance _spawn_pos) >= _min_radius && {(_x distance _spawn_pos) <= _max_radius} && {(_spawn_pos getDir _x) >= _left_angle} && {(_spawn_pos getDir _x) <= _right_angle}});
-    If(count _selected_houses > (_grp_num * 2))then
+      };
+      sleep 0.04;
+    };
+    If(count _selected_houses >= _grp_num)then
     {
       //Debug Mode
       If(!isMultiplayer && (["debug_modus",1] call BIS_fnc_getParamValue) == 1)then

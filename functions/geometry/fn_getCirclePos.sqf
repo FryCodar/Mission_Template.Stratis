@@ -16,20 +16,21 @@ Examples:
 Author: Fry
 
 ------------------------------------------------------------------------------------------------------------- */
-private ["_output","_co","_point","_onmap","_statics","_statics2","_slope"];
-params ["_position","_radius",["_big_radius",5]];
+private ["_output","_co","_point","_onmap","_statics","_statics2","_statics3","_slope"];
+params ["_position","_radius",["_big_radius",5],["_without_road",false]];
 _output = [];
 _co = 0;
-while{count _output == 0 && _co < 100}do
+while{count _output == 0 && _co < 150}do
 {
  _point = _position getPos [_radius * sqrt random 1, random 360];
  If(count _point > 0)then
  {
    _onmap = [_point] call MFUNC(spawnhelp,isOnMap);
-   _statics = [_point,["Static","House","Tank","Car","StaticWeapon"],_big_radius] call MFUNC(spawnhelp,checkObjects);
-   _statics2 = [_point,["ROCK","FENCE"],_big_radius] call MFUNC(spawnhelp,checkTerrainObj);
+   _statics = (([_point,["Static","House","Tank","Car","StaticWeapon"],_big_radius] call MFUNC(spawnhelp,checkObjects)) < 1);
+   _statics2 = (([_point,["TREE","SMALL TREE","BUSH","ROCK","ROCKS","FENCE"],_big_radius] call MFUNC(spawnhelp,checkTerrainObj)) < 1);
+   _statics3 = If(_without_road)then{(count (_point nearRoads _big_radius) < 1)}else{true};
    _slope = [_point] call MFUNC(spawnhelp,getSlope);
-   If(!(surfaceIsWater _point) && _onmap && _slope && {_statics < 1} && {_statics2 < 1})then
+   If(!(surfaceIsWater _point) && _onmap && _slope && {_statics} && {_statics2} && {_statics3})then
    {
      _output = _point;
    }else{_co = _co + 1;};
